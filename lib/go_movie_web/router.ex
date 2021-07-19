@@ -9,6 +9,8 @@ defmodule GoMovieWeb.Router do
     pipe_through :api
 
     resources "/roles", RoleController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
+
   end
 
   # Enables LiveDashboard only for development
