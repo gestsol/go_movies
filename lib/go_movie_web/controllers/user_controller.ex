@@ -40,4 +40,21 @@ defmodule GoMovieWeb.UserController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def sign_in(conn, %{"email" => email, "password" => password}) do
+    case Account.authenticate_user(email, password) do
+      {:ok, user} ->
+        {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+        conn
+        |> put_status(:ok)
+        |> json(%{token: token})
+
+      {:error, message} ->
+        conn
+        |> put_status(:ok)
+        |> put_view(GoMovieWeb.ErrorView)
+        |> render("401.json", message: message)
+    end
+  end
+
 end

@@ -3,13 +3,28 @@ defmodule GoMovieWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug GoMovie.Auth.Pipeline
   end
+
+  pipeline :api_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
 
   scope "/api", GoMovieWeb do
     pipe_through :api
 
+    post "/users/sign_in", UserController, :sign_in
+    post "/users/sign_up", UserController, :create
+
+  end
+
+
+  scope "/api", GoMovieWeb do
+    #pipe_through :api
+    pipe_through [:api, :api_auth]
     resources "/roles", RoleController, except: [:new, :edit]
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit, :create]
 
   end
 

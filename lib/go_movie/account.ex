@@ -104,6 +104,10 @@ defmodule GoMovie.Account do
 
   alias GoMovie.Account.User
 
+  def authenticate_user(email, plain_pass) do
+    User.authenticate(email, plain_pass)
+  end
+
   @doc """
   Returns the list of users.
 
