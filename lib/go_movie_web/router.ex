@@ -10,7 +10,6 @@ defmodule GoMovieWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-
   scope "/api", GoMovieWeb do
     pipe_through :api
 
@@ -19,13 +18,12 @@ defmodule GoMovieWeb.Router do
 
   end
 
-
   scope "/api", GoMovieWeb do
     #pipe_through :api
     pipe_through [:api, :api_auth]
     resources "/roles", RoleController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit, :create]
-
+    resources "/plans", PlanController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

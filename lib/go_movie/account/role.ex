@@ -8,7 +8,7 @@ defmodule GoMovie.Account.Role do
   schema "roles" do
     field :description, :string
     field :name, :string
-    field :status, :integer
+    field :status, :integer, default: 1
 
     timestamps()
   end
