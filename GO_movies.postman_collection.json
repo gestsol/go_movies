@@ -120,8 +120,267 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "sign_in",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/sign_in"
+					},
+					"response": []
+				},
+				{
+					"name": "sign_up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"test@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/sign_up"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\":{\n      \"name\": \"user-update\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"email@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "plans",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plan\":{\n        \"name\":\"plan_name\",\n        \"description\":\"plan_description\",\n        \"price\":1500.2,\n        \"duration\":45,\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/plans"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plan\":{\n        \"name\":\"plan_name_update\",\n        \"description\":\"plan_description\",\n        \"price\":1500.2,\n        \"duration\":45,\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/plans/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"plans",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/plans"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/plans/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"plans",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/plans/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"plans",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTIyMzY1MSwiaWF0IjoxNjI2ODA0NDUxLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImFiY2NiZmQxLWM5ZTctNGQxYi1hOTFiLWNkNmEwNTEwZjUwOCIsIm5iZiI6MTYyNjgwNDQ1MCwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.2ThmNx0TwBzwgL887q7rncIPMTFd2YwxrpCuvuc9SM2f1yUZ01HDOG7kA10d51NbS-eLOHolNKE6aAVYljP71w"
+		}
+	},
 	"event": [
 		{
 			"listen": "prerequest",
