@@ -197,4 +197,101 @@ defmodule GoMovie.Business do
   def change_code(%Code{} = code, attrs \\ %{}) do
     Code.changeset(code, attrs)
   end
+
+  alias GoMovie.Business.UserPlan
+
+  @doc """
+  Returns the list of user_plans.
+
+  ## Examples
+
+      iex> list_user_plans()
+      [%UserPlan{}, ...]
+
+  """
+  def list_user_plans do
+    Repo.all(UserPlan)
+  end
+
+  @doc """
+  Gets a single user_plan.
+
+  Raises `Ecto.NoResultsError` if the User plan does not exist.
+
+  ## Examples
+
+      iex> get_user_plan!(123)
+      %UserPlan{}
+
+      iex> get_user_plan!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_user_plan!(user_id, plan_id), do: Repo.get_by!(UserPlan, user_id: user_id, plan_id: plan_id)
+
+
+  @doc """
+  Creates a user_plan.
+
+  ## Examples
+
+      iex> create_user_plan(%{field: value})
+      {:ok, %UserPlan{}}
+
+      iex> create_user_plan(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_user_plan(attrs \\ %{}) do
+    %UserPlan{}
+    |> UserPlan.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a user_plan.
+
+  ## Examples
+
+      iex> update_user_plan(user_plan, %{field: new_value})
+      {:ok, %UserPlan{}}
+
+      iex> update_user_plan(user_plan, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_user_plan(%UserPlan{} = user_plan, attrs) do
+    user_plan
+    |> UserPlan.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a user_plan.
+
+  ## Examples
+
+      iex> delete_user_plan(user_plan)
+      {:ok, %UserPlan{}}
+
+      iex> delete_user_plan(user_plan)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_user_plan(%UserPlan{} = user_plan) do
+    Repo.delete(user_plan)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking user_plan changes.
+
+  ## Examples
+
+      iex> change_user_plan(user_plan)
+      %Ecto.Changeset{data: %UserPlan{}}
+
+  """
+  def change_user_plan(%UserPlan{} = user_plan, attrs \\ %{}) do
+    UserPlan.changeset(user_plan, attrs)
+  end
 end

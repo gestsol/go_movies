@@ -140,4 +140,67 @@ defmodule GoMovie.BusinessTest do
       assert %Ecto.Changeset{} = Business.change_code(code)
     end
   end
+
+  describe "user_plans" do
+    alias GoMovie.Business.UserPlan
+
+    @valid_attrs %{date_end: ~D[2010-04-17], date_start: ~D[2010-04-17], status: 42}
+    @update_attrs %{date_end: ~D[2011-05-18], date_start: ~D[2011-05-18], status: 43}
+    @invalid_attrs %{date_end: nil, date_start: nil, status: nil}
+
+    def user_plan_fixture(attrs \\ %{}) do
+      {:ok, user_plan} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Business.create_user_plan()
+
+      user_plan
+    end
+
+    test "list_user_plans/0 returns all user_plans" do
+      user_plan = user_plan_fixture()
+      assert Business.list_user_plans() == [user_plan]
+    end
+
+    test "get_user_plan!/1 returns the user_plan with given id" do
+      user_plan = user_plan_fixture()
+      assert Business.get_user_plan!(user_plan.id) == user_plan
+    end
+
+    test "create_user_plan/1 with valid data creates a user_plan" do
+      assert {:ok, %UserPlan{} = user_plan} = Business.create_user_plan(@valid_attrs)
+      assert user_plan.date_end == ~D[2010-04-17]
+      assert user_plan.date_start == ~D[2010-04-17]
+      assert user_plan.status == 42
+    end
+
+    test "create_user_plan/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Business.create_user_plan(@invalid_attrs)
+    end
+
+    test "update_user_plan/2 with valid data updates the user_plan" do
+      user_plan = user_plan_fixture()
+      assert {:ok, %UserPlan{} = user_plan} = Business.update_user_plan(user_plan, @update_attrs)
+      assert user_plan.date_end == ~D[2011-05-18]
+      assert user_plan.date_start == ~D[2011-05-18]
+      assert user_plan.status == 43
+    end
+
+    test "update_user_plan/2 with invalid data returns error changeset" do
+      user_plan = user_plan_fixture()
+      assert {:error, %Ecto.Changeset{}} = Business.update_user_plan(user_plan, @invalid_attrs)
+      assert user_plan == Business.get_user_plan!(user_plan.id)
+    end
+
+    test "delete_user_plan/1 deletes the user_plan" do
+      user_plan = user_plan_fixture()
+      assert {:ok, %UserPlan{}} = Business.delete_user_plan(user_plan)
+      assert_raise Ecto.NoResultsError, fn -> Business.get_user_plan!(user_plan.id) end
+    end
+
+    test "change_user_plan/1 returns a user_plan changeset" do
+      user_plan = user_plan_fixture()
+      assert %Ecto.Changeset{} = Business.change_user_plan(user_plan)
+    end
+  end
 end
