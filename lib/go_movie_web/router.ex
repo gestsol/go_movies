@@ -24,6 +24,7 @@ defmodule GoMovieWeb.Router do
     resources "/roles", RoleController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit, :create]
     resources "/plans", PlanController, except: [:new, :edit]
+    resources "/codes", CodeController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
