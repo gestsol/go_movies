@@ -373,12 +373,387 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "codes",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":{\n        \"name\":\"plan_name\",\n        \"description\":\"plan_description\",\n        \"amount\":1500.2,\n        \"quantity\":45,\n        \"status\": 1,\n        \"plan_id\":2,\n        \"date_end\":\"2021-07-08\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/codes"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":{\n        \"name\":\"plan_name_update\",\n        \"description\":\"plan_description\",\n        \"amount\":1500.2,\n        \"quantity\":45,\n        \"status\": 1,\n        \"plan_id\":2,\n        \"date_end\":\"2021-07-22\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/codes/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"codes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user_plans"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/codes/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"codes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/codes/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"codes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user_plans",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_plan\":{\n        \"user_id\": 1,\n        \"plan_id\":2,\n        \"date_start\":\"2021-07-08\",\n        \"date_end\":\"2021-07-08\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user_plans"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_plan\":{\n        \"date_start\":\"2021-07-22\",\n        \"date_end\":\"2021-07-08\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user_plans/:user_id/:plan_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_plans",
+								":user_id",
+								":plan_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "plan_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user_plans"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_plans/:user_id/:plan_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_plans",
+								":user_id",
+								":plan_id"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "plan_id",
+									"value": "2",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "2"
+								},
+								{
+									"key": "plan_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_plans/:user_id/:plan_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_plans",
+								":user_id",
+								":plan_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "plan_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "purchases",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"purchase\":{\n        \"description\":\"plan_description\",\n        \"date\":\"2021-07-08\",\n        \"amount\":1500.2,\n        \"status\": 1,\n        \"user_id\": 1,\n        \"plan_id\":2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/purchases"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"purchase\":{\n        \"description\":\"plan_description_update\",\n        \"date\":\"2021-07-08\",\n        \"amount\":1500.2,\n        \"status\": 1,\n        \"user_id\": 1,\n        \"plan_id\":2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/purchases"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/purchases/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/purchases/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTIyMzY1MSwiaWF0IjoxNjI2ODA0NDUxLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImFiY2NiZmQxLWM5ZTctNGQxYi1hOTFiLWNkNmEwNTEwZjUwOCIsIm5iZiI6MTYyNjgwNDQ1MCwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.2ThmNx0TwBzwgL887q7rncIPMTFd2YwxrpCuvuc9SM2f1yUZ01HDOG7kA10d51NbS-eLOHolNKE6aAVYljP71w"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTQ3MjUxMCwiaWF0IjoxNjI3MDUzMzEwLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImJkNGE0ZWViLTYwYTEtNDJlZC1hNmEwLTI4ZTVjZWRlZDc4OSIsIm5iZiI6MTYyNzA1MzMwOSwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.Qhc_2XncSAWnnHYp81owB6FpTBagCI0EGzN4HplStVC4PvgRIpilcgWGI_tU3B5I6GL1xCpTX6Pd5vFBwEaq8w"
 		}
 	},
 	"event": [
