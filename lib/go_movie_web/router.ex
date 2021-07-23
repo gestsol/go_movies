@@ -29,6 +29,7 @@ defmodule GoMovieWeb.Router do
     get "/user_plans/:user_id/:plan_id", UserPlanController, :show
     patch "/user_plans/:user_id/:plan_id", UserPlanController, :update
     delete "/user_plans/:user_id/:plan_id", UserPlanController, :delete
+    resources "/purchases", PurchaseController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

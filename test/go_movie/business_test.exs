@@ -203,4 +203,69 @@ defmodule GoMovie.BusinessTest do
       assert %Ecto.Changeset{} = Business.change_user_plan(user_plan)
     end
   end
+
+  describe "purchases" do
+    alias GoMovie.Business.Purchase
+
+    @valid_attrs %{amount: "120.5", date: ~D[2010-04-17], description: "some description", status: 42}
+    @update_attrs %{amount: "456.7", date: ~D[2011-05-18], description: "some updated description", status: 43}
+    @invalid_attrs %{amount: nil, date: nil, description: nil, status: nil}
+
+    def purchase_fixture(attrs \\ %{}) do
+      {:ok, purchase} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Business.create_purchase()
+
+      purchase
+    end
+
+    test "list_purchases/0 returns all purchases" do
+      purchase = purchase_fixture()
+      assert Business.list_purchases() == [purchase]
+    end
+
+    test "get_purchase!/1 returns the purchase with given id" do
+      purchase = purchase_fixture()
+      assert Business.get_purchase!(purchase.id) == purchase
+    end
+
+    test "create_purchase/1 with valid data creates a purchase" do
+      assert {:ok, %Purchase{} = purchase} = Business.create_purchase(@valid_attrs)
+      assert purchase.amount == Decimal.new("120.5")
+      assert purchase.date == ~D[2010-04-17]
+      assert purchase.description == "some description"
+      assert purchase.status == 42
+    end
+
+    test "create_purchase/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Business.create_purchase(@invalid_attrs)
+    end
+
+    test "update_purchase/2 with valid data updates the purchase" do
+      purchase = purchase_fixture()
+      assert {:ok, %Purchase{} = purchase} = Business.update_purchase(purchase, @update_attrs)
+      assert purchase.amount == Decimal.new("456.7")
+      assert purchase.date == ~D[2011-05-18]
+      assert purchase.description == "some updated description"
+      assert purchase.status == 43
+    end
+
+    test "update_purchase/2 with invalid data returns error changeset" do
+      purchase = purchase_fixture()
+      assert {:error, %Ecto.Changeset{}} = Business.update_purchase(purchase, @invalid_attrs)
+      assert purchase == Business.get_purchase!(purchase.id)
+    end
+
+    test "delete_purchase/1 deletes the purchase" do
+      purchase = purchase_fixture()
+      assert {:ok, %Purchase{}} = Business.delete_purchase(purchase)
+      assert_raise Ecto.NoResultsError, fn -> Business.get_purchase!(purchase.id) end
+    end
+
+    test "change_purchase/1 returns a purchase changeset" do
+      purchase = purchase_fixture()
+      assert %Ecto.Changeset{} = Business.change_purchase(purchase)
+    end
+  end
 end
