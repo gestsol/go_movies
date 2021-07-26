@@ -15,7 +15,6 @@ defmodule GoMovieWeb.Router do
 
     post "/users/sign_in", UserController, :sign_in
     post "/users/sign_up", UserController, :create
-
   end
 
   scope "/api", GoMovieWeb do
@@ -30,6 +29,7 @@ defmodule GoMovieWeb.Router do
     patch "/user_plans/:user_id/:plan_id", UserPlanController, :update
     delete "/user_plans/:user_id/:plan_id", UserPlanController, :delete
     resources "/purchases", PurchaseController, except: [:new, :edit]
+    resources "/resources", ResourceController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
