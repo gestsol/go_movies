@@ -748,12 +748,465 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "resource_types",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_type\":{\n        \"name\":\"resource_name\",\n        \"description\":\"resource_description\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/resource_types"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_type\":{\n        \"name\":\"resource_name_update\",\n        \"description\":\"resource_description_update\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/resource_types/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/resource_types"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resource_types/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resource_types/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "resources",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/resources"
+					},
+					"response": [
+						{
+							"name": "create_one_without_parent",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/resources"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "content-length",
+									"value": "276"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 26 Jul 2021 08:17:12 GMT"
+								},
+								{
+									"key": "location",
+									"value": "/api/resources/1"
+								},
+								{
+									"key": "server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "x-request-id",
+									"value": "FpVJTHi2-YeHsykAAAGh"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resource\": {\n        \"chapter\": null,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": null,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 1,\n        \"score_average\": 0,\n        \"season\": null,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
+						},
+						{
+							"name": "create_one_with_parent",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"parent_resource_id\":3,\n        \"season\": 1,\n        \"chapter\": 1\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/resources"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "content-length",
+									"value": "267"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 26 Jul 2021 08:19:21 GMT"
+								},
+								{
+									"key": "location",
+									"value": "/api/resources/2"
+								},
+								{
+									"key": "server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "x-request-id",
+									"value": "FpVJapl_q6nCyBgAAAEH"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resource\": {\n        \"chapter\": 1,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": 1,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 2,\n        \"score_average\": 0,\n        \"season\": 1,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name update\",\n        \"poster_url\": \"some poster_url update\",\n        \"trailer_url\": \"some trailer_url update\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description update\",\n        \"duration\": 120,\n        \"resource_type_id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/resources"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "genders",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gender\":{\n        \"name\":\"gender_name\",\n        \"description\":\"gender_description\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/genders"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gender\":{\n        \"name\":\"gender_name_update\",\n        \"description\":\"gender_description_update\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/genders"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTQ3MjUxMCwiaWF0IjoxNjI3MDUzMzEwLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImJkNGE0ZWViLTYwYTEtNDJlZC1hNmEwLTI4ZTVjZWRlZDc4OSIsIm5iZiI6MTYyNzA1MzMwOSwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.Qhc_2XncSAWnnHYp81owB6FpTBagCI0EGzN4HplStVC4PvgRIpilcgWGI_tU3B5I6GL1xCpTX6Pd5vFBwEaq8w"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTgxNjQzMywiaWF0IjoxNjI3Mzk3MjMzLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjNhNDBjMWU2LTg5YmQtNGY4Ny1iNjFjLTNhM2FhNjFiODlhMSIsIm5iZiI6MTYyNzM5NzIzMiwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.eKXRo2Aa8L8RuamcYNh8yNtK2G8VikKJbFgXXDtMZ1XA3GIEIs41liOZhmvZso04kWIO-_3qEvNbyC_AXgr9Cw"
 		}
 	},
 	"event": [
