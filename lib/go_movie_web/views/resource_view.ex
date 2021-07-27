@@ -24,7 +24,8 @@ defmodule GoMovieWeb.ResourceView do
       score_average: resource.score_average,
       season: resource.season,
       chapter: resource.chapter,
-      parent_resource_id: resource.parent_resource_id
+      parent_resource_id: resource.parent_resource_id,
+      resource_type_id: resource.resource_type_id
     }
   end
 end

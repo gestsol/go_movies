@@ -20,13 +20,13 @@ defmodule GoMovie.Content.Resource do
 
     timestamps()
     belongs_to :resources, __MODULE__, foreign_key: :parent_resource_id, references: :resource_id
-
+    belongs_to :resource_types, GoMovie.Content.ResourceType, foreign_key: :resource_type_id, references: :resource_type_id
   end
 
   @doc false
   def changeset(resource, attrs) do
     resource
-    |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id])
+    |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id, :resource_type_id])
     |> validate_required([:name, :url])
   end
 end

@@ -11,6 +11,7 @@ defmodule GoMovie.Content.ResourceType do
     field :status, :integer, default: 1
 
     timestamps()
+    has_many :resources, GoMovie.Content.Resource, foreign_key: :resource_type_id, references: :resource_type_id
   end
 
   @doc false
