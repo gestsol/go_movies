@@ -144,4 +144,67 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_resource_type(resource_type)
     end
   end
+
+  describe "genders" do
+    alias GoMovie.Content.Gender
+
+    @valid_attrs %{description: "some description", name: "some name", status: 42}
+    @update_attrs %{description: "some updated description", name: "some updated name", status: 43}
+    @invalid_attrs %{description: nil, name: nil, status: nil}
+
+    def gender_fixture(attrs \\ %{}) do
+      {:ok, gender} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_gender()
+
+      gender
+    end
+
+    test "list_genders/0 returns all genders" do
+      gender = gender_fixture()
+      assert Content.list_genders() == [gender]
+    end
+
+    test "get_gender!/1 returns the gender with given id" do
+      gender = gender_fixture()
+      assert Content.get_gender!(gender.id) == gender
+    end
+
+    test "create_gender/1 with valid data creates a gender" do
+      assert {:ok, %Gender{} = gender} = Content.create_gender(@valid_attrs)
+      assert gender.description == "some description"
+      assert gender.name == "some name"
+      assert gender.status == 42
+    end
+
+    test "create_gender/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_gender(@invalid_attrs)
+    end
+
+    test "update_gender/2 with valid data updates the gender" do
+      gender = gender_fixture()
+      assert {:ok, %Gender{} = gender} = Content.update_gender(gender, @update_attrs)
+      assert gender.description == "some updated description"
+      assert gender.name == "some updated name"
+      assert gender.status == 43
+    end
+
+    test "update_gender/2 with invalid data returns error changeset" do
+      gender = gender_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_gender(gender, @invalid_attrs)
+      assert gender == Content.get_gender!(gender.id)
+    end
+
+    test "delete_gender/1 deletes the gender" do
+      gender = gender_fixture()
+      assert {:ok, %Gender{}} = Content.delete_gender(gender)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_gender!(gender.id) end
+    end
+
+    test "change_gender/1 returns a gender changeset" do
+      gender = gender_fixture()
+      assert %Ecto.Changeset{} = Content.change_gender(gender)
+    end
+  end
 end

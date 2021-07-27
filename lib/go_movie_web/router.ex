@@ -31,6 +31,7 @@ defmodule GoMovieWeb.Router do
     resources "/purchases", PurchaseController, except: [:new, :edit]
     resources "/resources", ResourceController, except: [:new, :edit]
     resources "/resource_types", ResourceTypeController, except: [:new, :edit]
+    resources "/genders", GenderController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
