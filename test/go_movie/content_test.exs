@@ -81,4 +81,67 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_resource(resource)
     end
   end
+
+  describe "resource_types" do
+    alias GoMovie.Content.ResourceType
+
+    @valid_attrs %{description: "some description", name: "some name", status: 42}
+    @update_attrs %{description: "some updated description", name: "some updated name", status: 43}
+    @invalid_attrs %{description: nil, name: nil, status: nil}
+
+    def resource_type_fixture(attrs \\ %{}) do
+      {:ok, resource_type} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_resource_type()
+
+      resource_type
+    end
+
+    test "list_resource_types/0 returns all resource_types" do
+      resource_type = resource_type_fixture()
+      assert Content.list_resource_types() == [resource_type]
+    end
+
+    test "get_resource_type!/1 returns the resource_type with given id" do
+      resource_type = resource_type_fixture()
+      assert Content.get_resource_type!(resource_type.id) == resource_type
+    end
+
+    test "create_resource_type/1 with valid data creates a resource_type" do
+      assert {:ok, %ResourceType{} = resource_type} = Content.create_resource_type(@valid_attrs)
+      assert resource_type.description == "some description"
+      assert resource_type.name == "some name"
+      assert resource_type.status == 42
+    end
+
+    test "create_resource_type/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_resource_type(@invalid_attrs)
+    end
+
+    test "update_resource_type/2 with valid data updates the resource_type" do
+      resource_type = resource_type_fixture()
+      assert {:ok, %ResourceType{} = resource_type} = Content.update_resource_type(resource_type, @update_attrs)
+      assert resource_type.description == "some updated description"
+      assert resource_type.name == "some updated name"
+      assert resource_type.status == 43
+    end
+
+    test "update_resource_type/2 with invalid data returns error changeset" do
+      resource_type = resource_type_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_resource_type(resource_type, @invalid_attrs)
+      assert resource_type == Content.get_resource_type!(resource_type.id)
+    end
+
+    test "delete_resource_type/1 deletes the resource_type" do
+      resource_type = resource_type_fixture()
+      assert {:ok, %ResourceType{}} = Content.delete_resource_type(resource_type)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_resource_type!(resource_type.id) end
+    end
+
+    test "change_resource_type/1 returns a resource_type changeset" do
+      resource_type = resource_type_fixture()
+      assert %Ecto.Changeset{} = Content.change_resource_type(resource_type)
+    end
+  end
 end

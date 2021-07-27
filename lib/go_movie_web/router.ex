@@ -30,6 +30,7 @@ defmodule GoMovieWeb.Router do
     delete "/user_plans/:user_id/:plan_id", UserPlanController, :delete
     resources "/purchases", PurchaseController, except: [:new, :edit]
     resources "/resources", ResourceController, except: [:new, :edit]
+    resources "/resource_types", ResourceTypeController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
