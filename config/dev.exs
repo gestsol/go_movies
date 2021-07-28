@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :go_movie, GoMovie.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "go_movie_dev",
-  hostname: "localhost",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_NAME"),
+  hostname: System.get_env("DB_HOSTNAME"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -16,7 +16,12 @@ config :go_movie, GoMovie.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :go_movie, GoMovieWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 80],
+    https: [
+    port: 443,
+    certfile: "/home/ubuntu/certs/fullchain.pem",
+    keyfile: "/home/ubuntu/certs/privkey.pem"
+  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
