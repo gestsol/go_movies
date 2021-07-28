@@ -1206,7 +1206,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTgxNjQzMywiaWF0IjoxNjI3Mzk3MjMzLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjNhNDBjMWU2LTg5YmQtNGY4Ny1iNjFjLTNhM2FhNjFiODlhMSIsIm5iZiI6MTYyNzM5NzIzMiwic3ViIjoiMiIsInR5cCI6ImFjY2VzcyJ9.eKXRo2Aa8L8RuamcYNh8yNtK2G8VikKJbFgXXDtMZ1XA3GIEIs41liOZhmvZso04kWIO-_3qEvNbyC_AXgr9Cw"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTg4OTM0NiwiaWF0IjoxNjI3NDcwMTQ2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImQ0NWE1M2Q3LWRlMjYtNDczOC05ZTIzLTAwM2RiMjU4NzJjNCIsIm5iZiI6MTYyNzQ3MDE0NSwic3ViIjoiMSIsInR5cCI6ImFjY2VzcyJ9.-Lz_rJMBwzbHmK2LeatNmd9aU7iR-Dd-LkWZlhrhC2shI6EIyLO0LEMSc6BxsY-IhkxpqyzAjUKo97qM3qQD0w"
 		}
 	},
 	"event": [
@@ -1232,7 +1232,12 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": " http://localhost:4000"
+			"value": " http://localhost:80"
+		},
+		{
+			"key": "base_url",
+			"value": "nuevo-gomovie-backend-dev.gestsol.io",
+			"disabled": true
 		}
 	]
 }
