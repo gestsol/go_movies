@@ -293,4 +293,100 @@ defmodule GoMovie.Content do
   def change_gender(%Gender{} = gender, attrs \\ %{}) do
     Gender.changeset(gender, attrs)
   end
+
+  alias GoMovie.Content.ResourceGender
+
+  @doc """
+  Returns the list of resource_genders.
+
+  ## Examples
+
+      iex> list_resource_genders()
+      [%ResourceGender{}, ...]
+
+  """
+  def list_resource_genders do
+    Repo.all(ResourceGender)
+  end
+
+  @doc """
+  Gets a single resource_gender.
+
+  Raises `Ecto.NoResultsError` if the Resource gender does not exist.
+
+  ## Examples
+
+      iex> get_resource_gender!(123)
+      %ResourceGender{}
+
+      iex> get_resource_gender!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_resource_gender!(resource_id, gender_id), do: Repo.get_by!(ResourceGender, resource_id: resource_id, gender_id: gender_id)
+
+  @doc """
+  Creates a resource_gender.
+
+  ## Examples
+
+      iex> create_resource_gender(%{field: value})
+      {:ok, %ResourceGender{}}
+
+      iex> create_resource_gender(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_resource_gender(attrs \\ %{}) do
+    %ResourceGender{}
+    |> ResourceGender.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a resource_gender.
+
+  ## Examples
+
+      iex> update_resource_gender(resource_gender, %{field: new_value})
+      {:ok, %ResourceGender{}}
+
+      iex> update_resource_gender(resource_gender, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_resource_gender(%ResourceGender{} = resource_gender, attrs) do
+    resource_gender
+    |> ResourceGender.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a resource_gender.
+
+  ## Examples
+
+      iex> delete_resource_gender(resource_gender)
+      {:ok, %ResourceGender{}}
+
+      iex> delete_resource_gender(resource_gender)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_resource_gender(%ResourceGender{} = resource_gender) do
+    Repo.delete(resource_gender)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking resource_gender changes.
+
+  ## Examples
+
+      iex> change_resource_gender(resource_gender)
+      %Ecto.Changeset{data: %ResourceGender{}}
+
+  """
+  def change_resource_gender(%ResourceGender{} = resource_gender, attrs \\ %{}) do
+    ResourceGender.changeset(resource_gender, attrs)
+  end
 end

@@ -207,4 +207,63 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_gender(gender)
     end
   end
+
+  describe "resource_genders" do
+    alias GoMovie.Content.ResourceGender
+
+    @valid_attrs %{status: 42}
+    @update_attrs %{status: 43}
+    @invalid_attrs %{status: nil}
+
+    def resource_gender_fixture(attrs \\ %{}) do
+      {:ok, resource_gender} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_resource_gender()
+
+      resource_gender
+    end
+
+    test "list_resource_genders/0 returns all resource_genders" do
+      resource_gender = resource_gender_fixture()
+      assert Content.list_resource_genders() == [resource_gender]
+    end
+
+    test "get_resource_gender!/1 returns the resource_gender with given id" do
+      resource_gender = resource_gender_fixture()
+      assert Content.get_resource_gender!(resource_gender.id) == resource_gender
+    end
+
+    test "create_resource_gender/1 with valid data creates a resource_gender" do
+      assert {:ok, %ResourceGender{} = resource_gender} = Content.create_resource_gender(@valid_attrs)
+      assert resource_gender.status == 42
+    end
+
+    test "create_resource_gender/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_resource_gender(@invalid_attrs)
+    end
+
+    test "update_resource_gender/2 with valid data updates the resource_gender" do
+      resource_gender = resource_gender_fixture()
+      assert {:ok, %ResourceGender{} = resource_gender} = Content.update_resource_gender(resource_gender, @update_attrs)
+      assert resource_gender.status == 43
+    end
+
+    test "update_resource_gender/2 with invalid data returns error changeset" do
+      resource_gender = resource_gender_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_resource_gender(resource_gender, @invalid_attrs)
+      assert resource_gender == Content.get_resource_gender!(resource_gender.id)
+    end
+
+    test "delete_resource_gender/1 deletes the resource_gender" do
+      resource_gender = resource_gender_fixture()
+      assert {:ok, %ResourceGender{}} = Content.delete_resource_gender(resource_gender)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_resource_gender!(resource_gender.id) end
+    end
+
+    test "change_resource_gender/1 returns a resource_gender changeset" do
+      resource_gender = resource_gender_fixture()
+      assert %Ecto.Changeset{} = Content.change_resource_gender(resource_gender)
+    end
+  end
 end
