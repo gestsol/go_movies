@@ -34,6 +34,7 @@ defmodule GoMovie.Account.User do
     |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id])
     |> unique_constraint(:email)
     |> put_password_hash()
+    |> foreign_key_constraint(:role_id)
     |> validate_required([:name, :lastname, :email])
   end
 

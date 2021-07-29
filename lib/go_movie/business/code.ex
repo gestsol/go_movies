@@ -21,6 +21,7 @@ defmodule GoMovie.Business.Code do
   def changeset(code, attrs) do
     code
     |> cast(attrs, [:name, :description, :quantity, :amount, :date_end, :status, :code_id, :plan_id])
+    |> foreign_key_constraint(:plan_id)
     |> validate_required([:name, :quantity, :amount, :date_end, :status, :plan_id])
   end
 end

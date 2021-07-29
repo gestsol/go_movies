@@ -18,6 +18,8 @@ defmodule GoMovie.Business.UserPlan do
   def changeset(user_plan, attrs) do
     user_plan
     |> cast(attrs, [:date_start, :date_end, :status, :plan_id, :user_id])
+    |> foreign_key_constraint(:plan_id)
+    |> foreign_key_constraint(:user_id)
     |> validate_required([:date_start, :date_end, :status])
   end
 end

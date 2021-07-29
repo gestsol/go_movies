@@ -20,6 +20,8 @@ defmodule GoMovie.Business.Purchase do
   def changeset(purchase, attrs) do
     purchase
     |> cast(attrs, [:date, :amount, :description, :status, :plan_id, :user_id, :purchase_id])
+    |> foreign_key_constraint(:plan_id)
+    |> foreign_key_constraint(:user_id)
     |> validate_required([:amount, :description, :plan_id, :user_id ])
   end
 end

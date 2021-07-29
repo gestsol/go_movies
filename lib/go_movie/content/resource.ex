@@ -27,6 +27,8 @@ defmodule GoMovie.Content.Resource do
   def changeset(resource, attrs) do
     resource
     |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id, :resource_type_id])
+    |> foreign_key_constraint(:resource_type_id)
+    |> foreign_key_constraint(:parent_resource_id)
     |> validate_required([:name, :url])
   end
 end
