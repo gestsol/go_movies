@@ -35,7 +35,7 @@ defmodule GoMovie.Account.User do
     |> unique_constraint(:email)
     |> put_password_hash()
     |> foreign_key_constraint(:role_id)
-    |> validate_required([:name, :lastname, :email])
+    |> validate_required([:name, :email])
   end
 
   def changesetPasswordUpdate(user, attrs) do
