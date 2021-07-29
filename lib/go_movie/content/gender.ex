@@ -11,6 +11,8 @@ defmodule GoMovie.Content.Gender do
     field :status, :integer, default: 1
 
     timestamps()
+    has_many :resource_genders, GoMovie.Content.ResourceGender, foreign_key: :gender_id, references: :gender_id
+
   end
 
   @doc false
