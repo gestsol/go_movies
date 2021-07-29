@@ -48,5 +48,15 @@ defmodule GoMovieWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug(
+    CORSPlug,
+    origin:
+    [
+      "http://localhost:8100",
+      "https://newgomovie-dev.netlify.app"
+
+    ],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"]
+  )
   plug GoMovieWeb.Router
 end
