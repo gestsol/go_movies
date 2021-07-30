@@ -875,7 +875,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120\n    }\n}",
+							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120, \n        \"resource_type_id\":1,\n        \"parent_resource_id\":2,\n        \"season\": 1,\n        \"chapter\": 1\n\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1201,12 +1201,390 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "resource_genders",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_gender\":{\n        \"resource_id\": 1,\n        \"gender_id\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/resource_genders"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_gender\":{\n        \"resource_id\": 1,\n        \"gender_id\":1,\n        \"status\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/resource_genders/:resource_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_genders",
+								":resource_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "resource_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/resource_genders"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resource_genders/:resource_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_genders",
+								":resource_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "resource_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resource_genders/:resource_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resource_genders",
+								":resource_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "resource_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user_genders_follow",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_gender_follow\":{\n        \"user_id\": 1,\n        \"gender_id\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user_genders_follow"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_gender_follow\":{\n        \"user_id\": 1,\n        \"gender_id\":1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user_genders_follow/:user_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_genders_follow",
+								":user_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user_genders_follow"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_genders_follow/:user_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_genders_follow",
+								":user_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_genders_follow/:user_id/:gender_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_genders_follow",
+								":user_id",
+								":gender_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "gender_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "languages",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"language\":{\n        \"name\":\"language_name\",\n        \"description\":\"language_description\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/languages"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"language\":{\n        \"name\":\"language_name_update\",\n        \"description\":\"language_description_update\",\n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/languages/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"languages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/languages"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/languages/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"languages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/languages/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"languages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTg4OTM0NiwiaWF0IjoxNjI3NDcwMTQ2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImQ0NWE1M2Q3LWRlMjYtNDczOC05ZTIzLTAwM2RiMjU4NzJjNCIsIm5iZiI6MTYyNzQ3MDE0NSwic3ViIjoiMSIsInR5cCI6ImFjY2VzcyJ9.-Lz_rJMBwzbHmK2LeatNmd9aU7iR-Dd-LkWZlhrhC2shI6EIyLO0LEMSc6BxsY-IhkxpqyzAjUKo97qM3qQD0w"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYyOTk3NTAwMCwiaWF0IjoxNjI3NTU1ODAwLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6Ijg0YWU4OTY3LTE0YzAtNGQyOC1iNzJmLTQ0NDNhMWI2NDcyNCIsIm5iZiI6MTYyNzU1NTc5OSwic3ViIjoiMSIsInR5cCI6ImFjY2VzcyJ9.DAdTRtbXVkIoTYlJEZjgXOGNYjh6yW4dX2E9JDvB0utCVueJRt8FwXa00JmvhXm5IrNF32ruSF6GuMkW5LjlMw"
 		}
 	},
 	"event": [
