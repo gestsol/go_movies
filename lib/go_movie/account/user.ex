@@ -26,6 +26,8 @@ defmodule GoMovie.Account.User do
 
     timestamps()
     belongs_to :role, GoMovie.Account.Role, foreign_key: :role_id, references: :role_id
+    has_many :user_genders_follow, GoMovie.Content.UserGenderFollow, foreign_key: :user_id, references: :user_id
+
   end
 
   @doc false

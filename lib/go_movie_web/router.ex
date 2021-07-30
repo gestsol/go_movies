@@ -36,6 +36,11 @@ defmodule GoMovieWeb.Router do
     get "/resource_genders/:resource_id/:gender_id", ResourceGenderController, :show
     patch "/resource_genders/:resource_id/:gender_id", ResourceGenderController, :update
     delete "/resource_genders/:resource_id/:gender_id", ResourceGenderController, :delete
+
+    resources "/user_genders_follow", UserGenderFollowController, only: [:index, :create]
+    get "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :show
+    patch "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :update
+    delete "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :delete
   end
 
   # Enables LiveDashboard only for development

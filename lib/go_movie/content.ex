@@ -389,4 +389,100 @@ defmodule GoMovie.Content do
   def change_resource_gender(%ResourceGender{} = resource_gender, attrs \\ %{}) do
     ResourceGender.changeset(resource_gender, attrs)
   end
+
+  alias GoMovie.Content.UserGenderFollow
+
+  @doc """
+  Returns the list of user_genders_follow.
+
+  ## Examples
+
+      iex> list_user_genders_follow()
+      [%UserGenderFollow{}, ...]
+
+  """
+  def list_user_genders_follow do
+    Repo.all(UserGenderFollow)
+  end
+
+  @doc """
+  Gets a single user_gender_follow.
+
+  Raises `Ecto.NoResultsError` if the User gender follow does not exist.
+
+  ## Examples
+
+      iex> get_user_gender_follow!(123)
+      %UserGenderFollow{}
+
+      iex> get_user_gender_follow!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_user_gender_follow!(user_id, gender_id), do: Repo.get_by!(UserGenderFollow, user_id: user_id, gender_id: gender_id)
+
+  @doc """
+  Creates a user_gender_follow.
+
+  ## Examples
+
+      iex> create_user_gender_follow(%{field: value})
+      {:ok, %UserGenderFollow{}}
+
+      iex> create_user_gender_follow(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_user_gender_follow(attrs \\ %{}) do
+    %UserGenderFollow{}
+    |> UserGenderFollow.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a user_gender_follow.
+
+  ## Examples
+
+      iex> update_user_gender_follow(user_gender_follow, %{field: new_value})
+      {:ok, %UserGenderFollow{}}
+
+      iex> update_user_gender_follow(user_gender_follow, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_user_gender_follow(%UserGenderFollow{} = user_gender_follow, attrs) do
+    user_gender_follow
+    |> UserGenderFollow.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a user_gender_follow.
+
+  ## Examples
+
+      iex> delete_user_gender_follow(user_gender_follow)
+      {:ok, %UserGenderFollow{}}
+
+      iex> delete_user_gender_follow(user_gender_follow)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_user_gender_follow(%UserGenderFollow{} = user_gender_follow) do
+    Repo.delete(user_gender_follow)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking user_gender_follow changes.
+
+  ## Examples
+
+      iex> change_user_gender_follow(user_gender_follow)
+      %Ecto.Changeset{data: %UserGenderFollow{}}
+
+  """
+  def change_user_gender_follow(%UserGenderFollow{} = user_gender_follow, attrs \\ %{}) do
+    UserGenderFollow.changeset(user_gender_follow, attrs)
+  end
 end

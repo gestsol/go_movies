@@ -12,7 +12,7 @@ defmodule GoMovie.Content.Gender do
 
     timestamps()
     has_many :resource_genders, GoMovie.Content.ResourceGender, foreign_key: :gender_id, references: :gender_id
-
+    has_many :user_genders_follow, GoMovie.Content.UserGenderFollow, foreign_key: :gender_id, references: :gender_id
   end
 
   @doc false

@@ -266,4 +266,63 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_resource_gender(resource_gender)
     end
   end
+
+  describe "user_genders_follow" do
+    alias GoMovie.Content.UserGenderFollow
+
+    @valid_attrs %{status: 42}
+    @update_attrs %{status: 43}
+    @invalid_attrs %{status: nil}
+
+    def user_gender_follow_fixture(attrs \\ %{}) do
+      {:ok, user_gender_follow} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_user_gender_follow()
+
+      user_gender_follow
+    end
+
+    test "list_user_genders_follow/0 returns all user_genders_follow" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert Content.list_user_genders_follow() == [user_gender_follow]
+    end
+
+    test "get_user_gender_follow!/1 returns the user_gender_follow with given id" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert Content.get_user_gender_follow!(user_gender_follow.id) == user_gender_follow
+    end
+
+    test "create_user_gender_follow/1 with valid data creates a user_gender_follow" do
+      assert {:ok, %UserGenderFollow{} = user_gender_follow} = Content.create_user_gender_follow(@valid_attrs)
+      assert user_gender_follow.status == 42
+    end
+
+    test "create_user_gender_follow/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_user_gender_follow(@invalid_attrs)
+    end
+
+    test "update_user_gender_follow/2 with valid data updates the user_gender_follow" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert {:ok, %UserGenderFollow{} = user_gender_follow} = Content.update_user_gender_follow(user_gender_follow, @update_attrs)
+      assert user_gender_follow.status == 43
+    end
+
+    test "update_user_gender_follow/2 with invalid data returns error changeset" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_user_gender_follow(user_gender_follow, @invalid_attrs)
+      assert user_gender_follow == Content.get_user_gender_follow!(user_gender_follow.id)
+    end
+
+    test "delete_user_gender_follow/1 deletes the user_gender_follow" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert {:ok, %UserGenderFollow{}} = Content.delete_user_gender_follow(user_gender_follow)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_user_gender_follow!(user_gender_follow.id) end
+    end
+
+    test "change_user_gender_follow/1 returns a user_gender_follow changeset" do
+      user_gender_follow = user_gender_follow_fixture()
+      assert %Ecto.Changeset{} = Content.change_user_gender_follow(user_gender_follow)
+    end
+  end
 end
