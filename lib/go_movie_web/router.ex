@@ -32,6 +32,7 @@ defmodule GoMovieWeb.Router do
     resources "/resources", ResourceController, except: [:new, :edit]
     resources "/resource_types", ResourceTypeController, except: [:new, :edit]
     resources "/genders", GenderController, except: [:new, :edit]
+
     resources "/resource_genders", ResourceGenderController, only: [:index, :create]
     get "/resource_genders/:resource_id/:gender_id", ResourceGenderController, :show
     patch "/resource_genders/:resource_id/:gender_id", ResourceGenderController, :update
@@ -41,6 +42,9 @@ defmodule GoMovieWeb.Router do
     get "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :show
     patch "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :update
     delete "/user_genders_follow/:user_id/:gender_id", UserGenderFollowController, :delete
+
+    resources "/languages", LanguageController, except: [:new, :edit]
+
   end
 
   # Enables LiveDashboard only for development

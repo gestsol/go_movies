@@ -325,4 +325,67 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_user_gender_follow(user_gender_follow)
     end
   end
+
+  describe "languages" do
+    alias GoMovie.Content.Language
+
+    @valid_attrs %{description: "some description", name: "some name", status: 42}
+    @update_attrs %{description: "some updated description", name: "some updated name", status: 43}
+    @invalid_attrs %{description: nil, name: nil, status: nil}
+
+    def language_fixture(attrs \\ %{}) do
+      {:ok, language} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_language()
+
+      language
+    end
+
+    test "list_languages/0 returns all languages" do
+      language = language_fixture()
+      assert Content.list_languages() == [language]
+    end
+
+    test "get_language!/1 returns the language with given id" do
+      language = language_fixture()
+      assert Content.get_language!(language.id) == language
+    end
+
+    test "create_language/1 with valid data creates a language" do
+      assert {:ok, %Language{} = language} = Content.create_language(@valid_attrs)
+      assert language.description == "some description"
+      assert language.name == "some name"
+      assert language.status == 42
+    end
+
+    test "create_language/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_language(@invalid_attrs)
+    end
+
+    test "update_language/2 with valid data updates the language" do
+      language = language_fixture()
+      assert {:ok, %Language{} = language} = Content.update_language(language, @update_attrs)
+      assert language.description == "some updated description"
+      assert language.name == "some updated name"
+      assert language.status == 43
+    end
+
+    test "update_language/2 with invalid data returns error changeset" do
+      language = language_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_language(language, @invalid_attrs)
+      assert language == Content.get_language!(language.id)
+    end
+
+    test "delete_language/1 deletes the language" do
+      language = language_fixture()
+      assert {:ok, %Language{}} = Content.delete_language(language)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_language!(language.id) end
+    end
+
+    test "change_language/1 returns a language changeset" do
+      language = language_fixture()
+      assert %Ecto.Changeset{} = Content.change_language(language)
+    end
+  end
 end
