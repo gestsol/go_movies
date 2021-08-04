@@ -20,7 +20,8 @@ defmodule GoMovie.Content.Resource do
 
     timestamps()
     belongs_to :resources, __MODULE__, foreign_key: :parent_resource_id, references: :resource_id
-    belongs_to :resource_types, GoMovie.Content.ResourceType, foreign_key: :resource_type_id, references: :resource_type_id
+    belongs_to :resource_type, GoMovie.Content.ResourceType, foreign_key: :resource_type_id, references: :resource_type_id
+    has_many :resource_genders, GoMovie.Content.ResourceGender, foreign_key: :resource_id, references: :resource_id
   end
 
   @doc false
@@ -29,6 +30,6 @@ defmodule GoMovie.Content.Resource do
     |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id, :resource_type_id])
     |> foreign_key_constraint(:resource_type_id)
     |> foreign_key_constraint(:parent_resource_id)
-    |> validate_required([:name, :url])
+    |> validate_required([:name])
   end
 end

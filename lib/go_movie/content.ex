@@ -19,6 +19,8 @@ defmodule GoMovie.Content do
   """
   def list_resources do
     Repo.all(Resource)
+    |> Repo.preload([:resource_type])
+    |> Repo.preload([resource_genders: :gender])
   end
 
   @doc """
@@ -35,7 +37,11 @@ defmodule GoMovie.Content do
       ** (Ecto.NoResultsError)
 
   """
-  def get_resource!(id), do: Repo.get!(Resource, id)
+  def get_resource!(id) do
+    Repo.get!(Resource, id)
+    |> Repo.preload([:resource_type])
+    |> Repo.preload([resource_genders: :gender])
+  end
 
   @doc """
   Creates a resource.
