@@ -53,7 +53,9 @@ defmodule GoMovieWeb.Endpoint do
     origin:
     [
       "http://localhost:8100",
-      "https://newgomovie-dev.netlify.app"
+      "https://newgomovie-dev.netlify.app",
+      "http://192.168.1.107:8100",
+      "http://localhost"
 
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"]
