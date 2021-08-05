@@ -17,6 +17,7 @@ defmodule GoMovie.Content.Resource do
     field :trailer_url, :string
     field :url, :string
     field :year, :integer
+    field :landscape_poster_url, :string
 
     timestamps()
     belongs_to :resources, __MODULE__, foreign_key: :parent_resource_id, references: :resource_id
@@ -27,7 +28,7 @@ defmodule GoMovie.Content.Resource do
   @doc false
   def changeset(resource, attrs) do
     resource
-    |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id, :resource_type_id])
+    |> cast(attrs, [:name, :description, :duration, :year, :url, :trailer_url, :poster_url, :status, :score_average, :season, :chapter, :resource_id, :parent_resource_id, :resource_type_id, :landscape_poster_url])
     |> foreign_key_constraint(:resource_type_id)
     |> foreign_key_constraint(:parent_resource_id)
     |> validate_required([:name])
