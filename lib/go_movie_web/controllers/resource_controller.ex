@@ -13,6 +13,13 @@ defmodule GoMovieWeb.ResourceController do
 
   def create(conn, %{"resource" => resource_params}) do
     with {:ok, %Resource{} = resource} <- Content.create_resource(resource_params) do
+       # GENERATE SEQUENCE ID
+     {:ok , counter} = Mongo.find_one_and_update(:mongo, "counters", %{_id: "resource_id" }, %{"$inc": %{sequence_value: 1}})
+
+     IO.inspect(counter)
+
+     Mongo.insert_one(:mongo, "resource", %{ resource_params: resource_params, id: counter["sequence_value"]})
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.resource_path(conn, :show, resource))
