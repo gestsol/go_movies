@@ -25,7 +25,8 @@ defmodule GoMovieWeb.UserView do
       address: user.address,
       postal_code: user.postal_code,
       sesion_counter: user.sesion_counter,
-      role_id: user.role_id
+      role_id: user.role_id,
+      google_auth_id: user.google_auth_id
     }
   end
 end
