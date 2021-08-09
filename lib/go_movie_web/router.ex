@@ -15,6 +15,7 @@ defmodule GoMovieWeb.Router do
 
     post "/users/sign_in", UserController, :sign_in
     post "/users/sign_up", UserController, :create
+    post "/users/sign_in_google", UserController, :sign_in_google
   end
 
   scope "/api", GoMovieWeb do

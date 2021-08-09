@@ -108,6 +108,11 @@ defmodule GoMovie.Account do
     User.authenticate(email, plain_pass)
   end
 
+  def authenticate_user(google_auth_id) do
+    User.authenticate(google_auth_id)
+  end
+
+
   @doc """
   Returns the list of users.
 
