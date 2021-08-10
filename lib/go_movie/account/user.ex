@@ -35,7 +35,7 @@ defmodule GoMovie.Account.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id, :google_auth_id])
-    |> unique_constraint(:email)
+    |> unique_constraint([:email, :google_auth_id])
     |> put_password_hash()
     |> foreign_key_constraint(:role_id)
     |> validate_required([:name, :email])
