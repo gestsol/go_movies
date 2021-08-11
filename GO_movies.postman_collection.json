@@ -161,13 +161,31 @@
 					"response": []
 				},
 				{
+					"name": "sign_in_facebook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"facebook_auth_id\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/sign_in_facebook"
+					},
+					"response": []
+				},
+				{
 					"name": "sign_up",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"admin1@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1\n    }\n}",
+							"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"admin2@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1,\n       \"google_auth_id\": \"1234567\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,7 +194,81 @@
 						},
 						"url": "{{base_url}}/api/users/sign_up"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "sign_up_google",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",    \n      \"email\": \"admin3@gmail.com\",     \n      \"role_id\":1,\n      \"google_auth_id\": \"1234567\"\n\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/users/sign_up"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "sign_up_facebook",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",    \n      \"email\": \"admin4@gmail.com\",     \n      \"role_id\":1,\n      \"facebook_auth_id\": \"12345\"\n\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/users/sign_up"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "content-length",
+									"value": "307"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 11 Aug 2021 18:59:12 GMT"
+								},
+								{
+									"key": "location",
+									"value": "/api/users/39"
+								},
+								{
+									"key": "server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "x-request-id",
+									"value": "FppVngYrPb8R8e4AAAEB"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"address\": null,\n        \"city\": null,\n        \"country\": null,\n        \"email\": \"admin4@gmail.com\",\n        \"facebook_auth_id\": \"12345\",\n        \"google_auth_id\": null,\n        \"image_url\": null,\n        \"lastname\": null,\n        \"name\": \"user-name\",\n        \"phone_number\": null,\n        \"postal_code\": null,\n        \"profile_description\": null,\n        \"role_id\": null,\n        \"sesion_counter\": null,\n        \"status\": 1,\n        \"user_id\": 39\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "update_one",
@@ -1102,6 +1194,227 @@
 			]
 		},
 		{
+			"name": "resources Copy",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"Venganza bajo cero\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/resources_movies"
+					},
+					"response": [
+						{
+							"name": "create_one_without_parent",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/resources"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "content-length",
+									"value": "276"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 26 Jul 2021 08:17:12 GMT"
+								},
+								{
+									"key": "location",
+									"value": "/api/resources/1"
+								},
+								{
+									"key": "server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "x-request-id",
+									"value": "FpVJTHi2-YeHsykAAAGh"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resource\": {\n        \"chapter\": null,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": null,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 1,\n        \"score_average\": 0,\n        \"season\": null,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
+						},
+						{
+							"name": "create_one_with_parent",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"parent_resource_id\":3,\n        \"season\": 1,\n        \"chapter\": 1\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/resources"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "content-length",
+									"value": "267"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 26 Jul 2021 08:19:21 GMT"
+								},
+								{
+									"key": "location",
+									"value": "/api/resources/2"
+								},
+								{
+									"key": "server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "x-request-id",
+									"value": "FpVJapl_q6nCyBgAAAEH"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resource\": {\n        \"chapter\": 1,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": 1,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 2,\n        \"score_average\": 0,\n        \"season\": 1,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name update\",\n        \"poster_url\": \"some poster_url update\",\n        \"trailer_url\": \"some trailer_url update\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description update\",\n        \"duration\": 120,\n        \"resource_type_id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/resources"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/resources/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"resources",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "genders",
 			"item": [
 				{
@@ -1599,7 +1912,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMDk1MzA0OCwiaWF0IjoxNjI4NTMzODQ4LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjY4ZTI2OWFjLTliMTQtNGFjNC04MjJmLTJhN2JkZDNjYzliMyIsIm5iZiI6MTYyODUzMzg0Nywic3ViIjoiMTMiLCJ0eXAiOiJhY2Nlc3MifQ.pJz1nqAW1NtMKrj8EqYTFk4VFOp3bPa5_j2lcOOIiHqDBqr8zMfFeUMkK47sc16zbCQNsf4w6TuED8RBs1LGXA"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTEyNzYyMywiaWF0IjoxNjI4NzA4NDIzLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjYyOWE4ODhhLWI1MjEtNDgxNy1hYTczLTBiMDMwYWVjMWNjMiIsIm5iZiI6MTYyODcwODQyMiwic3ViIjoiMzkiLCJ0eXAiOiJhY2Nlc3MifQ.yAaooeES4haAvHniDweZPB9-aSD6CUUTsxYBEXhZ6X6l3LKU0F4UlI25x0b8mJliFsy71FwC4w5Yi-HVVxfufA"
 		}
 	},
 	"event": [
@@ -1630,7 +1943,7 @@
 		},
 		{
 			"key": "base_url",
-			"value": "nuevo-gomovie-backend-dev.gestsol.io",
+			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
 			"disabled": true
 		},
 		{
