@@ -12,10 +12,10 @@ defmodule GoMovieWeb.Router do
 
   scope "/api", GoMovieWeb do
     pipe_through :api
-
     post "/users/sign_in", UserController, :sign_in
     post "/users/sign_up", UserController, :create
     post "/users/sign_in_google", UserController, :sign_in_google
+    post "/users/sign_in_facebook", UserController, :sign_in_facebook
   end
 
   scope "/api", GoMovieWeb do

@@ -74,5 +74,21 @@ defmodule GoMovieWeb.UserController do
     end
   end
 
+  def sign_in_facebook(conn, %{"facebook_auth_id" => facebok_auth_id}) do
+    case Account.authenticate_user_facebook(facebok_auth_id) do
+      {:ok, user} ->
+        {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+        conn
+        |> put_status(:ok)
+        |> json(%{token: token})
+
+      {:error, message} ->
+        conn
+        |> put_status(:ok)
+        |> put_view(GoMovieWeb.ErrorView)
+        |> render("401.json", message: message)
+    end
+  end
+
 
 end
