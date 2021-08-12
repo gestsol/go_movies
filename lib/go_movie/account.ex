@@ -108,7 +108,7 @@ defmodule GoMovie.Account do
     User.authenticate(email, plain_pass)
   end
 
-  def authenticate(google_auth_id) do
+  def authenticate_user(google_auth_id) do
     User.authenticate(google_auth_id)
   end
 
