@@ -25,6 +25,7 @@ defmodule GoMovie.Account.User do
     field :status, :integer, default: 1
     field :google_auth_id, :string
     field :facebook_auth_id, :string
+    field :birthdate, :date
 
     timestamps()
     belongs_to :role, GoMovie.Account.Role, foreign_key: :role_id, references: :role_id
@@ -35,7 +36,7 @@ defmodule GoMovie.Account.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id, :google_auth_id, :facebook_auth_id])
+    |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id, :google_auth_id, :facebook_auth_id, :birthdate])
     |> unique_constraint([:email, :google_auth_id, :facebook_auth_id])
     |> put_password_hash()
     |> foreign_key_constraint(:role_id)

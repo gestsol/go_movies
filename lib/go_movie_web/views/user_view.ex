@@ -27,7 +27,8 @@ defmodule GoMovieWeb.UserView do
       sesion_counter: user.sesion_counter,
       role_id: user.role_id,
       google_auth_id: user.google_auth_id,
-      facebook_auth_id: user.facebook_auth_id
+      facebook_auth_id: user.facebook_auth_id,
+      birthdate: user.birthdate
     }
   end
 end
