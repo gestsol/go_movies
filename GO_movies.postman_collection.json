@@ -309,7 +309,22 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/users"
+						"url": {
+							"raw": "{{base_url}}/api/users?email=aromero.cangri14@gmail.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "aromero.cangri14@gmail.com"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -1194,7 +1209,7 @@
 			]
 		},
 		{
-			"name": "resources Copy",
+			"name": "resources_movies",
 			"item": [
 				{
 					"name": "create_one",
@@ -1212,112 +1227,7 @@
 						},
 						"url": "{{base_url}}/api/resources_movies"
 					},
-					"response": [
-						{
-							"name": "create_one_without_parent",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/api/resources"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "cache-control",
-									"value": "max-age=0, private, must-revalidate"
-								},
-								{
-									"key": "content-length",
-									"value": "276"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "date",
-									"value": "Mon, 26 Jul 2021 08:17:12 GMT"
-								},
-								{
-									"key": "location",
-									"value": "/api/resources/1"
-								},
-								{
-									"key": "server",
-									"value": "Cowboy"
-								},
-								{
-									"key": "x-request-id",
-									"value": "FpVJTHi2-YeHsykAAAGh"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"resource\": {\n        \"chapter\": null,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": null,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 1,\n        \"score_average\": 0,\n        \"season\": null,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
-						},
-						{
-							"name": "create_one_with_parent",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name\",\n        \"poster_url\": \"some poster_url\",\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"parent_resource_id\":3,\n        \"season\": 1,\n        \"chapter\": 1\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/api/resources"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "cache-control",
-									"value": "max-age=0, private, must-revalidate"
-								},
-								{
-									"key": "content-length",
-									"value": "267"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "date",
-									"value": "Mon, 26 Jul 2021 08:19:21 GMT"
-								},
-								{
-									"key": "location",
-									"value": "/api/resources/2"
-								},
-								{
-									"key": "server",
-									"value": "Cowboy"
-								},
-								{
-									"key": "x-request-id",
-									"value": "FpVJapl_q6nCyBgAAAEH"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"resource\": {\n        \"chapter\": 1,\n        \"description\": \"some description\",\n        \"duration\": 120,\n        \"name\": \"some name\",\n        \"parent_resource_id\": 1,\n        \"poster_url\": \"some poster_url\",\n        \"resource_id\": 2,\n        \"score_average\": 0,\n        \"season\": 1,\n        \"status\": 1,\n        \"trailer_url\": \"some trailer_url\",\n        \"url\": \"some url\",\n        \"year\": 2008\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "update_one",
@@ -1368,19 +1278,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/resources/:id",
+							"raw": "{{base_url}}/api/resources_movies/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"resources",
+								"resources_movies",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "15"
 								}
 							]
 						}
@@ -1393,19 +1303,19 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/resources/:id",
+							"raw": "{{base_url}}/api/resources_movies/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"resources",
+								"resources_movies",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "15"
 								}
 							]
 						}
@@ -1912,7 +1822,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTEyNzYyMywiaWF0IjoxNjI4NzA4NDIzLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjYyOWE4ODhhLWI1MjEtNDgxNy1hYTczLTBiMDMwYWVjMWNjMiIsIm5iZiI6MTYyODcwODQyMiwic3ViIjoiMzkiLCJ0eXAiOiJhY2Nlc3MifQ.yAaooeES4haAvHniDweZPB9-aSD6CUUTsxYBEXhZ6X6l3LKU0F4UlI25x0b8mJliFsy71FwC4w5Yi-HVVxfufA"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTI2NjAyNiwiaWF0IjoxNjI4ODQ2ODI2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImMzMzBmZDJhLWJmYTItNDMzNi1hOTkwLWI2YmJkMjI1YzZkYyIsIm5iZiI6MTYyODg0NjgyNSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.XtS6rSnz4udh5wqUjd5SIraMwb7sEhB8M7Kn7m-k2NJVEyCqhpERPqNtxABH5JGdvVugVnM_FeK0SX90s32Pzg"
 		}
 	},
 	"event": [
