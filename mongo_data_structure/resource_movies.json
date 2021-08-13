@@ -1,0 +1,43 @@
+ {
+    "resource_movie_id": "11317",
+    "name": "Venganza bajo cero",
+    "description": "Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.",
+    "year": "2019",
+    "publication_date": "2019-09-04 19:23:30",
+    "score_average": 6.2,
+    "total_califications":30,
+    "sum_califications": 150,
+    "counter_views":0,
+
+    "director": "Hans Petter Moland",
+    "artists":[
+        {
+            "name":"Liam Neeson"
+        },
+        {
+            "name":"Maggie Grace"
+        }
+    ],
+    "genders":[
+        {
+            "gender_id":1,
+            "gender_name":"comedia"
+        },
+        {
+            "gender_id":2,
+            "gender_name":"accion" 
+        }
+    ],
+    "resource_file_name": "venganza",
+    "resource_file_url": "https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8",
+
+    "resource_trailer_file_name": "venganza_trailer.m3u8",
+    "resource_trailer_file_url": "https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8",
+    
+    "thumb": "https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg",
+    "poster_url": "https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg",
+    "landscape_poster_url": "https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg", 
+    "status": 1,
+    "category_id":12,
+    "category_name":"Mas vistas"
+  }
