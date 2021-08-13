@@ -1,51 +1,43 @@
 defmodule GoMovieWeb.ResourceController do
   use GoMovieWeb, :controller
 
+  alias GoMovie.Content
+  alias GoMovie.Content.Resource
 
   action_fallback GoMovieWeb.FallbackController
 
   def index(conn, _params) do
-    resources_movies = Mongo.find(:mongo, "resources_movies", %{})
-
-    resources_movies_filtered = resources_movies
-    |> Enum.map(fn x -> Map.delete(x, "_id") end)
-
-    json(conn, resources_movies_filtered)
+    resources = Content.list_resources()
+    render(conn, "index.json", resources: resources)
   end
 
-  def create(conn, %{"resource_movie" => resource_params}) do
-
-    # GENERATE SEQUENCE ID
-    {:ok , counter} = Mongo.find_one_and_update(:mongo, "counters", %{_id: "resource_id" }, %{"$inc": %{sequence_value: 1}})
-    resource_merge = Map.merge(resource_params, %{"id_resource" => counter["sequence_value"] })
-
-    {:ok, resource_movie }  = Mongo.insert_one(:mongo, "resources_movies", resource_merge)
-    #IO.inspect(resource_movie)
-
-    resources_movie_get = Mongo.find_one(:mongo, "resources_movies", %{id_resource: counter["sequence_value"]})
-
-    json(conn, resources_movie_get |> Map.delete("_id"))
+  def create(conn, %{"resource" => resource_params}) do
+    with {:ok, %Resource{} = resource} <- Content.create_resource(resource_params) do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.resource_path(conn, :show, resource))
+      |> render("show.json", resource: resource)
+    end
   end
 
   def show(conn, %{"id" => id}) do
-    resources_movie = Mongo.find_one(:mongo, "resources_movies", %{id_resource: String.to_integer(id)})
-    json(conn, resources_movie |> Map.delete("_id"))
+    resource = Content.get_resource!(id)
+    render(conn, "show.json", resource: resource)
   end
 
-  def update(conn, %{"id" => id, "resource_movie" => resource_params}) do
-    {:ok, resource_movie} = Mongo.find_one_and_update(:mongo, "resources_movies", %{id_resource: String.to_integer(id)}, %{"$set": resource_params})
-   # IO.inspect(resource_movie)
+  def update(conn, %{"id" => id, "resource" => resource_params}) do
+    resource = Content.get_resource!(id)
 
-    resources_movie_get = Mongo.find_one(:mongo, "resources_movies", %{id_resource: String.to_integer(id)})
-
-    json(conn, resources_movie_get |> Map.delete("_id"))
+    with {:ok, %Resource{} = resource} <- Content.update_resource(resource, resource_params) do
+      render(conn, "show.json", resource: resource)
+    end
   end
 
   def delete(conn, %{"id" => id}) do
-    {:ok, result} = Mongo.delete_one(:mongo, "resources_movies", %{id_resource: String.to_integer(id)})
-    #IO.inspect( result)
+    resource = Content.get_resource!(id)
 
-    send_resp(conn, :no_content, "")
+    with {:ok, %Resource{}} <- Content.delete_resource(resource) do
+      send_resp(conn, :no_content, "")
+    end
   end
-
 end
