@@ -149,7 +149,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"google_auth_id\": \"123456\"\n}",
+							"raw": "{\n    \"google_auth_id\": \"103089797161598595920\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1209,122 +1209,6 @@
 			]
 		},
 		{
-			"name": "resources_movies",
-			"item": [
-				{
-					"name": "create_one",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"Venganza bajo cero\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/api/resources_movies"
-					},
-					"response": []
-				},
-				{
-					"name": "update_one",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resource\":\n    {\n        \"name\": \"some name update\",\n        \"poster_url\": \"some poster_url update\",\n        \"trailer_url\": \"some trailer_url update\",\n        \"url\": \"some url\",\n        \"year\": 2008,\n        \"description\": \"some description update\",\n        \"duration\": 120,\n        \"resource_type_id\": 2\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/api/resources/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"resources",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_all",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{base_url}}/api/resources"
-					},
-					"response": []
-				},
-				{
-					"name": "get_one",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/api/resources_movies/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"resources_movies",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "15"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_one",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/api/resources_movies/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"resources_movies",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "15"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "genders",
 			"item": [
 				{
@@ -1817,12 +1701,128 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "m_resources_movies",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"Venganza bajo cero\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/m_resources_movies"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_movie\":\n    {\n         \"artists\": [\n        {\n            \"name\": \"Liam Neeson\"\n        },\n        {\n            \"name\": \"Maggie Grace\"\n        }\n    ],\n    \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su vehículo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n    \"director\": \"Hans Petter Moland\",\n    \"genders\": [\n        {\n            \"gender_id\": 1,\n            \"gender_name\": \"comedia\"\n        },\n        {\n            \"gender_id\": 2,\n            \"gender_name\": \"accion\"\n        }\n    ],\n    \"id_resource\": 0,\n    \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\",\n    \"name\": \" UPDATE\",\n    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n    \"publication_date\": \"2019-09-04 19:23:30\",\n    \"resource_file_name\": \"venganza\",\n    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n    \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n    \"score_average\": 6.2,\n    \"status\": 1,\n    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n    \"year\": \"2019\",\n    \"field_test\": \"update\",\n    \n    \"field_test_2\":11\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/m_resources_movies"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTI2NjAyNiwiaWF0IjoxNjI4ODQ2ODI2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImMzMzBmZDJhLWJmYTItNDMzNi1hOTkwLWI2YmJkMjI1YzZkYyIsIm5iZiI6MTYyODg0NjgyNSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.XtS6rSnz4udh5wqUjd5SIraMwb7sEhB8M7Kn7m-k2NJVEyCqhpERPqNtxABH5JGdvVugVnM_FeK0SX90s32Pzg"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTMwMDEyNywiaWF0IjoxNjI4ODgwOTI3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImUzNDYxN2FmLTZiNTktNDViOC1iNGM2LWE2M2Y3YTZmNzEzOCIsIm5iZiI6MTYyODg4MDkyNiwic3ViIjoiMTMiLCJ0eXAiOiJhY2Nlc3MifQ.mrTai5Eh4dqvzF_NpqxL8nJz7qFW8VLtnMBpUG093JJ1DqbCcAB3WmvyxoNzvBckLH35g6oL7bs9aadQzBHfEQ"
 		}
 	},
 	"event": [
@@ -1858,7 +1858,7 @@
 		},
 		{
 			"key": "base_url",
-			"value": " http://localhost:80"
+			"value": " http://localhost:81"
 		}
 	]
 }
