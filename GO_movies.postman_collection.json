@@ -185,7 +185,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"admin2@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1,\n       \"google_auth_id\": \"1234567\"\n    }\n}",
+							"raw": "{\n    \"user\":{\n      \"name\": \"user-name\",\n      \"lastname\": \"user-lastname\",\n      \"email\": \"gaby@gmail.com\",\n      \"password\": \"123456\",\n      \"image_url\": \"someurl\",\n      \"status\": \"1\",\n      \"phone_number\": \"584125558887\",\n      \"profile_description\": \"user.profile_description\",\n      \"country\": \"user.country\",\n      \"city\": \"user.city\",\n      \"address\": \"user.address\",\n      \"postal_code\": \"user.postal_code\",\n      \"role_id\":1,\n       \"google_auth_id\": \"\",\n       \"facebook_auth_id\":\"\",\n       \"birthdate\":\"1995-01-30\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1822,7 +1822,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTMwMDEyNywiaWF0IjoxNjI4ODgwOTI3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImUzNDYxN2FmLTZiNTktNDViOC1iNGM2LWE2M2Y3YTZmNzEzOCIsIm5iZiI6MTYyODg4MDkyNiwic3ViIjoiMTMiLCJ0eXAiOiJhY2Nlc3MifQ.mrTai5Eh4dqvzF_NpqxL8nJz7qFW8VLtnMBpUG093JJ1DqbCcAB3WmvyxoNzvBckLH35g6oL7bs9aadQzBHfEQ"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTMwMTY2MiwiaWF0IjoxNjI4ODgyNDYyLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjlkNzZmYWM5LTgwMTEtNDNkNi04MGViLTEzZDg0YTdiODI5NSIsIm5iZiI6MTYyODg4MjQ2MSwic3ViIjoiMTMiLCJ0eXAiOiJhY2Nlc3MifQ.zBmn7T9rNxuEicIKSkFnO8KqcLUJU_ith4HK1DhDj5HlTOR4NBTqLWMLqlBU3VaJOmMo3Pgo75WUeNoX6QyWcw"
 		}
 	},
 	"event": [
