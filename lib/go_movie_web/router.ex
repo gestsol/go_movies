@@ -46,6 +46,7 @@ defmodule GoMovieWeb.Router do
 
     resources "/languages", LanguageController, except: [:new, :edit]
 
+    resources "/m_resources_movies", ResourceMovieController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
