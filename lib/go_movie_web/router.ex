@@ -30,9 +30,7 @@ defmodule GoMovieWeb.Router do
     patch "/user_plans/:user_id/:plan_id", UserPlanController, :update
     delete "/user_plans/:user_id/:plan_id", UserPlanController, :delete
     resources "/purchases", PurchaseController, except: [:new, :edit]
-
-    resources "/resources_movies", ResourceController, except: [:new, :edit]
-
+    resources "/resources", ResourceController, except: [:new, :edit]
     resources "/resource_types", ResourceTypeController, except: [:new, :edit]
     resources "/genders", GenderController, except: [:new, :edit]
 
