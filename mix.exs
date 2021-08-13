@@ -45,7 +45,8 @@ defmodule GoMovie.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:filterable, "~> 0.7.3"}
     ]
   end
 

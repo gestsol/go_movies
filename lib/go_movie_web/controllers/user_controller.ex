@@ -1,14 +1,26 @@
 defmodule GoMovieWeb.UserController do
   use GoMovieWeb, :controller
+  use Filterable.Phoenix.Controller
+
+  import Ecto.Query
 
   alias GoMovie.Account
   alias GoMovie.Account.User
 
   action_fallback GoMovieWeb.FallbackController
 
+  filterable do
+    @options cast: :string
+    @options param: :email
+    filter email(query, value, _conn) do
+      query |> where(email: ^value)
+    end
+  end
+
   def index(conn, _params) do
-    users = Account.list_users()
-    render(conn, "index.json", users: users)
+    with {:ok, query, _filter_values} <- apply_filters(User, conn),
+    users <- Account.list_users(query),
+    do: render(conn, "index.json", users: users)
   end
 
   def create(conn, %{"user" => user_params}) do

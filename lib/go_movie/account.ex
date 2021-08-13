@@ -130,6 +130,9 @@ defmodule GoMovie.Account do
     Repo.all(User)
   end
 
+  def list_users(query) do
+    Repo.all(query)
+  end
   @doc """
   Gets a single user.
 
