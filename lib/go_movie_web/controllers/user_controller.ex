@@ -57,9 +57,10 @@ defmodule GoMovieWeb.UserController do
     case Account.authenticate_user(email, password) do
       {:ok, user} ->
         {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+        user = Map.put(user, :token, token)
         conn
         |> put_status(:ok)
-        |> json(%{token: token})
+        |> render("show_with_token.json", user: user)
 
       {:error, message} ->
         conn
