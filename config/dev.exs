@@ -17,11 +17,11 @@ config :go_movie, GoMovie.Repo,
 # with webpack to recompile .js and .css sources.
 config :go_movie, GoMovieWeb.Endpoint,
   http: [port: 80],
-    https: [
-    port: 443,
-    certfile: "/home/ubuntu/certs/fullchain.pem",
-    keyfile: "/home/ubuntu/certs/privkey.pem"
-  ],
+  #   https: [
+  #   port: 443,
+  #   certfile: "/home/ubuntu/certs/fullchain.pem",
+  #   keyfile: "/home/ubuntu/certs/privkey.pem"
+  # ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

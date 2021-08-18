@@ -17,7 +17,7 @@ defmodule GoMovie.Application do
       GoMovieWeb.Endpoint,
       # Start a worker by calling: GoMovie.Worker.start_link(arg)
       # {GoMovie.Worker, arg}
-     # {Mongo, [name: :mongo, url: System.get_env("MONGO_DB_URL_CONNECTION")]}
+      {Mongo, [name: :mongo, url: System.get_env("MONGO_DB_URL_CONNECTION")]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
