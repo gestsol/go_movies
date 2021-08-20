@@ -1,4 +1,4 @@
-defmodule GoMovieWeb.ResourceMovieController do
+defmodule GoMovieWeb.MResourceMovieController do
   use GoMovieWeb, :controller
 
   alias GoMovie.MongoUtils

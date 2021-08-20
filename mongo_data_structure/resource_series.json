@@ -1,0 +1,123 @@
+{
+    "_id": "xyzw",
+    "type":1,
+    "name": "Lethal Weapon",
+    "description": "Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\u00eda en Los Angeles, donde se asoci\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\u00e9s en su vida.",
+    "year": "2016",
+    "publication_date": "2019-04-24 01:22:44",
+    "score_average": 0,
+    "total_califications":30,
+    "sum_califications": 150,
+    "counter_views":0,
+
+    "director": "Matthew Miller",
+    "artists":[
+        {
+            "name":"Damon Wayans"
+        },
+        {
+            "name":"Keesha Sharp"
+        },
+        {
+            "name":"Kevin Rahm"
+        }
+    ],
+    "genders":[
+        {
+            "gender_id":1,
+            "gender_name":"comedia"
+        },
+        {
+            "gender_id":2,
+            "gender_name":"accion" 
+        }
+    ],
+    "category_id":12,
+    "category_name":"Mas vistas",
+
+    "seasons":[
+        {
+            "season_number": 1,
+            "type":2,
+            "name": "Temporada 1",
+            "description": "",
+            "year": "2016",
+            "publication_date":"2019-02-14 12:20:47",
+            "score_average": 0,
+            
+            "chapters":[
+                {
+                    "chapter_number": 1,
+                    "type":3,
+                    "name": "Piloto",
+                    "description": "Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\u00eda en Los \u00c1ngeles, donde se asoci\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\u00e9s en su vida.",
+               
+
+                    "year": "2019",
+                    "publication_date":"2019-02-14 12:45:59",
+                    "score_average": 0,
+                    "resource_file_name": "Lethal Weapon T1 C1 Piloto",
+                    "resource_file_url": "https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C1 Piloto.m3u8",
+                
+                    "resource_trailer_file_name": "",
+                    "resource_trailer_file_url": "https://gplaycloud.s3.amazonaws.com/media/",
+                    
+                    "thumb":  "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg",
+                    "poster_url":  "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg",
+                    "landscape_poster_url":"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg",
+                    "status": 1
+                    
+                
+                },
+                {
+                    "chapter_number": 2,
+
+                    "type":3,
+                    "name": "Surf n Turn",
+                    "description":  "Riggs y Murtaugh responden a una queja por ruido en una fiesta en la casa de Hollywood Hills del boxeador de peso pesado Ronald Dawson.\u00a0Cuando se disparan disparos, se ven envueltos en un caso importante que involucra a corredores de armas ilegales con tecnolog\u00eda militar avanzada.\u00a0Riggs se involucra personalmente en el caso cuando descubre que uno de sus objetivos es una mujer embarazada que le recuerda a su esposa fallecida.\u00a0Mientras tanto, Trish se preocupa por la salud de Murtaugh, ya que asociarse con Riggs pone a prueba sus l\u00edmites",
+              
+                    "year": "2019",
+                    "publication_date":"2019-02-14 12:45:59",
+                    "score_average": 0,
+                    "resource_file_name": "Lethal Weapon T1 C2 Surf N Turf",
+                    "resource_file_url": "https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C2 Surf N Turf.m3u8",
+                
+                    "resource_trailer_file_name": "",
+                    "resource_trailer_file_url": "https://gplaycloud.s3.amazonaws.com/media/",
+               
+                    "thumb": "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg",
+                    "poster_url":  "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg",
+                    "landscape_poster_url":"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg",
+                    "status": 1
+                    
+                
+                },
+                {
+                    "chapter_number": 3,
+
+                    "type":3,
+                    "name": "Best Buds",
+                    "description":  "Riggs y Murtaugh siguen un caso violento que involucra a un cartel de la droga, robo, dos asesinatos y, desafortunadamente, el viejo TO de Murtaugh, Ned Brower.\u00a0A medida que se desarrolla el caso, resulta que Ned est\u00e1 m\u00e1s involucrado que solo manejar el dinero, lo que deja a Murtaugh con una decisi\u00f3n inevitablemente peligrosa.\u00a0Buscando apoyo, el d\u00fao se dirige a Cruz en busca de ayuda.\u00a0En medio de todo el caos, Riggs contin\u00faa dependiendo de los vicios externos, en lugar de enfrentar la realidad de la muerte de Miranda, mientras que Murtaugh y Trish luchan por encontrar el tiempo a solas.",
+               
+                    "year": "2019",
+                    "publication_date": "2019-02-14 12:45:59",
+                    "score_average": 0,
+                    "resource_file_name": "Lethal Weapon T1 C3 Best Buds",
+                    "resource_file_url": "https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C3 Best Buds.m3u8",
+                
+                    "resource_trailer_file_name": "",
+                    "resource_trailer_file_url": "https://gplaycloud.s3.amazonaws.com/media/",
+                
+                    "thumb": "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg",
+                    "poster_url": "https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg",
+                    "landscape_poster_url":"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg",
+                    "status": 1
+                    
+                
+                }
+            ]
+        
+        }
+    ],
+    "status": 1
+  }
