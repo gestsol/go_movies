@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d122c180-b4c8-4cb0-83dc-949bd873582a",
+		"_postman_id": "7bc3b088-377c-49c1-a43a-c208f55824de",
 		"name": "GO_movies",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -214,10 +214,10 @@
 								},
 								"url": "{{base_url}}/api/users/sign_up"
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "sign_up_facebook",
@@ -1715,7 +1715,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"Venganza bajo cero\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
+							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"PRUEBA 1\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1733,7 +1733,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Aventuras\",\n        \"status\": 1\n      }\n  }\n",
+							"raw": "  {\n      \"resource_movie\" : \n      {\n        \"name\": \"PRUEBA 1\"\n      }\n  }\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1741,19 +1741,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/m_genders/:id",
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_genders",
+								"m_resources_movies",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "611ff3199fed5b543e369916"
 								}
 							]
 						}
@@ -1765,7 +1765,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/m_genders"
+						"url": "{{base_url}}/api/m_resources_movies"
 					},
 					"response": []
 				},
@@ -1775,19 +1775,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_genders/:id",
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_genders",
+								"m_resources_movies",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "0"
+									"value": "6116c1eab45f4981e9093aba"
 								}
 							]
 						}
@@ -1800,19 +1800,135 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_genders/:id",
+							"raw": "{{base_url}}/api/m_resources_movies/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_genders",
+								"m_resources_movies",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "611ff3199fed5b543e369916"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "m_resources_series",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_serie\":{\n\n    \"type\":1,\n    \"name\": \"Lethal Weapon\",\n    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los Angeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n    \"year\": \"2016\",\n    \"publication_date\": \"2019-04-24 01:22:44\",\n    \"score_average\": 0,\n    \"total_califications\":30,\n    \"sum_califications\": 150,\n    \"counter_views\":0,\n\n    \"director\": \"Matthew Miller\",\n    \"artists\":[\n        {\n            \"name\":\"Damon Wayans\"\n        },\n        {\n            \"name\":\"Keesha Sharp\"\n        },\n        {\n            \"name\":\"Kevin Rahm\"\n        }\n    ],\n    \"genders\":[\n        {\n            \"gender_id\":1,\n            \"gender_name\":\"comedia\"\n        },\n        {\n            \"gender_id\":2,\n            \"gender_name\":\"accion\" \n        }\n    ],\n    \"category_id\":12,\n    \"category_name\":\"Mas vistas\",\n\n    \"seasons\":[\n        {\n            \"season_number\": 1,\n            \"type\":2,\n            \"name\": \"Temporada 1\",\n            \"description\": \"\",\n            \"year\": \"2016\",\n            \"publication_date\":\"2019-02-14 12:20:47\",\n            \"score_average\": 0,\n            \n            \"chapters\":[\n                {\n                    \"chapter_number\": 1,\n                    \"type\":3,\n                    \"name\": \"Piloto\",\n                    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los \\u00c1ngeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n               \n\n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C1 Piloto\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C1 Piloto.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                    \n                    \"thumb\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 2,\n\n                    \"type\":3,\n                    \"name\": \"Surf n Turn\",\n                    \"description\":  \"Riggs y Murtaugh responden a una queja por ruido en una fiesta en la casa de Hollywood Hills del boxeador de peso pesado Ronald Dawson.\\u00a0Cuando se disparan disparos, se ven envueltos en un caso importante que involucra a corredores de armas ilegales con tecnolog\\u00eda militar avanzada.\\u00a0Riggs se involucra personalmente en el caso cuando descubre que uno de sus objetivos es una mujer embarazada que le recuerda a su esposa fallecida.\\u00a0Mientras tanto, Trish se preocupa por la salud de Murtaugh, ya que asociarse con Riggs pone a prueba sus l\\u00edmites\",\n              \n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C2 Surf N Turf\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C2 Surf N Turf.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n               \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 3,\n\n                    \"type\":3,\n                    \"name\": \"Best Buds\",\n                    \"description\":  \"Riggs y Murtaugh siguen un caso violento que involucra a un cartel de la droga, robo, dos asesinatos y, desafortunadamente, el viejo TO de Murtaugh, Ned Brower.\\u00a0A medida que se desarrolla el caso, resulta que Ned est\\u00e1 m\\u00e1s involucrado que solo manejar el dinero, lo que deja a Murtaugh con una decisi\\u00f3n inevitablemente peligrosa.\\u00a0Buscando apoyo, el d\\u00fao se dirige a Cruz en busca de ayuda.\\u00a0En medio de todo el caos, Riggs contin\\u00faa dependiendo de los vicios externos, en lugar de enfrentar la realidad de la muerte de Miranda, mientras que Murtaugh y Trish luchan por encontrar el tiempo a solas.\",\n               \n                    \"year\": \"2019\",\n                    \"publication_date\": \"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C3 Best Buds\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C3 Best Buds.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                }\n            ]\n        \n        }\n    ],\n    \"status\": 1\n  }\n    \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/m_resources_series"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource_serie\":{\n\n    \"type\":1,\n    \"name\": \"Lethal Weapon\",\n    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los Angeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n    \"year\": \"2016\",\n    \"publication_date\": \"2019-04-24 01:22:44\",\n    \"score_average\": 0,\n    \"total_califications\":30,\n    \"sum_califications\": 150,\n    \"counter_views\":0,\n\n    \"director\": \"Matthew Miller\",\n    \"artists\":[\n        {\n            \"name\":\"Damon Wayans\"\n        },\n        {\n            \"name\":\"Keesha Sharp\"\n        },\n        {\n            \"name\":\"Kevin Rahm\"\n        }\n    ],\n    \"genders\":[\n        {\n            \"gender_id\":1,\n            \"gender_name\":\"comedia\"\n        },\n        {\n            \"gender_id\":2,\n            \"gender_name\":\"accion\" \n        }\n    ],\n    \"category_id\":12,\n    \"category_name\":\"Mas vistas\",\n\n    \"seasons\":[\n        {\n            \"season_number\": 1,\n            \"type\":2,\n            \"name\": \"Temporada 1\",\n            \"description\": \"\",\n            \"year\": \"2016\",\n            \"publication_date\":\"2019-02-14 12:20:47\",\n            \"score_average\": 0,\n            \n            \"chapters\":[\n                {\n                    \"chapter_number\": 1,\n                    \"type\":3,\n                    \"name\": \"Piloto\",\n                    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los \\u00c1ngeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n               \n\n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C1 Piloto\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C1 Piloto.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                    \n                    \"thumb\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 2,\n\n                    \"type\":3,\n                    \"name\": \"Surf n Turn\",\n                    \"description\":  \"Riggs y Murtaugh responden a una queja por ruido en una fiesta en la casa de Hollywood Hills del boxeador de peso pesado Ronald Dawson.\\u00a0Cuando se disparan disparos, se ven envueltos en un caso importante que involucra a corredores de armas ilegales con tecnolog\\u00eda militar avanzada.\\u00a0Riggs se involucra personalmente en el caso cuando descubre que uno de sus objetivos es una mujer embarazada que le recuerda a su esposa fallecida.\\u00a0Mientras tanto, Trish se preocupa por la salud de Murtaugh, ya que asociarse con Riggs pone a prueba sus l\\u00edmites\",\n              \n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C2 Surf N Turf\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C2 Surf N Turf.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n               \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 3,\n\n                    \"type\":3,\n                    \"name\": \"Best Buds\",\n                    \"description\":  \"Riggs y Murtaugh siguen un caso violento que involucra a un cartel de la droga, robo, dos asesinatos y, desafortunadamente, el viejo TO de Murtaugh, Ned Brower.\\u00a0A medida que se desarrolla el caso, resulta que Ned est\\u00e1 m\\u00e1s involucrado que solo manejar el dinero, lo que deja a Murtaugh con una decisi\\u00f3n inevitablemente peligrosa.\\u00a0Buscando apoyo, el d\\u00fao se dirige a Cruz en busca de ayuda.\\u00a0En medio de todo el caos, Riggs contin\\u00faa dependiendo de los vicios externos, en lugar de enfrentar la realidad de la muerte de Miranda, mientras que Murtaugh y Trish luchan por encontrar el tiempo a solas.\",\n               \n                    \"year\": \"2019\",\n                    \"publication_date\": \"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C3 Best Buds\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C3 Best Buds.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                }\n            ]\n        \n        }\n    ],\n    \"status\": 2\n  }\n    \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61200176b45f497db877f3d3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/m_resources_series"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61200176b45f497db877f3d3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61200176b45f497db877f3d3"
 								}
 							]
 						}
@@ -1831,7 +1947,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Acción\",\n        \"status\": 1\n      }\n  }\n",
+							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Prueba\",\n        \"status\": 1\n      }\n  }\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1849,7 +1965,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource_movie\":\n    {\n         \"artists\": [\n        {\n            \"name\": \"Liam Neeson\"\n        },\n        {\n            \"name\": \"Maggie Grace\"\n        }\n    ],\n    \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su vehículo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n    \"director\": \"Hans Petter Moland\",\n    \"genders\": [\n        {\n            \"gender_id\": 1,\n            \"gender_name\": \"comedia\"\n        },\n        {\n            \"gender_id\": 2,\n            \"gender_name\": \"accion\"\n        }\n    ],\n    \"id_resource\": 0,\n    \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\",\n    \"name\": \" UPDATE\",\n    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n    \"publication_date\": \"2019-09-04 19:23:30\",\n    \"resource_file_name\": \"venganza\",\n    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n    \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n    \"score_average\": 6.2,\n    \"status\": 1,\n    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n    \"year\": \"2019\",\n    \"field_test\": \"update\",\n    \n    \"field_test_2\":11\n    }\n}",
+							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Acción\"\n      }\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1857,19 +1973,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"raw": "{{base_url}}/api/m_genders/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_resources_movies",
+								"m_genders",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "0"
+									"value": "611fd548b45f491fd822c20e"
 								}
 							]
 						}
@@ -1881,7 +1997,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/m_resources_movies"
+						"url": "{{base_url}}/api/m_genders"
 					},
 					"response": []
 				},
@@ -1891,19 +2007,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"raw": "{{base_url}}/api/m_genders/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_resources_movies",
+								"m_genders",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "0"
+									"value": "611fd548b45f491fd822c20e"
 								}
 							]
 						}
@@ -1916,19 +2032,19 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_movies/:id",
+							"raw": "{{base_url}}/api/m_genders/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"m_resources_movies",
+								"m_genders",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "611ff8969fed5b543ed8b30c"
 								}
 							]
 						}
@@ -1941,7 +2057,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTg5NTI3NywiaWF0IjoxNjI5NDc2MDc3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjEzNWY0YWYyLTkzYzAtNDU2Ny1hMTM5LTgxNjNjM2ZiNjBlNCIsIm5iZiI6MTYyOTQ3NjA3Niwic3ViIjoiMTEiLCJ0eXAiOiJhY2Nlc3MifQ.U4YntrK7lPk1jtdn_7lUuEHQmm7IJ-8PmhjFbjKRs_AmAqde-noLYLSBSufksRfAdh1LyQZLbM6o26GoeBy9VA"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTkwNjM4NCwiaWF0IjoxNjI5NDg3MTg0LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjQzNDJiZmM2LThhNTYtNDU2OC05MzBhLWY5Y2RjZjdkODZmZSIsIm5iZiI6MTYyOTQ4NzE4Mywic3ViIjoiMTEiLCJ0eXAiOiJhY2Nlc3MifQ.Omev72F1CzpSG_UddMHDzfsj58jaPMR44czfx5Q6RltHrAJIl75juJIF_YOJFECA85xYkA5F-OWaweYvimsrJw"
 		}
 	},
 	"event": [
@@ -1967,17 +2083,12 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": " http://localhost:4000",
-			"disabled": true
+			"value": " http://localhost:80"
 		},
 		{
 			"key": "base_url",
 			"value": "https://nuevo-gomovie-backend-dev.gestsol.io",
 			"disabled": true
-		},
-		{
-			"key": "base_url",
-			"value": " http://localhost:85"
 		},
 		{
 			"key": "base_url",
