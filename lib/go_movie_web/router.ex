@@ -46,8 +46,9 @@ defmodule GoMovieWeb.Router do
 
     resources "/languages", LanguageController, except: [:new, :edit]
 
-    resources "/m_resources_movies", ResourceMovieController, except: [:new, :edit]
+    resources "/m_resources_movies", MResourceMovieController, except: [:new, :edit]
     resources "/m_genders", MResourceGenderController, except: [:new, :edit]
+    resources "/m_resources_series", MResourceSerieController, except: [:new, :edit]
 
   end
 
