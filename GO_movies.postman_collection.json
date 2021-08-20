@@ -127,11 +127,14 @@
 				{
 					"name": "sign_in",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin1@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1730,6 +1733,122 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Aventuras\",\n        \"status\": 1\n      }\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/m_genders"
+					},
+					"response": []
+				},
+				{
+					"name": "get_one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_genders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_genders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "m_genders",
+			"item": [
+				{
+					"name": "create_one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Acción\",\n        \"status\": 1\n      }\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/m_genders"
+					},
+					"response": []
+				},
+				{
+					"name": "update_one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
 							"raw": "{\n    \"resource_movie\":\n    {\n         \"artists\": [\n        {\n            \"name\": \"Liam Neeson\"\n        },\n        {\n            \"name\": \"Maggie Grace\"\n        }\n    ],\n    \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su vehículo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n    \"director\": \"Hans Petter Moland\",\n    \"genders\": [\n        {\n            \"gender_id\": 1,\n            \"gender_name\": \"comedia\"\n        },\n        {\n            \"gender_id\": 2,\n            \"gender_name\": \"accion\"\n        }\n    ],\n    \"id_resource\": 0,\n    \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\",\n    \"name\": \" UPDATE\",\n    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n    \"publication_date\": \"2019-09-04 19:23:30\",\n    \"resource_file_name\": \"venganza\",\n    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n    \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n    \"score_average\": 6.2,\n    \"status\": 1,\n    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n    \"year\": \"2019\",\n    \"field_test\": \"update\",\n    \n    \"field_test_2\":11\n    }\n}",
 							"options": {
 								"raw": {
@@ -1822,7 +1941,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTMwMTY2MiwiaWF0IjoxNjI4ODgyNDYyLCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjlkNzZmYWM5LTgwMTEtNDNkNi04MGViLTEzZDg0YTdiODI5NSIsIm5iZiI6MTYyODg4MjQ2MSwic3ViIjoiMTMiLCJ0eXAiOiJhY2Nlc3MifQ.zBmn7T9rNxuEicIKSkFnO8KqcLUJU_ith4HK1DhDj5HlTOR4NBTqLWMLqlBU3VaJOmMo3Pgo75WUeNoX6QyWcw"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTg5NTI3NywiaWF0IjoxNjI5NDc2MDc3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjEzNWY0YWYyLTkzYzAtNDU2Ny1hMTM5LTgxNjNjM2ZiNjBlNCIsIm5iZiI6MTYyOTQ3NjA3Niwic3ViIjoiMTEiLCJ0eXAiOiJhY2Nlc3MifQ.U4YntrK7lPk1jtdn_7lUuEHQmm7IJ-8PmhjFbjKRs_AmAqde-noLYLSBSufksRfAdh1LyQZLbM6o26GoeBy9VA"
 		}
 	},
 	"event": [
@@ -1853,12 +1972,17 @@
 		},
 		{
 			"key": "base_url",
-			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
+			"value": "https://nuevo-gomovie-backend-dev.gestsol.io",
 			"disabled": true
 		},
 		{
 			"key": "base_url",
-			"value": " http://localhost:81"
+			"value": " http://localhost:85"
+		},
+		{
+			"key": "base_url",
+			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
+			"disabled": true
 		}
 	]
 }
