@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7bc3b088-377c-49c1-a43a-c208f55824de",
+		"_postman_id": "3e339e4e-a650-4d8c-bb4f-dcfa11d20b15",
 		"name": "GO_movies",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -148,6 +148,9 @@
 				{
 					"name": "sign_in_google",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -1715,7 +1718,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"PRUEBA 1\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            {\n                \"gender_id\":1,\n                \"gender_name\":\"comedia\"\n            },\n            {\n                \"gender_id\":2,\n                \"gender_name\":\"accion\" \n            }\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
+							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"PRUEBA 1\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            \"Acción\",\n            \"Aventuras\"\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1813,7 +1816,6 @@
 								{
 									"key": "id",
 									"value": "611ff3199fed5b543e369916"
-
 								}
 							]
 						}
@@ -2058,7 +2060,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTkwNjM4NCwiaWF0IjoxNjI5NDg3MTg0LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjQzNDJiZmM2LThhNTYtNDU2OC05MzBhLWY5Y2RjZjdkODZmZSIsIm5iZiI6MTYyOTQ4NzE4Mywic3ViIjoiMTEiLCJ0eXAiOiJhY2Nlc3MifQ.Omev72F1CzpSG_UddMHDzfsj58jaPMR44czfx5Q6RltHrAJIl75juJIF_YOJFECA85xYkA5F-OWaweYvimsrJw"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTk3Mjc2NiwiaWF0IjoxNjI5NTUzNTY2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjQxZWMzYWRmLWQ1ZjktNDVkYy1iNTIyLWEzNGQ4OTEyNzE0MSIsIm5iZiI6MTYyOTU1MzU2NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.SOHaHLBdV6blz_0WBkH8kku1CkZ33hTLfKktx9MbzwrpO6GPeLPTp8SD0pRlx0hlFZxHzmgV1qL2nxUu8JIyyA"
 		}
 	},
 	"event": [
@@ -2084,8 +2086,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-
-			"value": " http://localhost:80"
+			"value": " http://localhost:4000"
 		},
 		{
 			"key": "base_url",
@@ -2094,7 +2095,6 @@
 		},
 		{
 			"key": "base_url",
-
 			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
 			"disabled": true
 		}
