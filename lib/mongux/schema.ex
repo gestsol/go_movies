@@ -17,10 +17,11 @@ defmodule Mongux.Schema do
           schema: __MODULE__
         }
 
-        Module.put_attribute(__MODULE__, :struct_fields, {:__meta__, meta})
         Module.register_attribute(__MODULE__, :struct_fields, accumulate: true)
+        Module.put_attribute(__MODULE__, :struct_fields, {:__meta__, meta})
+
         try do
-          import Ecto.Schema
+          import Mongux.Schema
           unquote(block)
         after
           :ok
@@ -100,12 +101,8 @@ defmodule Mongux.Schema do
 
   defmacro __using__(_) do
     quote do
-      import Ecto.Schema
+      import Mongux.Schema
     end
-  end
-
-  defmacro test do
-
   end
 
 end
