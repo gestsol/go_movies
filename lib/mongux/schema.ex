@@ -94,12 +94,6 @@ defmodule Mongux.Schema do
   end
 
   defp put_struct_field(mod, name) do
-    # fields = Module.get_attribute(mod, :struct_fields)
-
-    # if List.keyfind(fields, name, 0) do
-    #   raise ArgumentError, "field/association #{inspect name} is already set on schema"
-    # end
-
     Module.put_attribute(mod, :struct_fields, name)
   end
 
