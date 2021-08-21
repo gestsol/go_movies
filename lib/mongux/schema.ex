@@ -18,6 +18,7 @@ defmodule Mongux.Schema do
         }
 
         Module.register_attribute(__MODULE__, :struct_fields, accumulate: true)
+        Module.register_attribute(__MODULE__, :changeset_fields, accumulate: true)
         Module.put_attribute(__MODULE__, :struct_fields, {:__meta__, meta})
 
         try do
@@ -32,6 +33,9 @@ defmodule Mongux.Schema do
       quote unquote: false do
         defstruct @struct_fields
         def __schema__(:collection), do: unquote(collection)
+        def __changeset__ do
+          %{unquote_splicing(Macro.escape(@changeset_fields))}
+        end
       end
 
     quote do
@@ -62,10 +66,10 @@ defmodule Mongux.Schema do
 
     kind =
       cond do
-        type == :name -> :base
         type == :string -> :base
         type == :number -> :base
-        is_list(type) -> :many_module
+        type == :boolean -> :base
+        is_list(type) && Code.ensure_compiled(List.first(type)) == {:module, List.first(type)} -> :many_module
         Code.ensure_compiled(type) == {:module, type} -> :module
         true -> nil
       end
@@ -75,10 +79,10 @@ defmodule Mongux.Schema do
         type
 
       kind == :module and function_exported?(type, :__schema__, 1) ->
-        type
+        {:has_one, type}
 
       kind  == :many_module and function_exported?(List.first(type), :__schema__, 1) ->
-        [type]
+        {:has_many, type}
 
       kind == :module and function_exported?(type, :__schema__, 1) == false ->
         raise ArgumentError,

@@ -50,6 +50,8 @@ defmodule GoMovieWeb.Router do
     resources "/m_genders", MResourceGenderController, except: [:new, :edit]
     resources "/m_resources_series", MResourceSerieController, except: [:new, :edit]
 
+    get "/prueba", UserTestController, :create
+
   end
 
   # Enables LiveDashboard only for development
