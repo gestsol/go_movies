@@ -18,6 +18,13 @@ defmodule GoMovie.MongoUtils do
     |> parse_document_objectId()
   end
 
+  def find_in(collection_name, field, targets) when is_list(targets) and is_atom(field) do
+    query = Map.put(%{}, field, %{"$in" => targets})
+
+    Mongo.find(:mongo, collection_name, query)
+    |> Enum.map(&parse_document_objectId/1)
+  end
+
   def insert_one(params, collection_name) do
     {:ok, resource} = Mongo.insert_one(:mongo, collection_name, params)
 
