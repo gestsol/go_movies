@@ -32,7 +32,7 @@ defmodule GoMovieWeb.MResourceMovieController do
 
       case validate_genders(genders) do
         {:error, message} -> handle_error(conn, 400, message)
-        {:ok, _} -> handle_movie_insert(conn, resource_params)
+        {:ok, _} -> handle_movie_update(conn, resource_params, id)
       end
     else
       resource_movie = resource_params |> MongoUtils.update(@collection_name, id)
