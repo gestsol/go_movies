@@ -53,4 +53,37 @@ defmodule GoMovie.MongoUtils do
     Mongo.delete_one(:mongo, collection_name, %{_id: id_bson})
   end
 
+  def validate_genders(genders) do
+    error =
+      cond do
+        is_nil(genders) ->
+          "Missing field genders."
+
+        is_list(genders) == false ->
+          "Field genders must be of type array."
+
+        length(genders) == 0 ->
+          "Field genders is empty."
+
+        is_nil(Enum.find(genders, fn g -> is_binary(g) == false end)) == false ->
+          "Field genders must be an array of strings"
+
+        true ->
+          nil
+      end
+
+    if is_nil(error) do
+      valid_genders = find_in("genders", :name, genders)
+      genders_names = valid_genders |> Enum.map(fn g -> g["name"] end)
+      invalid_gender = Enum.find(genders, fn g -> g not in genders_names end)
+
+      case is_nil(invalid_gender) do
+        true -> {:ok, valid_genders}
+        false -> {:error, "Invalid gender: #{invalid_gender}"}
+      end
+    else
+      {:error, error}
+    end
+  end
+
 end

@@ -17,13 +17,25 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def create(conn, %{"resource_serie" => resource_params}) do
-    resource_serie =
-      resource_params
-      |> Serie.handle_serie_insertion()
-      |> MongoUtils.insert_one(@collection_name)
-      |> Serie.parse_seasons_and_chapters_ids()
 
-    json(conn, resource_serie)
+    genders = resource_params["genders"]
+
+    case MongoUtils.validate_genders(genders) do
+      {:error, msg} ->
+        conn
+        |> put_status(400)
+        |> json(%{error: msg})
+
+      {:ok, db_genders} ->
+        resource_serie =
+          resource_params
+          |> Map.put("genders", db_genders)
+          |> Serie.handle_serie_insertion()
+          |> MongoUtils.insert_one(@collection_name)
+          |> Serie.parse_seasons_and_chapters_ids()
+
+        json(conn, resource_serie)
+    end
   end
 
   def show(conn, %{"id" => id}) do
