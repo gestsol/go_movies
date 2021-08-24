@@ -169,6 +169,9 @@
 				{
 					"name": "sign_in_facebook",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -1718,7 +1721,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"PRUEBA 1\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            \"Acción\",\n            \"Aventuras\"\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
+							"raw": "{\n    \"resource_movie\":\n    {\n        \"name\": \"PRUEBA 1\",\n        \"description\": \"Enloquecido por la muerte de su hijo, Nels, un hombre humilde que trabaja limpiando nieve con su veh\\u00edculo, jura vengarse de un narcotraficante poderoso y eliminar, uno tras otro, a los criminales que forman su banda.\",\n        \"year\": \"2019\",\n        \"publication_date\": \"2019-09-04 19:23:30\",\n        \"score_average\": 6.2,\n\n        \"director\": \"Hans Petter Moland\",\n        \"artists\":[\n            {\n                \"name\":\"Liam Neeson\"\n            },\n            {\n                \"name\":\"Maggie Grace\"\n            }\n        ],\n        \"genders\":[\n            \"Acción\"\n        ],\n        \"resource_file_name\": \"venganza\",\n        \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza.m3u8\",\n\n        \"resource_trailer_file_name\": \"venganza_trailer.m3u8\",\n        \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/venganza_trailer.m3u8\",\n        \n        \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza.jpg\",\n        \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_150.jpg\",\n        \"landscape_poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/venganza_250.jpg\", \n        \"status\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1736,7 +1739,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n      \"resource_movie\" : \n      {\n        \"name\": \"PRUEBA 1\"\n      }\n  }\n",
+							"raw": "  {\n      \"resource_movie\" : \n      {\n        \"genders\": [\n            \"Comedia\", \"Documental\"\n        ]\n      }\n  }\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1756,7 +1759,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "611ff3199fed5b543e369916"
+									"value": "6122b96c9fed5bd6682d3719"
 								}
 							]
 						}
@@ -1790,7 +1793,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6116c1eab45f4981e9093aba"
+									"value": "61210afd9fed5b1c2c8c2076"
 								}
 							]
 						}
@@ -1906,7 +1909,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "61200176b45f497db877f3d3"
+									"value": "6124fede9fed5b1b96ea2159"
 								}
 							]
 						}
@@ -1932,6 +1935,205 @@
 								{
 									"key": "id",
 									"value": "61200176b45f497db877f3d3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add season",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"season\": {\n        \"season_number\": 5,\n        \"type\":2,\n        \"name\": \"TEMPORADA PRUEBA 3\",\n        \"description\": \"\",\n        \"year\": \"2016\",\n        \"publication_date\":\"2019-02-14 12:20:47\",\n        \"score_average\": 0, \n        \"chapters\": []\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6125113a9fed5b2db997855c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add chapter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"chapter\":{\n      \"chapter_number\":1,\n      \"type\":3,\n      \"name\":\"Piloto\",\n      \"description\":\"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los \\u00c1ngeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n      \"year\":\"2019\",\n      \"publication_date\":\"2019-02-14 12:45:59\",\n      \"score_average\":0,\n      \"resource_file_name\":\"Lethal Weapon T1 C1 Piloto\",\n      \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C1 Piloto.m3u8\",\n      \"resource_trailer_file_name\":\"\",\n      \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n      \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n      \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n      \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n      \"status\":1\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons/:season_id/chapters",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons",
+								":season_id",
+								"chapters"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6125113a9fed5b2db997855c"
+								},
+								{
+									"key": "season_id",
+									"value": "612511639fed5b2db9cff2ec"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update chapter",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chapter\": {\n        \"description\": \"ESTA ES UNA ACTUALIZACION DE PRUEBA\",\n        \"name\": \"CAPITULO DE PRUEBA\",\n        \"landscape_poster_url\": \"AQUI VA EL URL DEL LANDSCAPE\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons",
+								":season_id",
+								"chapters",
+								":chapter_id"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6125113a9fed5b2db997855c"
+								},
+								{
+									"key": "season_id",
+									"value": "612511639fed5b2db9cff2ec"
+								},
+								{
+									"key": "chapter_id",
+									"value": "612511bc9fed5b2db9d3ad9d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete chapter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons",
+								":season_id",
+								"chapters",
+								":chapter_id"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6125113a9fed5b2db997855c"
+								},
+								{
+									"key": "season_id",
+									"value": "612511639fed5b2db9cff2ec"
+								},
+								{
+									"key": "chapter_id",
+									"value": "612515d89fed5b3265bca9cd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update season",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"season\": {\n        \"name\": \"ACTUALIZAR NOMBRE DE TEMPORADA\",\n        \"description\": \"ACTUALIZANDO TEMPORADA\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons/:season_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons",
+								":season_id"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6125113a9fed5b2db997855c"
+								},
+								{
+									"key": "season_id",
+									"value": "612511639fed5b2db9cff2ec"
 								}
 							]
 						}
@@ -2055,12 +2257,113 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "pruebas",
+			"item": [
+				{
+					"name": "prueba_1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"name\": \"leonardo\",\n        \"lastname\": \"ramos\",\n        \"country\": [\n            {\n                \"name\": \"venezuela\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/prueba"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "m_resources_seasons",
+			"item": [
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:m_resource_serie_id/seasons/:season_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":m_resource_serie_id",
+								"seasons",
+								":season_id"
+							],
+							"variable": [
+								{
+									"key": "m_resource_serie_id",
+									"value": "1"
+								},
+								{
+									"key": "season_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "m_resources_chapters",
+			"item": [
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:m_resource_serie_id/seasons/:season_id/chapters/:chapter_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":m_resource_serie_id",
+								"seasons",
+								":season_id",
+								"chapters",
+								":chapter_id"
+							],
+							"variable": [
+								{
+									"key": "m_resource_serie_id",
+									"value": "6123b4759fed5b24edd7d0b1"
+								},
+								{
+									"key": "season_id",
+									"value": "6123b4759fed5b24edd7d0b2"
+								},
+								{
+									"key": "chapter_id",
+									"value": "6123b4759fed5b24edd7d0b3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMTk3Mjc2NiwiaWF0IjoxNjI5NTUzNTY2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjQxZWMzYWRmLWQ1ZjktNDVkYy1iNTIyLWEzNGQ4OTEyNzE0MSIsIm5iZiI6MTYyOTU1MzU2NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.SOHaHLBdV6blz_0WBkH8kku1CkZ33hTLfKktx9MbzwrpO6GPeLPTp8SD0pRlx0hlFZxHzmgV1qL2nxUu8JIyyA"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMjE0Nzg2NywiaWF0IjoxNjI5NzI4NjY3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjFjYjEwODYwLWQyYWYtNDc3My04ODk4LWY5MjU4MjZiOWUxMSIsIm5iZiI6MTYyOTcyODY2Niwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.lGOignva32WkUUJZsCigxyMahG0qUzh0N296WtijxvYxvyQwv1XedZeR-_G7OS81iTU5Os3tayI8ry61av9qgQ"
 		}
 	},
 	"event": [
