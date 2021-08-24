@@ -50,6 +50,17 @@ defmodule GoMovieWeb.Router do
     resources "/m_genders", MResourceGenderController, except: [:new, :edit]
     resources "/m_resources_series", MResourceSerieController, except: [:new, :edit]
 
+    # Agregar temporada a una serie
+    post "/m_resources_series/:serie_id/seasons", MResourceSerieController, :add_season
+    # Acutalizar temporada de una serie
+    patch "/m_resources_series/:serie_id/seasons/:season_id", MResourceSerieController, :update_season
+    # Agregar capitulo a una serie
+    post "/m_resources_series/:serie_id/seasons/:season_id/chapters", MResourceSerieController, :add_chapter
+    # Actualizar capitulo de una serie
+    patch "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :update_chapter
+    # eliminar capitulo de una serie
+    delete "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :delete_chapter
+
   end
 
   # Enables LiveDashboard only for development

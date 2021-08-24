@@ -1,9 +1,14 @@
 defmodule GoMovie.MongoUtils do
 
-  def parse_document_objectId(doc) do
-    id_string = BSON.ObjectId.encode!(doc["_id"])
+  def parse_document_objectId(doc, field \\ "_id") do
+    id_string = BSON.ObjectId.encode!(doc[field])
 
-    doc |> Map.put("_id", id_string)
+    doc |> Map.put(field, id_string)
+  end
+
+  def append_id(doc) do
+    id = Mongo.IdServer.new()
+    Map.put(doc, "_id", id)
   end
 
   def find_all(collection_name) do
