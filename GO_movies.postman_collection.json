@@ -1837,7 +1837,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resource_serie\":{\n\n    \"type\":1,\n    \"name\": \"Lethal Weapon\",\n    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los Angeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n    \"year\": \"2016\",\n    \"publication_date\": \"2019-04-24 01:22:44\",\n    \"score_average\": 0,\n    \"total_califications\":30,\n    \"sum_califications\": 150,\n    \"counter_views\":0,\n\n    \"director\": \"Matthew Miller\",\n    \"artists\":[\n        {\n            \"name\":\"Damon Wayans\"\n        },\n        {\n            \"name\":\"Keesha Sharp\"\n        },\n        {\n            \"name\":\"Kevin Rahm\"\n        }\n    ],\n    \"genders\":[\n        {\n            \"gender_id\":1,\n            \"gender_name\":\"comedia\"\n        },\n        {\n            \"gender_id\":2,\n            \"gender_name\":\"accion\" \n        }\n    ],\n    \"category_id\":12,\n    \"category_name\":\"Mas vistas\",\n\n    \"seasons\":[\n        {\n            \"season_number\": 1,\n            \"type\":2,\n            \"name\": \"Temporada 1\",\n            \"description\": \"\",\n            \"year\": \"2016\",\n            \"publication_date\":\"2019-02-14 12:20:47\",\n            \"score_average\": 0,\n            \n            \"chapters\":[\n                {\n                    \"chapter_number\": 1,\n                    \"type\":3,\n                    \"name\": \"Piloto\",\n                    \"description\": \"Un ex Navy SEAL ligeramente trastornado consigue un trabajo como oficial de polic\\u00eda en Los \\u00c1ngeles, donde se asoci\\u00f3 con un detective veterano que intenta mantener un bajo nivel de estr\\u00e9s en su vida.\",\n               \n\n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C1 Piloto\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C1 Piloto.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                    \n                    \"thumb\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 2,\n\n                    \"type\":3,\n                    \"name\": \"Surf n Turn\",\n                    \"description\":  \"Riggs y Murtaugh responden a una queja por ruido en una fiesta en la casa de Hollywood Hills del boxeador de peso pesado Ronald Dawson.\\u00a0Cuando se disparan disparos, se ven envueltos en un caso importante que involucra a corredores de armas ilegales con tecnolog\\u00eda militar avanzada.\\u00a0Riggs se involucra personalmente en el caso cuando descubre que uno de sus objetivos es una mujer embarazada que le recuerda a su esposa fallecida.\\u00a0Mientras tanto, Trish se preocupa por la salud de Murtaugh, ya que asociarse con Riggs pone a prueba sus l\\u00edmites\",\n              \n                    \"year\": \"2019\",\n                    \"publication_date\":\"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C2 Surf N Turf\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C2 Surf N Turf.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n               \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\":  \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                },\n                {\n                    \"chapter_number\": 3,\n\n                    \"type\":3,\n                    \"name\": \"Best Buds\",\n                    \"description\":  \"Riggs y Murtaugh siguen un caso violento que involucra a un cartel de la droga, robo, dos asesinatos y, desafortunadamente, el viejo TO de Murtaugh, Ned Brower.\\u00a0A medida que se desarrolla el caso, resulta que Ned est\\u00e1 m\\u00e1s involucrado que solo manejar el dinero, lo que deja a Murtaugh con una decisi\\u00f3n inevitablemente peligrosa.\\u00a0Buscando apoyo, el d\\u00fao se dirige a Cruz en busca de ayuda.\\u00a0En medio de todo el caos, Riggs contin\\u00faa dependiendo de los vicios externos, en lugar de enfrentar la realidad de la muerte de Miranda, mientras que Murtaugh y Trish luchan por encontrar el tiempo a solas.\",\n               \n                    \"year\": \"2019\",\n                    \"publication_date\": \"2019-02-14 12:45:59\",\n                    \"score_average\": 0,\n                    \"resource_file_name\": \"Lethal Weapon T1 C3 Best Buds\",\n                    \"resource_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/Lethal Weapon T1 C3 Best Buds.m3u8\",\n                \n                    \"resource_trailer_file_name\": \"\",\n                    \"resource_trailer_file_url\": \"https://gplaycloud.s3.amazonaws.com/media/\",\n                \n                    \"thumb\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail.jpg\",\n                    \"poster_url\": \"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_150.jpg\",\n                    \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/Lethal-weapon_thumbnail_250.jpg\",\n                    \"status\": 1\n                    \n                \n                }\n            ]\n        \n        }\n    ],\n    \"status\": 1\n  }\n    \n}\n",
+							"raw": "{\n   \"resource_serie\":{\n      \"artists\":[\n         {\n            \"name\":\"Freddie Highmore\"\n         },\n         {\n            \"name\":\"Antonia Thomas\"\n         },\n         {\n            \"name\":\"Nicholas Gonzalez\"\n         }\n      ],\n      \"category_id\":2,\n      \"category_name\":\"Mas vistas\",\n      \"description\":\"El creador de House, David Shore, vuelve al género dramático con The Good Doctor. ... The Good Doctor se centra en un joven y brillante cirujano que padece el síndrome de Savant. Poco se sabe de este \\\"síndrome del sabio\\\" además de que aquellos que lo sufren tienen una memoria prodigiosa y muy especial.\",\n      \"director\":\"David Shore\",\n      \"genders\":[\n         \"Drama\"\n      ],\n      \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_250.jpg\",\n      \"name\":\"The Good Doctor\",\n      \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_250.jpg\",\n      \"publication_date\":\"2020-01-22 16:43:27\",\n      \"score_average\":4.5,\n      \"seasons\":[\n         {\n            \"chapters\":[\n               {\n                  \"artists\":\"\",\n                  \"description\":\"Un joven cirujano con autismo y síndrome de savant se traslada de Wyoming a California para completar su formación médica y confía en sus extraordinarias habilidades para refutar el escepticismo de sus colegas.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E1: Comida Quemada\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e01\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e01.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               },\n               {\n                  \"artists\":\"\",\n                  \"description\":\"La atención a los detalles del doctor Murphy complica su primer día en el Hospital St. Bonaventure. Mientras tanto, Claire aprende una valiosa lección sobre la honestidad cuando se enfrenta a un diagnóstico difícil para su paciente.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E2: Monte Rushmore\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e02\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e02.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               },\n               {\n                  \"artists\":\"\",\n                  \"description\":\"Los doctores Neil Melendez y Jared Unger descubren que su paciente no está siendo completamente honesto con ellos, lo que pone en peligro su vida. Por otro lado, la doctora Claire Browne intenta entenderse con el doctor Shaun Murphy mientras ambos regresan al Hospital St. Bonaventure con un órgano donado.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E3:Oliver\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e03\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e03.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               },\n               {\n                  \"artists\":\"\",\n                  \"description\":\"El doctor Neil Meléndez y el equipo de facultativos del St. Bonaventure tienen que enfrentarse a cuestiones legales debido a la controvertida decisión de una pareja sobre su hijo nonato. Además, el doctor Shaun Murphy trata de adaptarse a su nuevo entorno y comienza a conectar con sus compañeros del hospital.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E4: Tuberías\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e04\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e04.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               },\n               {\n                  \"artists\":\"\",\n                  \"description\":\"En el Hospital St. Bonaventure, Shaun se topa con un paciente que se parece de forma inquietante a su hermano fallecido, Steve. Tras descubrir que sus padres le ocultaron el diagnóstico, Shaun intenta comprender por qué creen que el paciente no merece conocer la verdad sobre su estado de salud. Mientras, el equipo es incapaz de discernir qué provoca una serie de severas reacciones alérgicas e intenta dar con la causa antes de perder a otro paciente.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E5: 0,3%\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e05\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e05.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               },\n               {\n                  \"artists\":\"\",\n                  \"description\":\"El equipo médico traza un plan experimental para salvar a una joven novia. Jared intenta conectar con un paciente.\",\n                  \"director\":\"\",\n                  \"landscape_poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_250.jpg\",\n                  \"name\":\"The Good Doctor E6: De mentira no\",\n                  \"poster_url\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail_150.jpg\",\n                  \"publication_date\":\"2020-01-22 16:32:20\",\n                  \"resource_file_name\":\"the-good-doctor-s01e06\",\n                  \"resource_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/the-good-doctor-s01e06.m3u8\",\n                  \"resource_trailer_file_name\":\"\",\n                  \"resource_trailer_file_url\":\"https://gplaycloud.s3.amazonaws.com/media/\",\n                  \"score_average\":\"0\",\n                  \"thumb\":\"https://gplaycloud.s3.amazonaws.com/covers/the-good-doctor_thumbnail.jpg\",\n                  \"type\":\"4\",\n                  \"year\":2017\n               }\n            ],\n            \"name\":\"Temporada 1\",\n            \"publication_date\":\"2019-02-14 12:20:47\",\n            \"score_average\":0,\n            \"season_number\":1,\n            \"type\":2,\n            \"year\":\"2017\"\n         }\n      ],\n      \"sum_califications\":150,\n      \"total_califications\":30,\n      \"type\":\"2\",\n      \"year\":\"2017\"\n   }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2358,12 +2358,152 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "user_movies_playbacks",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user_movies_playbacks"
+					},
+					"response": []
+				},
+				{
+					"name": "create one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_movie_playback\": {\n        \"user_id\": 52,\n        \"movie_id\": \"611ec55399d74eec6ebc461c\",\n        \"seekable\": 83.854128\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user_movies_playbacks"
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_movie_playback\": {\n        \"seekable\": \"50.854128\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_by_user_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks?user_id=52",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMjE0Nzg2NywiaWF0IjoxNjI5NzI4NjY3LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6IjFjYjEwODYwLWQyYWYtNDc3My04ODk4LWY5MjU4MjZiOWUxMSIsIm5iZiI6MTYyOTcyODY2Niwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.lGOignva32WkUUJZsCigxyMahG0qUzh0N296WtijxvYxvyQwv1XedZeR-_G7OS81iTU5Os3tayI8ry61av9qgQ"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMjM0MTE2NiwiaWF0IjoxNjI5OTIxOTY2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImUzYTllYTBjLTA0ZmYtNGFmZi04OGNmLTZiNWNmMjg3ZDhmYiIsIm5iZiI6MTYyOTkyMTk2NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.LO7zV7NaK3-Ck61qiAF5V2W27jd5r-jjIu8hSVO90YIFf6ay6xYVf0KGgKRtgnp9xfa6742l1qZ1Pr2F8cM5ig"
 		}
 	},
 	"event": [
