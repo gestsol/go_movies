@@ -15,6 +15,12 @@ defmodule GoMovieWeb.UserMoviePlaybackController do
     filter user(query, value, _conn) do
       query |> where(user_id: ^value)
     end
+
+    @options cast: :string
+    @options param: :movie_id
+    filter movie(query, value, _conn) do
+      query |> where(movie_id: ^value)
+    end
   end
 
   def index(conn, _params) do
