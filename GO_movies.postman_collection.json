@@ -2367,7 +2367,23 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/user_movies_playbacks"
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -2491,6 +2507,34 @@
 								{
 									"key": "user_id",
 									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by user_id and movie_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user_movies_playbacks?user_id=52&movie_id=611ec55399d74eec6ebc461c",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_movies_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "52"
+								},
+								{
+									"key": "movie_id",
+									"value": "611ec55399d74eec6ebc461c"
 								}
 							]
 						}
