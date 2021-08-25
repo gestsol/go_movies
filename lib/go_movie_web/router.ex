@@ -61,6 +61,8 @@ defmodule GoMovieWeb.Router do
     # eliminar capitulo de una serie
     delete "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :delete_chapter
 
+    resources "/user_movies_playbacks", UserMoviePlaybackController
+
   end
 
   # Enables LiveDashboard only for development

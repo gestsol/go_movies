@@ -587,4 +587,111 @@ defmodule GoMovie.Content do
   def change_language(%Language{} = language, attrs \\ %{}) do
     Language.changeset(language, attrs)
   end
+
+  alias GoMovie.Content.UserMoviePlayback
+
+  @doc """
+  Returns the list of user_movies_playbacks.
+
+  ## Examples
+
+      iex> list_user_movies_playbacks()
+      [%UserMoviePlayback{}, ...]
+
+  """
+  def list_user_movies_playbacks do
+    Repo.all(UserMoviePlayback)
+  end
+
+  def list_user_movies_playbacks(query) do
+    Repo.all(query)
+  end
+
+  @doc """
+  Gets a single user_movie_playback.
+
+  Raises `Ecto.NoResultsError` if the User movie playback does not exist.
+
+  ## Examples
+
+      iex> get_user_movie_playback!(123)
+      %UserMoviePlayback{}
+
+      iex> get_user_movie_playback!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_user_movie_playback!(id), do: Repo.get!(UserMoviePlayback, id)
+
+  def get_movie_playback_by_user_and_movie(user_id, movie_id) do
+    UserMoviePlayback
+    |> where(user_id: ^user_id)
+    |> where(movie_id: ^movie_id)
+    |> Repo.one()
+  end
+
+  @doc """
+  Creates a user_movie_playback.
+
+  ## Examples
+
+      iex> create_user_movie_playback(%{field: value})
+      {:ok, %UserMoviePlayback{}}
+
+      iex> create_user_movie_playback(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_user_movie_playback(attrs \\ %{}) do
+    %UserMoviePlayback{}
+    |> UserMoviePlayback.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a user_movie_playback.
+
+  ## Examples
+
+      iex> update_user_movie_playback(user_movie_playback, %{field: new_value})
+      {:ok, %UserMoviePlayback{}}
+
+      iex> update_user_movie_playback(user_movie_playback, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_user_movie_playback(%UserMoviePlayback{} = user_movie_playback, attrs) do
+    user_movie_playback
+    |> UserMoviePlayback.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a user_movie_playback.
+
+  ## Examples
+
+      iex> delete_user_movie_playback(user_movie_playback)
+      {:ok, %UserMoviePlayback{}}
+
+      iex> delete_user_movie_playback(user_movie_playback)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_user_movie_playback(%UserMoviePlayback{} = user_movie_playback) do
+    Repo.delete(user_movie_playback)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking user_movie_playback changes.
+
+  ## Examples
+
+      iex> change_user_movie_playback(user_movie_playback)
+      %Ecto.Changeset{data: %UserMoviePlayback{}}
+
+  """
+  def change_user_movie_playback(%UserMoviePlayback{} = user_movie_playback, attrs \\ %{}) do
+    UserMoviePlayback.changeset(user_movie_playback, attrs)
+  end
 end

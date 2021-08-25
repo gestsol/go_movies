@@ -388,4 +388,65 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_language(language)
     end
   end
+
+  describe "user_movies_playbacks" do
+    alias GoMovie.Content.UserMoviePlayback
+
+    @valid_attrs %{movie_id: "some movie_id", seekable: "120.5"}
+    @update_attrs %{movie_id: "some updated movie_id", seekable: "456.7"}
+    @invalid_attrs %{movie_id: nil, seekable: nil}
+
+    def user_movie_playback_fixture(attrs \\ %{}) do
+      {:ok, user_movie_playback} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_user_movie_playback()
+
+      user_movie_playback
+    end
+
+    test "list_user_movies_playbacks/0 returns all user_movies_playbacks" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert Content.list_user_movies_playbacks() == [user_movie_playback]
+    end
+
+    test "get_user_movie_playback!/1 returns the user_movie_playback with given id" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert Content.get_user_movie_playback!(user_movie_playback.id) == user_movie_playback
+    end
+
+    test "create_user_movie_playback/1 with valid data creates a user_movie_playback" do
+      assert {:ok, %UserMoviePlayback{} = user_movie_playback} = Content.create_user_movie_playback(@valid_attrs)
+      assert user_movie_playback.movie_id == "some movie_id"
+      assert user_movie_playback.seekable == Decimal.new("120.5")
+    end
+
+    test "create_user_movie_playback/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_user_movie_playback(@invalid_attrs)
+    end
+
+    test "update_user_movie_playback/2 with valid data updates the user_movie_playback" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert {:ok, %UserMoviePlayback{} = user_movie_playback} = Content.update_user_movie_playback(user_movie_playback, @update_attrs)
+      assert user_movie_playback.movie_id == "some updated movie_id"
+      assert user_movie_playback.seekable == Decimal.new("456.7")
+    end
+
+    test "update_user_movie_playback/2 with invalid data returns error changeset" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_user_movie_playback(user_movie_playback, @invalid_attrs)
+      assert user_movie_playback == Content.get_user_movie_playback!(user_movie_playback.id)
+    end
+
+    test "delete_user_movie_playback/1 deletes the user_movie_playback" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert {:ok, %UserMoviePlayback{}} = Content.delete_user_movie_playback(user_movie_playback)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_user_movie_playback!(user_movie_playback.id) end
+    end
+
+    test "change_user_movie_playback/1 returns a user_movie_playback changeset" do
+      user_movie_playback = user_movie_playback_fixture()
+      assert %Ecto.Changeset{} = Content.change_user_movie_playback(user_movie_playback)
+    end
+  end
 end
