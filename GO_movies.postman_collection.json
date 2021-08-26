@@ -2593,7 +2593,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"seen_movie\": {\n        \"user_id\": 72,\n        \"movie_id\": \"6116c1eab45f4981e9093aba\"\n    }\n}",
+							"raw": "{\n    \"seen_movie\": {\n        \"user_id\": 58,\n        \"movie_id\": \"8126c1eab45f4981e9093abd\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2734,6 +2734,242 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "series_playbacks",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/series_playbacks"
+					},
+					"response": []
+				},
+				{
+					"name": "create one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serie_playback\": {\n        \"user_id\": 58,\n        \"serie_id\": \"6127f2909fed5b4930e5069a\",\n        \"season_id\": \"6127f2909fed5b4930e50693\",\n        \"chapter_id\": \"6127f2909fed5b4930e50695\",\n        \"seekable\": 83.854128\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/series_playbacks"
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update one",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serie_playback\": {\n        \"seekable\": 103.835148\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all by user_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks?user_id=72",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "72"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all by user_id and serie_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks?user_id=58&serie_id=6127f2909fed5b4930e5069a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "58"
+								},
+								{
+									"key": "serie_id",
+									"value": "6127f2909fed5b4930e5069a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all by user_id, serie_id and season_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks?user_id=58&serie_id=6127f2909fed5b4930e5069a&season_id=6127f2909fed5b4930e50693",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "58"
+								},
+								{
+									"key": "serie_id",
+									"value": "6127f2909fed5b4930e5069a"
+								},
+								{
+									"key": "season_id",
+									"value": "6127f2909fed5b4930e50693"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all by user_id, serie_id, season_id and chapter_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks?user_id=58&serie_id=6127f2909fed5b4930e5069a&season_id=6127f2909fed5b4930e50693&chapter_id=6127f2909fed5b4930e50695",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "58"
+								},
+								{
+									"key": "serie_id",
+									"value": "6127f2909fed5b4930e5069a"
+								},
+								{
+									"key": "season_id",
+									"value": "6127f2909fed5b4930e50693"
+								},
+								{
+									"key": "chapter_id",
+									"value": "6127f2909fed5b4930e50695"
 								}
 							]
 						}
