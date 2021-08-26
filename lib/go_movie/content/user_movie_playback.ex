@@ -3,7 +3,7 @@ defmodule GoMovie.Content.UserMoviePlayback do
   import Ecto.Changeset
 
   schema "user_movies_playbacks" do
-    field :movie_id, :string
+    field :movie_id, :string # ID DE MONGO
     field :seekable, :decimal
     # field :user_id, :id
 

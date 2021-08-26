@@ -794,4 +794,112 @@ defmodule GoMovie.Content do
   def change_seen_movies(%SeenMovies{} = seen_movies, attrs \\ %{}) do
     SeenMovies.changeset(seen_movies, attrs)
   end
+
+  alias GoMovie.Content.SeriePlayback
+
+  @doc """
+  Returns the list of series_playbacks.
+
+  ## Examples
+
+      iex> list_series_playbacks()
+      [%SeriePlayback{}, ...]
+
+  """
+  def list_series_playbacks do
+    Repo.all(SeriePlayback)
+  end
+
+  def list_series_playbacks(query) do
+    Repo.all(query)
+  end
+
+  @doc """
+  Gets a single serie_playback.
+
+  Raises `Ecto.NoResultsError` if the Serie playback does not exist.
+
+  ## Examples
+
+      iex> get_serie_playback!(123)
+      %SeriePlayback{}
+
+      iex> get_serie_playback!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_serie_playback!(id), do: Repo.get!(SeriePlayback, id)
+
+  def get_serie_playback(user_id, serie_id, season_id, chapter_id) do
+    from(
+      s in SeriePlayback,
+      where: s.user_id == ^user_id and s.serie_id == ^serie_id and s.season_id == ^season_id and s.chapter_id == ^chapter_id
+    )
+    |> Repo.one()
+  end
+
+  @doc """
+  Creates a serie_playback.
+
+  ## Examples
+
+      iex> create_serie_playback(%{field: value})
+      {:ok, %SeriePlayback{}}
+
+      iex> create_serie_playback(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_serie_playback(attrs \\ %{}) do
+    %SeriePlayback{}
+    |> SeriePlayback.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a serie_playback.
+
+  ## Examples
+
+      iex> update_serie_playback(serie_playback, %{field: new_value})
+      {:ok, %SeriePlayback{}}
+
+      iex> update_serie_playback(serie_playback, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_serie_playback(%SeriePlayback{} = serie_playback, attrs) do
+    serie_playback
+    |> SeriePlayback.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a serie_playback.
+
+  ## Examples
+
+      iex> delete_serie_playback(serie_playback)
+      {:ok, %SeriePlayback{}}
+
+      iex> delete_serie_playback(serie_playback)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_serie_playback(%SeriePlayback{} = serie_playback) do
+    Repo.delete(serie_playback)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking serie_playback changes.
+
+  ## Examples
+
+      iex> change_serie_playback(serie_playback)
+      %Ecto.Changeset{data: %SeriePlayback{}}
+
+  """
+  def change_serie_playback(%SeriePlayback{} = serie_playback, attrs \\ %{}) do
+    SeriePlayback.changeset(serie_playback, attrs)
+  end
 end

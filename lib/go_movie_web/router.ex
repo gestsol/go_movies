@@ -50,6 +50,7 @@ defmodule GoMovieWeb.Router do
     resources "/m_genders", MResourceGenderController, except: [:new, :edit]
     resources "/m_resources_series", MResourceSerieController, except: [:new, :edit]
     resources "/user_movies_playbacks", UserMoviePlaybackController, except: [:new, :edit]
+    resources "/series_playbacks", SeriePlaybackController, except: [:new, :edit]
     resources "/seen_movies", SeenMoviesController, except: [:new, :edit]
 
     # Agregar temporada a una serie

@@ -508,4 +508,69 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_seen_movies(seen_movies)
     end
   end
+
+  describe "series_playbacks" do
+    alias GoMovie.Content.SeriePlayback
+
+    @valid_attrs %{chapter_id: "some chapter_id", season_id: "some season_id", seekable: "120.5", serie_id: "some serie_id"}
+    @update_attrs %{chapter_id: "some updated chapter_id", season_id: "some updated season_id", seekable: "456.7", serie_id: "some updated serie_id"}
+    @invalid_attrs %{chapter_id: nil, season_id: nil, seekable: nil, serie_id: nil}
+
+    def serie_playback_fixture(attrs \\ %{}) do
+      {:ok, serie_playback} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_serie_playback()
+
+      serie_playback
+    end
+
+    test "list_series_playbacks/0 returns all series_playbacks" do
+      serie_playback = serie_playback_fixture()
+      assert Content.list_series_playbacks() == [serie_playback]
+    end
+
+    test "get_serie_playback!/1 returns the serie_playback with given id" do
+      serie_playback = serie_playback_fixture()
+      assert Content.get_serie_playback!(serie_playback.id) == serie_playback
+    end
+
+    test "create_serie_playback/1 with valid data creates a serie_playback" do
+      assert {:ok, %SeriePlayback{} = serie_playback} = Content.create_serie_playback(@valid_attrs)
+      assert serie_playback.chapter_id == "some chapter_id"
+      assert serie_playback.season_id == "some season_id"
+      assert serie_playback.seekable == Decimal.new("120.5")
+      assert serie_playback.serie_id == "some serie_id"
+    end
+
+    test "create_serie_playback/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_serie_playback(@invalid_attrs)
+    end
+
+    test "update_serie_playback/2 with valid data updates the serie_playback" do
+      serie_playback = serie_playback_fixture()
+      assert {:ok, %SeriePlayback{} = serie_playback} = Content.update_serie_playback(serie_playback, @update_attrs)
+      assert serie_playback.chapter_id == "some updated chapter_id"
+      assert serie_playback.season_id == "some updated season_id"
+      assert serie_playback.seekable == Decimal.new("456.7")
+      assert serie_playback.serie_id == "some updated serie_id"
+    end
+
+    test "update_serie_playback/2 with invalid data returns error changeset" do
+      serie_playback = serie_playback_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_serie_playback(serie_playback, @invalid_attrs)
+      assert serie_playback == Content.get_serie_playback!(serie_playback.id)
+    end
+
+    test "delete_serie_playback/1 deletes the serie_playback" do
+      serie_playback = serie_playback_fixture()
+      assert {:ok, %SeriePlayback{}} = Content.delete_serie_playback(serie_playback)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_serie_playback!(serie_playback.id) end
+    end
+
+    test "change_serie_playback/1 returns a serie_playback changeset" do
+      serie_playback = serie_playback_fixture()
+      assert %Ecto.Changeset{} = Content.change_serie_playback(serie_playback)
+    end
+  end
 end
