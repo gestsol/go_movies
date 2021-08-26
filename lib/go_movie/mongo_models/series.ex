@@ -129,6 +129,37 @@ defmodule GoMovie.MongoModel.Serie do
     end
   end
 
+  def delete_season(serie_id, season_id) do
+    bson_serie_id = BSON.ObjectId.decode!(serie_id)
+    bson_season_id = BSON.ObjectId.decode!(season_id)
+
+    selector = %{
+      "$and" => [
+        %{_id: bson_serie_id},
+        %{"seasons._id": bson_season_id}
+      ]
+    }
+
+    update = %{
+      "$pull": %{
+        seasons: %{_id: bson_season_id}
+      }
+    }
+
+    {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
+
+    cond do
+      result.matched_count == 1 && result.modified_count == 1 ->
+        {:ok, "Season successfully deleted."}
+
+      result.matched_count == 1 && result.modified_count == 0 ->
+        {:ok, "Season successfully deleted."}
+
+      result.matched_count == 0 && result.modified_count == 0 ->
+        {:error, "Invalid serie_id or season_id"}
+    end
+  end
+
   def add_season(params, serie_id) do
     serie_id = BSON.ObjectId.decode!(serie_id)
     params = Util.append_id(params)

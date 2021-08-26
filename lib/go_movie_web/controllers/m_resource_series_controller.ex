@@ -114,6 +114,18 @@ defmodule GoMovieWeb.MResourceSerieController do
     end
   end
 
+  def delete_season(conn, %{"serie_id" => serie_id, "season_id" => season_id}) do
+    case Serie.delete_season(serie_id, season_id) do
+      {:ok, _msg} ->
+        send_resp(conn, 204, "")
+
+      {:error, msg} ->
+        conn
+        |> put_status(400)
+        |> json(%{error: msg})
+    end
+  end
+
   def update(conn, %{"id" => id, "resource_serie" => resource_params}) do
     if resource_params["seasons"] do
       handle_season_param_on_update(conn)

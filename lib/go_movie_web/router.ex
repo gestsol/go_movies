@@ -60,6 +60,8 @@ defmodule GoMovieWeb.Router do
     post "/m_resources_series/:serie_id/seasons/:season_id/chapters", MResourceSerieController, :add_chapter
     # Actualizar capitulo de una serie
     patch "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :update_chapter
+    # Eliminar temporada de una serie
+    delete "/m_resources_series/:serie_id/seasons/:season_id", MResourceSerieController, :delete_season
     # eliminar capitulo de una serie
     delete "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :delete_chapter
 
