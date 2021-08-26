@@ -710,6 +710,10 @@ defmodule GoMovie.Content do
     Repo.all(SeenMovies)
   end
 
+  def list_seen_movies(query) do
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single seen_movies.
 

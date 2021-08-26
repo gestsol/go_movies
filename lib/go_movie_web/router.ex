@@ -49,6 +49,8 @@ defmodule GoMovieWeb.Router do
     resources "/m_resources_movies", MResourceMovieController, except: [:new, :edit]
     resources "/m_genders", MResourceGenderController, except: [:new, :edit]
     resources "/m_resources_series", MResourceSerieController, except: [:new, :edit]
+    resources "/user_movies_playbacks", UserMoviePlaybackController, except: [:new, :edit]
+    resources "/seen_movies", SeenMoviesController, except: [:new, :edit]
 
     # Agregar temporada a una serie
     post "/m_resources_series/:serie_id/seasons", MResourceSerieController, :add_season
@@ -60,8 +62,6 @@ defmodule GoMovieWeb.Router do
     patch "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :update_chapter
     # eliminar capitulo de una serie
     delete "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :delete_chapter
-
-    resources "/user_movies_playbacks", UserMoviePlaybackController
 
   end
 

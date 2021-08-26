@@ -11,7 +11,10 @@ defmodule GoMovieWeb.SeenMoviesView do
   end
 
   def render("seen_movies.json", %{seen_movies: seen_movies}) do
-    %{id: seen_movies.id,
-      movie_id: seen_movies.movie_id}
+    %{
+      id: seen_movies.id,
+      movie_id: seen_movies.movie_id,
+      user_id: seen_movies.user_id
+    }
   end
 end

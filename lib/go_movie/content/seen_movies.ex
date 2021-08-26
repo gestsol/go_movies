@@ -13,7 +13,7 @@ defmodule GoMovie.Content.SeenMovies do
   @doc false
   def changeset(seen_movies, attrs) do
     seen_movies
-    |> cast(attrs, [:movie_id])
-    |> validate_required([:movie_id])
+    |> cast(attrs, [:movie_id, :user_id])
+    |> validate_required([:movie_id, :user_id])
   end
 end
