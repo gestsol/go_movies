@@ -2139,6 +2139,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete season",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series/:serie_id/seasons/:season_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series",
+								":serie_id",
+								"seasons",
+								":season_id"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6127c54a9fed5b30f5bba09a"
+								},
+								{
+									"key": "season_id",
+									"value": "6127c54a9fed5b30f5bba093"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
