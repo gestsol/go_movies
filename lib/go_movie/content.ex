@@ -694,4 +694,100 @@ defmodule GoMovie.Content do
   def change_user_movie_playback(%UserMoviePlayback{} = user_movie_playback, attrs \\ %{}) do
     UserMoviePlayback.changeset(user_movie_playback, attrs)
   end
+
+  alias GoMovie.Content.SeenMovies
+
+  @doc """
+  Returns the list of seen_movies.
+
+  ## Examples
+
+      iex> list_seen_movies()
+      [%SeenMovies{}, ...]
+
+  """
+  def list_seen_movies do
+    Repo.all(SeenMovies)
+  end
+
+  @doc """
+  Gets a single seen_movies.
+
+  Raises `Ecto.NoResultsError` if the Seen movies does not exist.
+
+  ## Examples
+
+      iex> get_seen_movies!(123)
+      %SeenMovies{}
+
+      iex> get_seen_movies!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_seen_movies!(id), do: Repo.get!(SeenMovies, id)
+
+  @doc """
+  Creates a seen_movies.
+
+  ## Examples
+
+      iex> create_seen_movies(%{field: value})
+      {:ok, %SeenMovies{}}
+
+      iex> create_seen_movies(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_seen_movies(attrs \\ %{}) do
+    %SeenMovies{}
+    |> SeenMovies.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a seen_movies.
+
+  ## Examples
+
+      iex> update_seen_movies(seen_movies, %{field: new_value})
+      {:ok, %SeenMovies{}}
+
+      iex> update_seen_movies(seen_movies, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_seen_movies(%SeenMovies{} = seen_movies, attrs) do
+    seen_movies
+    |> SeenMovies.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a seen_movies.
+
+  ## Examples
+
+      iex> delete_seen_movies(seen_movies)
+      {:ok, %SeenMovies{}}
+
+      iex> delete_seen_movies(seen_movies)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_seen_movies(%SeenMovies{} = seen_movies) do
+    Repo.delete(seen_movies)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking seen_movies changes.
+
+  ## Examples
+
+      iex> change_seen_movies(seen_movies)
+      %Ecto.Changeset{data: %SeenMovies{}}
+
+  """
+  def change_seen_movies(%SeenMovies{} = seen_movies, attrs \\ %{}) do
+    SeenMovies.changeset(seen_movies, attrs)
+  end
 end

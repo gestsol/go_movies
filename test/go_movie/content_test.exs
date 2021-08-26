@@ -449,4 +449,63 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_user_movie_playback(user_movie_playback)
     end
   end
+
+  describe "seen_movies" do
+    alias GoMovie.Content.SeenMovies
+
+    @valid_attrs %{movie_id: "some movie_id"}
+    @update_attrs %{movie_id: "some updated movie_id"}
+    @invalid_attrs %{movie_id: nil}
+
+    def seen_movies_fixture(attrs \\ %{}) do
+      {:ok, seen_movies} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_seen_movies()
+
+      seen_movies
+    end
+
+    test "list_seen_movies/0 returns all seen_movies" do
+      seen_movies = seen_movies_fixture()
+      assert Content.list_seen_movies() == [seen_movies]
+    end
+
+    test "get_seen_movies!/1 returns the seen_movies with given id" do
+      seen_movies = seen_movies_fixture()
+      assert Content.get_seen_movies!(seen_movies.id) == seen_movies
+    end
+
+    test "create_seen_movies/1 with valid data creates a seen_movies" do
+      assert {:ok, %SeenMovies{} = seen_movies} = Content.create_seen_movies(@valid_attrs)
+      assert seen_movies.movie_id == "some movie_id"
+    end
+
+    test "create_seen_movies/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_seen_movies(@invalid_attrs)
+    end
+
+    test "update_seen_movies/2 with valid data updates the seen_movies" do
+      seen_movies = seen_movies_fixture()
+      assert {:ok, %SeenMovies{} = seen_movies} = Content.update_seen_movies(seen_movies, @update_attrs)
+      assert seen_movies.movie_id == "some updated movie_id"
+    end
+
+    test "update_seen_movies/2 with invalid data returns error changeset" do
+      seen_movies = seen_movies_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_seen_movies(seen_movies, @invalid_attrs)
+      assert seen_movies == Content.get_seen_movies!(seen_movies.id)
+    end
+
+    test "delete_seen_movies/1 deletes the seen_movies" do
+      seen_movies = seen_movies_fixture()
+      assert {:ok, %SeenMovies{}} = Content.delete_seen_movies(seen_movies)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_seen_movies!(seen_movies.id) end
+    end
+
+    test "change_seen_movies/1 returns a seen_movies changeset" do
+      seen_movies = seen_movies_fixture()
+      assert %Ecto.Changeset{} = Content.change_seen_movies(seen_movies)
+    end
+  end
 end
