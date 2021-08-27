@@ -9,15 +9,17 @@ defmodule GoMovie.Application do
     children = [
       # Start the Ecto repository
       GoMovie.Repo,
+      {Mongo, [name: :mongo, url: System.get_env("MONGO_DB_URL_CONNECTION")]},
       # Start the Telemetry supervisor
       GoMovieWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: GoMovie.PubSub},
+      # Start the ets tables
+      {GoMovie.Cache.Sliders, []},
       # Start the Endpoint (http/https)
       GoMovieWeb.Endpoint,
       # Start a worker by calling: GoMovie.Worker.start_link(arg)
       # {GoMovie.Worker, arg}
-      {Mongo, [name: :mongo, url: System.get_env("MONGO_DB_URL_CONNECTION")]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

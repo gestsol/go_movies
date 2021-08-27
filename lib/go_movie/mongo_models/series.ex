@@ -129,6 +129,37 @@ defmodule GoMovie.MongoModel.Serie do
     end
   end
 
+  def delete_chapters(serie_id, season_id) do
+    bson_serie_id = BSON.ObjectId.decode!(serie_id)
+    bson_season_id = BSON.ObjectId.decode!(season_id)
+
+    selector = %{
+      "$and" => [
+        %{_id: bson_serie_id},
+        %{"seasons._id": bson_season_id}
+      ]
+    }
+
+    update = %{
+      "$pull": %{
+        "seasons.$.chapters": %{}
+      }
+    }
+
+    {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
+
+    cond do
+      result.matched_count == 1 && result.modified_count == 1 ->
+        {:ok, "Chapter successfully deleted."}
+
+      result.matched_count == 1 && result.modified_count == 0 ->
+        {:ok, "Chapter successfully deleted."}
+
+      result.matched_count == 0 && result.modified_count == 0 ->
+        {:error, "Invalid serie_id or season_id or chapter_id"}
+    end
+  end
+
   def delete_season(serie_id, season_id) do
     bson_serie_id = BSON.ObjectId.decode!(serie_id)
     bson_season_id = BSON.ObjectId.decode!(season_id)
@@ -271,6 +302,15 @@ defmodule GoMovie.MongoModel.Serie do
     else
       {:error, "Unable to find season with id: #{season_id}"}
     end
+  end
+
+  def get_series_by_ids(ids, fields \\ []) when is_list(ids) and is_list(fields) do
+    or_values = ids |> Enum.map(&Util.build_query_by_id/1)
+
+    projection = Util.build_projection(fields)
+
+    Mongo.find(:mongo, @collection_name, %{"$or" => or_values}, projection: projection)
+    |> Enum.map(&Util.parse_document_objectId/1)
   end
 
   @doc """

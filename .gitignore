@@ -34,3 +34,6 @@ npm-debug.log
 /priv/static/
 
 .env
+
+movies_sliders
+series_sliders

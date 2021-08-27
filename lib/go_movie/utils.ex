@@ -86,4 +86,19 @@ defmodule GoMovie.MongoUtils do
     end
   end
 
+  def build_query_by_id(id) when is_binary(id) do
+    bson_id = BSON.ObjectId.decode!(id)
+    %{_id: bson_id}
+  end
+
+  def build_projection(included_fields) when is_list(included_fields) do
+    included_fields_in_projection(included_fields)
+  end
+
+  def included_fields_in_projection(fields) when is_list(fields) do
+    Enum.reduce(fields, %{}, fn f, acc ->
+      Map.put(acc, f, 1)
+    end)
+  end
+
 end
