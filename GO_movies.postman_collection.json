@@ -2733,7 +2733,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "7"
 								}
 							]
 						}
@@ -2973,6 +2973,65 @@
 								}
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sliders",
+			"item": [
+				{
+					"name": "get all sliders movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/movies_sliders"
+					},
+					"response": []
+				},
+				{
+					"name": "update movie sliders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movies_sliders\": [\n        \"611ec55399d74eec6ebc461c\",\n        \"612026114418801839fb7cb1\",\n        \"612027934418801839fb7cb2\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/movies_sliders"
+					},
+					"response": []
+				},
+				{
+					"name": "get all sliders series",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/series_sliders"
+					},
+					"response": []
+				},
+				{
+					"name": "update series sliders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"series_sliders\": [\n        \"6127f2909fed5b4930e5069a\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/series_sliders"
 					},
 					"response": []
 				}
