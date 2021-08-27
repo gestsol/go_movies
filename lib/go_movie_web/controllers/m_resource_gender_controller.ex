@@ -13,6 +13,7 @@ defmodule GoMovieWeb.MResourceGenderController do
   end
 
   def create(conn, %{"gender" => resource_params}) do
+    resource_params = Map.delete(resource_params, "_id")
     resource_gender = resource_params |> MongoUtils.insert_one(@collection_name)
     json(conn, resource_gender)
   end
@@ -23,6 +24,7 @@ defmodule GoMovieWeb.MResourceGenderController do
   end
 
   def update(conn, %{"id" => id, "gender" => resource_params}) do
+    resource_params = Map.delete(resource_params, "_id")
     resource_gender = resource_params |> MongoUtils.update(@collection_name, id)
     json(conn, resource_gender)
   end

@@ -15,6 +15,8 @@ defmodule GoMovieWeb.MResourceMovieController do
   def create(conn, %{"resource_movie" => resource_params}) do
     genders = resource_params["genders"]
 
+    resource_params = Map.delete(resource_params, "_id")
+
     case validate_genders(genders) do
       {:error, message} -> handle_error(conn, 400, message)
       {:ok, _} -> handle_movie_insert(conn, resource_params)
@@ -27,6 +29,8 @@ defmodule GoMovieWeb.MResourceMovieController do
   end
 
   def update(conn, %{"id" => id, "resource_movie" => resource_params}) do
+    resource_params = Map.delete(resource_params, "_id")
+
     if resource_params["genders"] do
       genders = resource_params["genders"]
 

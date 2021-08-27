@@ -19,6 +19,8 @@ defmodule GoMovieWeb.MResourceSerieController do
   def create(conn, %{"resource_serie" => resource_params}) do
     genders = resource_params["genders"]
 
+    resource_params = Map.delete(resource_params, "_id")
+
     case MongoUtils.validate_genders(genders) do
       {:error, msg} ->
         conn
@@ -58,6 +60,7 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def update_season(conn, %{"season" => season, "serie_id" => serie_id, "season_id" => season_id}) do
+    season = Map.delete(season, "_id")
     case Serie.update_season(season, serie_id, season_id) do
       {:ok, season} ->
         json(conn, season)
@@ -87,6 +90,9 @@ defmodule GoMovieWeb.MResourceSerieController do
         "season_id" => season_id,
         "chapter_id" => chapter_id
       }) do
+
+    chapter = Map.delete(chapter, "_id")
+
     case Serie.update_series_chapter(chapter, serie_id, season_id, chapter_id) do
       {:ok, updated_chapter} ->
         json(conn, updated_chapter)
@@ -127,6 +133,7 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def update(conn, %{"id" => id, "resource_serie" => resource_params}) do
+    resource_params = Map.delete(resource_params, "_id")
     if resource_params["seasons"] do
       handle_season_param_on_update(conn)
     else
