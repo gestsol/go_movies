@@ -20,7 +20,7 @@ defmodule GoMovie.MixProject do
   def application do
     [
       mod: {GoMovie.Application, []},
-      extra_applications: [:logger, :runtime_tools, :mongodb]
+      extra_applications: [:logger, :runtime_tools, :mongodb, :sweet_xml]
     ]
   end
 
@@ -48,7 +48,10 @@ defmodule GoMovie.MixProject do
       {:cors_plug, "~> 2.0"},
       {:filterable, "~> 0.7.3"},
       {:mongodb, "~> 0.5.1"},
-      {:mime, "~> 1.0"}
+      {:mime, "~> 1.0"},
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.17"},
+      {:sweet_xml, "~> 0.7.1"},
     ]
   end
 

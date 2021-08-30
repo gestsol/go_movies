@@ -71,6 +71,8 @@ defmodule GoMovieWeb.Router do
     get "/series_sliders", SliderController, :index_series
     post "/series_sliders", SliderController, :update_series_sliders
 
+    get "/news", NewsController, :index
+
   end
 
   # Enables LiveDashboard only for development
