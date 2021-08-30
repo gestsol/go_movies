@@ -56,7 +56,8 @@ defmodule GoMovie.Cache.Sliders do
   def add_movies_sliders(movies_ids) when is_list(movies_ids) do
     clear_table(:movies_sliders)
 
-    movies = Movie.get_movies_by_ids(movies_ids, [:name, :_id, :landscape_poster_url, :poster_url])
+    movies = Movie.get_movies_by_ids(movies_ids, [:name, :_id, :landscape_poster_url, :poster_url, :resource_file_url
+    ])
 
     movies = set_order(movies_ids, movies)
 
