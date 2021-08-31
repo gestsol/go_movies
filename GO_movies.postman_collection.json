@@ -3036,6 +3036,20 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "news",
+			"item": [
+				{
+					"name": "get news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/news"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -3071,13 +3085,11 @@
 		},
 		{
 			"key": "base_url",
-			"value": "https://nuevo-gomovie-backend-dev.gestsol.io",
-			"disabled": true
+			"value": "https://nuevo-gomovie-backend-dev.gestsol.io"
 		},
 		{
 			"key": "base_url",
-			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
-			"disabled": true
+			"value": "http://nuevo-gomovie-backend-dev.gestsol.io"
 		}
 	]
 }
