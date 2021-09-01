@@ -1771,7 +1771,22 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/m_resources_movies"
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_movies?search=mark w",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_movies"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "mark w"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -3000,7 +3015,7 @@
 								},
 								{
 									"key": "user_id",
-									"value": "72"
+									"value": "181"
 								}
 							]
 						}
