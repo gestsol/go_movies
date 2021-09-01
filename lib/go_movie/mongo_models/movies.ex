@@ -11,4 +11,18 @@ defmodule GoMovie.MongoModel.Movie do
     Mongo.find(:mongo, @collection_name, %{"$or" => or_values}, projection: projection)
     |> Enum.map(&Util.parse_document_objectId/1)
   end
+
+  def get_movies(search \\ "") do
+    search = if is_nil(search), do: "", else: search
+    regex = %BSON.Regex{pattern: search, options: "gi"}
+    filter = %{
+      "$or" => [
+        %{ name: regex },
+        %{ "artists.name": regex }
+      ]
+    }
+
+    Mongo.find(:mongo, @collection_name, filter)
+    |> Enum.map(&Util.parse_document_objectId/1)
+  end
 end

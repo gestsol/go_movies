@@ -1,15 +1,17 @@
 defmodule GoMovieWeb.MResourceMovieController do
   use GoMovieWeb, :controller
 
+  alias GoMovie.MongoModel.Movie
   alias GoMovie.MongoUtils
 
   action_fallback GoMovieWeb.FallbackController
 
   @collection_name "resources_movies"
 
-  def index(conn, _params) do
-    resources_movies = MongoUtils.find_all(@collection_name)
-    json(conn, resources_movies)
+  def index(conn, params) do
+    search = Map.get(params, "search")
+    movies = Movie.get_movies(search)
+    json(conn, movies)
   end
 
   def create(conn, %{"resource_movie" => resource_params}) do
