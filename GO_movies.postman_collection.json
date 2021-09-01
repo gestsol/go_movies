@@ -2761,7 +2761,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serie_playback\": {\n        \"user_id\": 58,\n        \"serie_id\": \"6127f2909fed5b4930e5069a\",\n        \"season_id\": \"6127f2909fed5b4930e50693\",\n        \"chapter_id\": \"6127f2909fed5b4930e50695\",\n        \"seekable\": 83.854128\n    }\n}",
+							"raw": "{\n    \"serie_playback\": {\n        \"user_id\": 72,\n        \"serie_id\": \"6127f2909fed5b4930e5069a\",\n        \"season_id\": \"6127f2909fed5b4930e50693\",\n        \"chapter_id\": \"6127f2909fed5b4930e50696\",\n        \"seekable\": 203.123456\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2975,6 +2975,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get last chapter seen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/series_playbacks/last_chapter/:serie_id/:user_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"series_playbacks",
+								"last_chapter",
+								":serie_id",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "serie_id",
+									"value": "6127f2909fed5b4930e5069a"
+								},
+								{
+									"key": "user_id",
+									"value": "72"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -3085,11 +3116,13 @@
 		},
 		{
 			"key": "base_url",
-			"value": "https://nuevo-gomovie-backend-dev.gestsol.io"
+			"value": "https://nuevo-gomovie-backend-dev.gestsol.io",
+			"disabled": true
 		},
 		{
 			"key": "base_url",
-			"value": "http://nuevo-gomovie-backend-dev.gestsol.io"
+			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
+			"disabled": true
 		}
 	]
 }
