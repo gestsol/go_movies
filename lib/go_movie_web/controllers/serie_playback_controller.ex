@@ -50,7 +50,9 @@ defmodule GoMovieWeb.SeriePlaybackController do
 
       json(conn, %{"chapter" => last_chapter})
     else
-      first_chapter = Serie.get_first_chapter(serie_id)
+      first_chapter =
+        Serie.get_first_chapter(serie_id)
+        |> Map.put(:seekable, 0)
       json(conn, %{"chapter" => first_chapter})
     end
 
