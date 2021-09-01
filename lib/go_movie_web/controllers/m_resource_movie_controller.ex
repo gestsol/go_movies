@@ -9,8 +9,10 @@ defmodule GoMovieWeb.MResourceMovieController do
   @collection_name "resources_movies"
 
   def index(conn, params) do
-    search = Map.get(params, "search")
-    movies = Movie.get_movies(search)
+    search = Map.get(params, "search", "")
+    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(& &1 == "")
+
+    movies = Movie.get_movies(search, fields)
     json(conn, movies)
   end
 

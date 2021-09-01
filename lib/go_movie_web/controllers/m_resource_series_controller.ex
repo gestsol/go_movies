@@ -8,12 +8,12 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   @collection_name "resources_series"
 
-  def index(conn, _params) do
-    resources_series =
-      MongoUtils.find_all(@collection_name)
-      |> Enum.map(&Serie.parse_seasons_and_chapters_ids/1)
+  def index(conn, params) do
+    search = Map.get(params, "search", "")
+    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(& &1 == "")
 
-    json(conn, resources_series)
+    series = Serie.get_series(search, fields)
+    json(conn, series)
   end
 
   def create(conn, %{"resource_serie" => resource_params}) do

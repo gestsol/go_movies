@@ -101,4 +101,17 @@ defmodule GoMovie.MongoUtils do
     end)
   end
 
+  @doc """
+  Prepare search criteria to match regex in mongodb queries for
+  fields that may contain diacritical accents.
+  """
+  def diacritic_sensitive_regex(string \\ "") do
+    string
+    |> String.replace(~r/a/i, "[a,á,à,ä]")
+    |> String.replace(~r/e/i, "[e,é,ë]")
+    |> String.replace(~r/i/i, "[i,í,ï]")
+    |> String.replace(~r/o/i, "[o,ó,ö,ò]")
+    |> String.replace(~r/u/i, "[u,ü,ú,ù]")
+  end
+
 end

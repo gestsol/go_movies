@@ -12,17 +12,24 @@ defmodule GoMovie.MongoModel.Movie do
     |> Enum.map(&Util.parse_document_objectId/1)
   end
 
-  def get_movies(search \\ "") do
+  def get_movies(search \\ "", fields \\ []) do
     search = if is_nil(search), do: "", else: search
-    regex = %BSON.Regex{pattern: search, options: "gi"}
+
+    regex_for_name_and_artists =  %{
+      "$regex": Util.diacritic_sensitive_regex(search),
+      "$options": "gi"
+    }
+
     filter = %{
       "$or" => [
-        %{ name: regex },
-        %{ "artists.name": regex }
+        %{ name: regex_for_name_and_artists },
+        %{ "artists.name": regex_for_name_and_artists }
       ]
     }
 
-    Mongo.find(:mongo, @collection_name, filter)
+    projection = Util.build_projection(fields)
+
+    Mongo.find(:mongo, @collection_name, filter, projection: projection)
     |> Enum.map(&Util.parse_document_objectId/1)
   end
 end

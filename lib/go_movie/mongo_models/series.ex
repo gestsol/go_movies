@@ -3,6 +3,30 @@ defmodule GoMovie.MongoModel.Serie do
 
   @collection_name "resources_series"
 
+  def get_series(search \\ "", fields \\ []) when is_list(fields) do
+    search = if is_nil(search), do: "", else: search
+
+    regex_for_name_and_artists =  %{
+      "$regex": Util.diacritic_sensitive_regex(search),
+      "$options": "gi"
+    }
+
+    filter = %{
+      "$or" => [
+        %{ name: regex_for_name_and_artists },
+        %{ "artists.name": regex_for_name_and_artists }
+      ]
+    }
+
+    projection = Util.build_projection(fields)
+
+    Mongo.find(:mongo, @collection_name, filter, projection: projection)
+    |> Enum.map(fn serie ->
+      serie = Util.parse_document_objectId(serie)
+      if serie["seasons"], do: parse_seasons_and_chapters_ids(serie), else: serie
+    end)
+  end
+
   def handle_season_update(params, serie_id, season_id) do
     bson_serie_id = BSON.ObjectId.decode!(serie_id)
     bson_season_id = BSON.ObjectId.decode!(season_id)
