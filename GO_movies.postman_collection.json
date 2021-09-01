@@ -1772,7 +1772,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_movies?search=mark w",
+							"raw": "{{base_url}}/api/m_resources_movies?search=mark&fields=name,year,artists",
 							"host": [
 								"{{base_url}}"
 							],
@@ -1783,7 +1783,11 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "mark w"
+									"value": "mark"
+								},
+								{
+									"key": "fields",
+									"value": "name,year,artists"
 								}
 							]
 						}
@@ -1902,7 +1906,26 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/api/m_resources_series"
+						"url": {
+							"raw": "{{base_url}}/api/m_resources_series?search=freddie&fields=name,year,artists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"m_resources_series"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "freddie"
+								},
+								{
+									"key": "fields",
+									"value": "name,year,artists"
+								}
+							]
+						}
 					},
 					"response": []
 				},
