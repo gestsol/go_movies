@@ -839,6 +839,26 @@ defmodule GoMovie.Content do
   end
 
   @doc """
+  Gets the playback of the last chapter seen by a user
+  """
+  def get_last_serie_playback(serie_id, user_id) do
+    last_chapter = from(
+      s in SeriePlayback,
+      where: s.serie_id == ^serie_id and s.user_id == ^user_id,
+      order_by: [desc: :updated_at],
+      limit: 1
+    )
+    |> Repo.one()
+
+    if last_chapter do
+      last_chapter
+      |> Map.take([:serie_id, :season_id, :chapter_id, :user_id, :seekable])
+    else
+      nil
+    end
+  end
+
+  @doc """
   Creates a serie_playback.
 
   ## Examples

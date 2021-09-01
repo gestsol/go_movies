@@ -65,6 +65,8 @@ defmodule GoMovieWeb.Router do
     delete "/m_resources_series/:serie_id/seasons/:season_id", MResourceSerieController, :delete_season
     # eliminar capitulo de una serie
     delete "/m_resources_series/:serie_id/seasons/:season_id/chapters/:chapter_id", MResourceSerieController, :delete_chapter
+    # Obtener ultimo capitulo visto por un usario
+    get "/series_playbacks/last_chapter/:serie_id/:user_id", SeriePlaybackController, :show_last_chapter
 
     get "/movies_sliders", SliderController, :index_movies
     post "/movies_sliders", SliderController, :update_movies_sliders

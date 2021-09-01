@@ -277,6 +277,41 @@ defmodule GoMovie.MongoModel.Serie do
     end
   end
 
+  def get_first_chapter(serie_id) do
+    serie_id = BSON.ObjectId.decode!(serie_id)
+
+    pipeline = [
+      %{
+        "$match": %{ _id: serie_id }
+      },
+      %{
+        "$project": %{
+          chapter: %{
+            "$map": %{
+              input: "$seasons",
+              as: "season",
+              in: %{
+                chapter: %{
+                  "$slice": ["$$season.chapters", 1]
+                }
+              }
+            }
+          },
+          _id: 0
+        }
+      }
+    ]
+
+    Mongo.aggregate(:mongo, @collection_name, pipeline)
+    |> Enum.to_list()
+    |> List.first()
+    |> Map.get("chapter")
+    |> List.first()
+    |> Map.get("chapter")
+    |> List.first()
+    |> Util.parse_document_objectId()
+  end
+
   def find_season(season_id) do
     bson_season_id = BSON.ObjectId.decode!(season_id)
 

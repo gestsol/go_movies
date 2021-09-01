@@ -6,6 +6,7 @@ defmodule GoMovieWeb.SeriePlaybackController do
 
   alias GoMovie.Content
   alias GoMovie.Content.SeriePlayback
+  alias GoMovie.MongoModel.Serie
 
   action_fallback GoMovieWeb.FallbackController
 
@@ -33,6 +34,26 @@ defmodule GoMovieWeb.SeriePlaybackController do
     filter chapter(query, value, _conn) do
       query |> where(chapter_id: ^value)
     end
+  end
+
+  @doc """
+  Obtiene el playback del ultimo capitulo de una serie visto por un usuario,
+  en caso, de que no tenga playbacks de esa serie, devuelve el primer
+  capitulo de la primera temporada.
+  """
+  def show_last_chapter(conn, %{"serie_id" => serie_id, "user_id" => user_id}) do
+    last_chapter_playback = Content.get_last_serie_playback(serie_id, user_id)
+
+    if last_chapter_playback do
+      {:ok, last_chapter} = Serie.find_chapter(last_chapter_playback.chapter_id)
+      last_chapter = Map.put(last_chapter, :seekable, last_chapter_playback.seekable)
+
+      json(conn, %{"chapter" => last_chapter})
+    else
+      first_chapter = Serie.get_first_chapter(serie_id)
+      json(conn, %{"chapter" => first_chapter})
+    end
+
   end
 
   def index(conn, _params) do
