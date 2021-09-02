@@ -317,23 +317,29 @@ defmodule GoMovie.MongoModel.Serie do
               in: %{
                 chapter: %{
                   "$slice": ["$$season.chapters", 1]
-                }
+                },
+                season_id: "$$season._id"
               }
             }
           },
-          _id: 0
+          _id: 1
         }
       }
     ]
 
-    Mongo.aggregate(:mongo, @collection_name, pipeline)
-    |> Enum.to_list()
-    |> List.first()
-    |> Map.get("chapter")
-    |> List.first()
-    |> Map.get("chapter")
-    |> List.first()
-    |> Util.parse_document_objectId()
+    result = Mongo.aggregate(:mongo, @collection_name, pipeline) |> Enum.to_list() |> List.first()
+    serie_id = Map.get(result, "_id") |> BSON.ObjectId.encode!()
+    season_id = Map.get(result, "chapter") |> List.first() |> Map.get("season_id") |> BSON.ObjectId.encode!()
+
+    chapter = Map.get(result, "chapter")
+      |> List.first()
+      |> Map.get("chapter")
+      |> List.first()
+      |> Map.put("serie_id", serie_id)
+      |> Map.put("season_id", season_id)
+      |> Util.parse_document_objectId()
+
+    Map.put(chapter, "chapter_id", chapter["_id"])
   end
 
   def find_season(season_id) do

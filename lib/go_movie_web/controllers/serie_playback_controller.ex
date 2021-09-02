@@ -46,13 +46,18 @@ defmodule GoMovieWeb.SeriePlaybackController do
 
     if last_chapter_playback do
       {:ok, last_chapter} = Serie.find_chapter(last_chapter_playback.chapter_id)
-      last_chapter = Map.put(last_chapter, :seekable, last_chapter_playback.seekable)
+      last_chapter =
+        last_chapter
+        |> Map.put("seekable", last_chapter_playback.seekable)
+        |> Map.put("season_id", last_chapter_playback.season_id)
+        |> Map.put("serie_id", last_chapter_playback.serie_id)
+        |> Map.put("user_id", last_chapter_playback.user_id)
 
       json(conn, %{"chapter" => last_chapter})
     else
       first_chapter =
         Serie.get_first_chapter(serie_id)
-        |> Map.put(:seekable, 0)
+        |> Map.put("seekable", 0)
       json(conn, %{"chapter" => first_chapter})
     end
 
