@@ -31,7 +31,7 @@ config :go_movie, GoMovie.Auth.Guardian,
   issuer: "go_movie",
   secret_key: System.get_env("GUARDIAN_SECRET")
 
-config :tesla, adapter: Tesla.Adapter.Hackney
+config :tesla, adapter: Tesla.Adapter.Hackney, recv_timeout: 30_000
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

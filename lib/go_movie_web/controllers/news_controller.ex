@@ -4,9 +4,10 @@ defmodule GoMovieWeb.NewsController do
   alias GoMovie.News
 
   def index(conn, _params) do
-    news = News.get_news()
-
-    json(conn, %{news: news})
+    case News.get_news() do
+      {:ok, news} -> json(conn, %{news: news})
+      {:error, msg} -> put_status(conn, 500) |> json(%{error: msg})
+    end
   end
 
 end
