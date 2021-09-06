@@ -6,6 +6,7 @@ defmodule GoMovieWeb.UserMoviePlaybackController do
 
   alias GoMovie.Content
   alias GoMovie.Content.UserMoviePlayback
+  alias GoMovie.MongoModel.Movie
 
   action_fallback GoMovieWeb.FallbackController
 
@@ -23,10 +24,24 @@ defmodule GoMovieWeb.UserMoviePlaybackController do
     end
   end
 
-  def index(conn, _params) do
-    with {:ok, query, _} <- apply_filters(UserMoviePlayback, conn),
-         user_movies_playbacks <- Content.list_user_movies_playbacks(query),
-         do: render(conn, "index.json", user_movies_playbacks: user_movies_playbacks)
+  def index(conn, params) do
+    movies_fields = Map.get(params, "movies_fields", "") |> String.split(",") |> Enum.reject(& &1 == "")
+
+    # If user specify movies_fields, map playbacks with movies, otherwise, send only playbacks
+    unless Enum.empty?(movies_fields) do
+      with {:ok, query, _} <- apply_filters(UserMoviePlayback, conn),
+         playbacks <- Content.list_user_movies_playbacks(query),
+         playbacks_with_movies <- Movie.map_playbacks_with_movies(playbacks, movies_fields),
+        do:
+         json(conn, %{user_movies_playbacks: playbacks_with_movies})
+    else
+      with {:ok, query, _} <- apply_filters(UserMoviePlayback, conn),
+         playbacks <- Content.list_user_movies_playbacks(query),
+         playbacks <- Enum.map(playbacks, &UserMoviePlayback.append_progress_to_playback/1),
+        do:
+         render(conn, "index.json", user_movies_playbacks: playbacks)
+    end
+
   end
 
   def create(conn, %{"user_movie_playback" => user_movie_playback_params}) do

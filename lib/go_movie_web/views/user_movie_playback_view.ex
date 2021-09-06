@@ -13,8 +13,10 @@ defmodule GoMovieWeb.UserMoviePlaybackView do
   def render("user_movie_playback.json", %{user_movie_playback: user_movie_playback}) do
     %{id: user_movie_playback.id,
       seekable: user_movie_playback.seekable,
+      duration: user_movie_playback.duration,
       movie_id: user_movie_playback.movie_id,
-      user_id: user_movie_playback.user_id
+      user_id: user_movie_playback.user_id,
+      progress: Map.get(user_movie_playback, :progress, 0)
     }
   end
 end
