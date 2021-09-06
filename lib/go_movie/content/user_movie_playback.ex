@@ -19,7 +19,7 @@ defmodule GoMovie.Content.UserMoviePlayback do
   end
 
   def calc_progress(%{seekable: seekable, duration: duration}) do
-    if seekable && duration && duration > 0 do
+    if seekable && duration && Decimal.gt?(duration, 0) do
       Decimal.mult(seekable, 100)
       |> Decimal.div(duration)
       |> Decimal.round(2)
