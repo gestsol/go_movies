@@ -2221,7 +2221,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Prueba\",\n        \"status\": 1\n      }\n  }\n",
+							"raw": "  {\n      \"gender\" : \n      {\n        \"name\": \"Cine Chileno\",\n        \"status\": 1\n      }\n  }\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2437,7 +2437,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/user_movies_playbacks",
+							"raw": "{{base_url}}/api/user_movies_playbacks?user_id=4",
 							"host": [
 								"{{base_url}}"
 							],
@@ -2448,7 +2448,16 @@
 							"query": [
 								{
 									"key": "user_id",
-									"value": null,
+									"value": "4"
+								},
+								{
+									"key": "movies_fields",
+									"value": "name,year",
+									"disabled": true
+								},
+								{
+									"key": "movie_id",
+									"value": "6122acfa99d74ef09147a6b3",
 									"disabled": true
 								}
 							]
@@ -2463,7 +2472,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_movie_playback\": {\n        \"user_id\": 52,\n        \"movie_id\": \"611ec55399d74eec6ebc461c\",\n        \"seekable\": 83.854128\n    }\n}",
+							"raw": "{\n    \"user_movie_playback\": {\n        \"user_id\": 181,\n        \"movie_id\": \"612404b299d74efce31dcdf8\",\n        \"seekable\": 1200,\n        \"duration\": 7200\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3034,7 +3043,7 @@
 							"variable": [
 								{
 									"key": "serie_id",
-									"value": "6127f2909fed5b4930e5069a"
+									"value": "6125316d9fed5b4df22fe5d8"
 								},
 								{
 									"key": "user_id",
@@ -3124,7 +3133,7 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMjM0MTE2NiwiaWF0IjoxNjI5OTIxOTY2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImUzYTllYTBjLTA0ZmYtNGFmZi04OGNmLTZiNWNmMjg3ZDhmYiIsIm5iZiI6MTYyOTkyMTk2NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.LO7zV7NaK3-Ck61qiAF5V2W27jd5r-jjIu8hSVO90YIFf6ay6xYVf0KGgKRtgnp9xfa6742l1qZ1Pr2F8cM5ig"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMzM3NDA5NSwiaWF0IjoxNjMwOTU0ODk1LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImRkY2JlMzg3LTI2ZWYtNDU4Ny1iNDAzLWY3Nzc0NjNkMjgxNCIsIm5iZiI6MTYzMDk1NDg5NCwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.g7V8SQHsiD7oYkH5siG7jp07HSUdne3IPfSWqUqL2M3E2VR2Pvu98YfQvsPV2GFOx9XwhCCw1SZWOxWaVZspoQ"
 		}
 	},
 	"event": [
