@@ -573,4 +573,73 @@ defmodule GoMovie.ContentTest do
       assert %Ecto.Changeset{} = Content.change_serie_playback(serie_playback)
     end
   end
+
+  describe "main_sliders" do
+    alias GoMovie.Content.MainSlider
+
+    @valid_attrs %{description: "some description", img_url: "some img_url", link_1: "some link_1", link_2: "some link_2", status: true, title: "some title"}
+    @update_attrs %{description: "some updated description", img_url: "some updated img_url", link_1: "some updated link_1", link_2: "some updated link_2", status: false, title: "some updated title"}
+    @invalid_attrs %{description: nil, img_url: nil, link_1: nil, link_2: nil, status: nil, title: nil}
+
+    def main_slider_fixture(attrs \\ %{}) do
+      {:ok, main_slider} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Content.create_main_slider()
+
+      main_slider
+    end
+
+    test "list_main_sliders/0 returns all main_sliders" do
+      main_slider = main_slider_fixture()
+      assert Content.list_main_sliders() == [main_slider]
+    end
+
+    test "get_main_slider!/1 returns the main_slider with given id" do
+      main_slider = main_slider_fixture()
+      assert Content.get_main_slider!(main_slider.id) == main_slider
+    end
+
+    test "create_main_slider/1 with valid data creates a main_slider" do
+      assert {:ok, %MainSlider{} = main_slider} = Content.create_main_slider(@valid_attrs)
+      assert main_slider.description == "some description"
+      assert main_slider.img_url == "some img_url"
+      assert main_slider.link_1 == "some link_1"
+      assert main_slider.link_2 == "some link_2"
+      assert main_slider.status == true
+      assert main_slider.title == "some title"
+    end
+
+    test "create_main_slider/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Content.create_main_slider(@invalid_attrs)
+    end
+
+    test "update_main_slider/2 with valid data updates the main_slider" do
+      main_slider = main_slider_fixture()
+      assert {:ok, %MainSlider{} = main_slider} = Content.update_main_slider(main_slider, @update_attrs)
+      assert main_slider.description == "some updated description"
+      assert main_slider.img_url == "some updated img_url"
+      assert main_slider.link_1 == "some updated link_1"
+      assert main_slider.link_2 == "some updated link_2"
+      assert main_slider.status == false
+      assert main_slider.title == "some updated title"
+    end
+
+    test "update_main_slider/2 with invalid data returns error changeset" do
+      main_slider = main_slider_fixture()
+      assert {:error, %Ecto.Changeset{}} = Content.update_main_slider(main_slider, @invalid_attrs)
+      assert main_slider == Content.get_main_slider!(main_slider.id)
+    end
+
+    test "delete_main_slider/1 deletes the main_slider" do
+      main_slider = main_slider_fixture()
+      assert {:ok, %MainSlider{}} = Content.delete_main_slider(main_slider)
+      assert_raise Ecto.NoResultsError, fn -> Content.get_main_slider!(main_slider.id) end
+    end
+
+    test "change_main_slider/1 returns a main_slider changeset" do
+      main_slider = main_slider_fixture()
+      assert %Ecto.Changeset{} = Content.change_main_slider(main_slider)
+    end
+  end
 end

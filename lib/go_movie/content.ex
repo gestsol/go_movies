@@ -922,4 +922,100 @@ defmodule GoMovie.Content do
   def change_serie_playback(%SeriePlayback{} = serie_playback, attrs \\ %{}) do
     SeriePlayback.changeset(serie_playback, attrs)
   end
+
+  alias GoMovie.Content.MainSlider
+
+  @doc """
+  Returns the list of main_sliders.
+
+  ## Examples
+
+      iex> list_main_sliders()
+      [%MainSlider{}, ...]
+
+  """
+  def list_main_sliders do
+    Repo.all(MainSlider)
+  end
+
+  @doc """
+  Gets a single main_slider.
+
+  Raises `Ecto.NoResultsError` if the Main slider does not exist.
+
+  ## Examples
+
+      iex> get_main_slider!(123)
+      %MainSlider{}
+
+      iex> get_main_slider!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_main_slider!(id), do: Repo.get!(MainSlider, id)
+
+  @doc """
+  Creates a main_slider.
+
+  ## Examples
+
+      iex> create_main_slider(%{field: value})
+      {:ok, %MainSlider{}}
+
+      iex> create_main_slider(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_main_slider(attrs \\ %{}) do
+    %MainSlider{}
+    |> MainSlider.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a main_slider.
+
+  ## Examples
+
+      iex> update_main_slider(main_slider, %{field: new_value})
+      {:ok, %MainSlider{}}
+
+      iex> update_main_slider(main_slider, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_main_slider(%MainSlider{} = main_slider, attrs) do
+    main_slider
+    |> MainSlider.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a main_slider.
+
+  ## Examples
+
+      iex> delete_main_slider(main_slider)
+      {:ok, %MainSlider{}}
+
+      iex> delete_main_slider(main_slider)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_main_slider(%MainSlider{} = main_slider) do
+    Repo.delete(main_slider)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking main_slider changes.
+
+  ## Examples
+
+      iex> change_main_slider(main_slider)
+      %Ecto.Changeset{data: %MainSlider{}}
+
+  """
+  def change_main_slider(%MainSlider{} = main_slider, attrs \\ %{}) do
+    MainSlider.changeset(main_slider, attrs)
+  end
 end
