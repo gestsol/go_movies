@@ -1018,4 +1018,22 @@ defmodule GoMovie.Content do
   def change_main_slider(%MainSlider{} = main_slider, attrs \\ %{}) do
     MainSlider.changeset(main_slider, attrs)
   end
+
+  def upload_asset_to_s3(upload_params, s3_bucket) do
+    file_extension = Path.extname(upload_params.filename)
+
+    content_type = upload_params.content_type
+
+    file_uuid =  Ecto.UUID.generate()
+
+    s3_filename = "#{file_uuid}#{file_extension}"
+
+    {:ok, file_binary} = File.read(upload_params.path)
+
+    {:ok, _} =
+      ExAws.S3.put_object(s3_bucket, s3_filename, file_binary,[{:content_type, content_type}, {:acl, :public_read}])
+      |> ExAws.request()
+
+    {:ok, "https://nuevo-gomovie.s3.amazonaws.com/#{s3_bucket}/#{s3_filename}"}
+  end
 end

@@ -52,6 +52,8 @@ defmodule GoMovie.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:sweet_xml, "~> 0.7.1"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"}
     ]
   end
 
