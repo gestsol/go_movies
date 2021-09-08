@@ -126,6 +126,17 @@
 			"item": [
 				{
 					"name": "sign_in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -147,6 +158,17 @@
 				},
 				{
 					"name": "sign_in_google",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -168,6 +190,17 @@
 				},
 				{
 					"name": "sign_in_facebook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -189,6 +222,17 @@
 				},
 				{
 					"name": "sign_up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -3128,12 +3172,128 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "main_sliders",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/main_sliders"
+					},
+					"response": []
+				},
+				{
+					"name": "create slider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/main_sliders"
+					},
+					"response": []
+				},
+				{
+					"name": "get one slider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/main_sliders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main_sliders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update one slider",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"main_slider\": {\n        \"title\": \"Titulo de slider\",\n        \"description\": \"Descripcion de slider\",\n        \"img_url\": \"url de la imagen\",\n        \"status\": true,\n        \"link_1\": \"URL externo 1\",\n        \"link_2\": \"URL externo 2\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/main_sliders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main_sliders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one slider",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/main_sliders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"main_sliders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMzM3NDA5NSwiaWF0IjoxNjMwOTU0ODk1LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImRkY2JlMzg3LTI2ZWYtNDU4Ny1iNDAzLWY3Nzc0NjNkMjgxNCIsIm5iZiI6MTYzMDk1NDg5NCwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.g7V8SQHsiD7oYkH5siG7jp07HSUdne3IPfSWqUqL2M3E2VR2Pvu98YfQvsPV2GFOx9XwhCCw1SZWOxWaVZspoQ"
+			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMzM4MDU1NiwiaWF0IjoxNjMwOTYxMzU2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImM1ZGVkNWFhLTQ5ODEtNDlhMi1iOTY1LWQyY2JlZWM4ZmRjMCIsIm5iZiI6MTYzMDk2MTM1NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.q3WINyRMjTj57nr38MFaT18ktLQcjRYkbXuqh7NAxANZcwntvIGR9kVspxnByTZRXsklixD9oMehqSZ4Qxjzzw"
 		}
 	},
 	"event": [
@@ -3163,13 +3323,15 @@
 		},
 		{
 			"key": "base_url",
-			"value": "https://nuevo-gomovie-backend-dev.gestsol.io",
-			"disabled": true
+			"value": "https://nuevo-gomovie-backend-dev.gestsol.io"
 		},
 		{
 			"key": "base_url",
-			"value": "http://nuevo-gomovie-backend-dev.gestsol.io",
-			"disabled": true
+			"value": "http://nuevo-gomovie-backend-dev.gestsol.io"
+		},
+		{
+			"key": "jwt",
+			"value": ""
 		}
 	]
 }
