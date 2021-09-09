@@ -17,6 +17,8 @@ defmodule GoMovieWeb.MainSliderView do
       img_url: main_slider.img_url,
       link_1: main_slider.link_1,
       link_2: main_slider.link_2,
-      status: main_slider.status}
+      status: main_slider.status,
+      order: main_slider.order
+    }
   end
 end

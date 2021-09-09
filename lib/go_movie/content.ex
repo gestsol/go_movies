@@ -1020,6 +1020,7 @@ defmodule GoMovie.Content do
   end
 
   def upload_asset_to_s3(upload_params, s3_bucket) do
+
     file_extension = Path.extname(upload_params.filename)
 
     content_type = upload_params.content_type
