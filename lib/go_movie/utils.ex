@@ -6,6 +6,21 @@ defmodule GoMovie.MongoUtils do
     doc |> Map.put(field, id_string)
   end
 
+  @doc """
+  Convert the given fields on the map params into an elixir term.
+  These fields must be in string format. For example: "%{}" is converted to: %{}
+  """
+  def decode_formdata_fields(params, fields) when is_list(fields) do
+    Enum.reduce(fields, params, fn field, acc ->
+      if Map.get(acc, field) do
+        decoded = Map.get(acc, field) |> Jason.decode!()
+        Map.put(acc, field, decoded)
+      else
+        acc
+      end
+    end)
+  end
+
   def append_id(doc) do
     id = Mongo.IdServer.new()
     Map.put(doc, "_id", id)

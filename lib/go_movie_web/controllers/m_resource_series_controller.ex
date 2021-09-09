@@ -4,6 +4,8 @@ defmodule GoMovieWeb.MResourceSerieController do
   alias GoMovie.MongoUtils
   alias GoMovie.MongoModel.Serie
 
+  import GoMovieWeb.MResourceMovieController, only: [handle_images_on_create: 1]
+
   action_fallback GoMovieWeb.FallbackController
 
   @collection_name "resources_series"
@@ -17,6 +19,19 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def create(conn, %{"resource_serie" => resource_params}) do
+    # Get all image files
+    images = Map.take(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # delete image files so that they are not saved in mongodb
+    resource_params = Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # Save image files in aws and get s3_url of each image
+    images_s3_urls = handle_images_on_create(images)
+
+    resource_params = Map.merge(resource_params, images_s3_urls)
+
+    # Since the data is received as formData, we need to parse array values such as artists and genders.
+    # because they come as a string.
+    resource_params = MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders", "seasons"])
+
     genders = resource_params["genders"]
 
     resource_params = Map.delete(resource_params, "_id")

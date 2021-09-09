@@ -3,6 +3,7 @@ defmodule GoMovieWeb.MResourceMovieController do
 
   alias GoMovie.MongoModel.Movie
   alias GoMovie.MongoUtils
+  alias GoMovie.Content
 
   action_fallback GoMovieWeb.FallbackController
 
@@ -10,13 +11,28 @@ defmodule GoMovieWeb.MResourceMovieController do
 
   def index(conn, params) do
     search = Map.get(params, "search", "")
-    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(& &1 == "")
+    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(&(&1 == ""))
 
     movies = Movie.get_movies(search, fields)
     json(conn, movies)
   end
 
   def create(conn, %{"resource_movie" => resource_params}) do
+    # Get all image files
+    images = Map.take(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # delete image files so that they are not saved in mongodb
+    resource_params =
+      Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+
+    # Save image files in aws and get s3_url of each image
+    images_s3_urls = handle_images_on_create(images)
+
+    resource_params = Map.merge(resource_params, images_s3_urls)
+
+    # Since the data is received as formData, we need to parse array values such as artists and genders.
+    # because they come as a string.
+    resource_params = MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders"])
+
     genders = resource_params["genders"]
 
     resource_params = Map.delete(resource_params, "_id")
@@ -27,12 +43,48 @@ defmodule GoMovieWeb.MResourceMovieController do
     end
   end
 
+  def handle_images_on_create(images) do
+    unless Enum.empty?(images) do
+      images_keys = Map.keys(images)
+
+      # Upload each image to aws and return a map with each url
+      Enum.reduce(images_keys, %{}, fn img_key, acc ->
+        key =
+          case img_key do
+            "thumb_file" -> "thumb"
+            "poster_file" -> "poster_url"
+            "landscape_poster_file" -> "landscape_poster_url"
+          end
+
+        img_to_upload = Map.get(images, img_key)
+
+        {:ok, s3_url} = Content.upload_asset_to_s3(img_to_upload, "covers")
+
+        Map.put(acc, key, s3_url)
+      end)
+    else
+      %{}
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     resources_movie = MongoUtils.get_by_id(id, @collection_name)
     json(conn, resources_movie)
   end
 
   def update(conn, %{"id" => id, "resource_movie" => resource_params}) do
+
+    images = Map.take(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+
+    resource_params =
+      Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+
+    images_s3_urls = handle_images_on_create(images)
+
+    resource_params = Map.merge(resource_params, images_s3_urls)
+
+    resource_params = MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders"])
+
     resource_params = Map.delete(resource_params, "_id")
 
     if resource_params["genders"] do
