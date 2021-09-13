@@ -12,7 +12,7 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   def index(conn, params) do
     search = Map.get(params, "search", "")
-    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(& &1 == "")
+    fields = Map.get(params, "fields", "") |> String.split(",") |> Enum.reject(&(&1 == ""))
 
     series = Serie.get_series(search, fields)
     json(conn, series)
@@ -22,7 +22,9 @@ defmodule GoMovieWeb.MResourceSerieController do
     # Get all image files
     images = Map.take(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
     # delete image files so that they are not saved in mongodb
-    resource_params = Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+    resource_params =
+      Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+
     # Save image files in aws and get s3_url of each image
     images_s3_urls = handle_images_on_create(images)
 
@@ -30,11 +32,10 @@ defmodule GoMovieWeb.MResourceSerieController do
 
     # Since the data is received as formData, we need to parse array values such as artists and genders.
     # because they come as a string.
-    resource_params = MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders", "seasons"])
+    resource_params =
+      MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders", "seasons"])
 
     genders = resource_params["genders"]
-
-    resource_params = Map.delete(resource_params, "_id")
 
     case MongoUtils.validate_genders(genders) do
       {:error, msg} ->
@@ -76,6 +77,7 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   def update_season(conn, %{"season" => season, "serie_id" => serie_id, "season_id" => season_id}) do
     season = Map.delete(season, "_id")
+
     case Serie.update_season(season, serie_id, season_id) do
       {:ok, season} ->
         json(conn, season)
@@ -88,6 +90,15 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def add_chapter(conn, %{"chapter" => chapter, "serie_id" => serie_id, "season_id" => season_id}) do
+    # Get all image files
+    images = Map.take(chapter, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # delete image files so that they are not saved in mongodb
+    chapter = Map.drop(chapter, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # Save image files in aws and get s3_url of each image
+    images_s3_urls = handle_images_on_create(images)
+
+    chapter = Map.merge(chapter, images_s3_urls)
+
     case Serie.add_chapter(chapter, serie_id, season_id) do
       {:ok, chapter} ->
         json(conn, chapter)
@@ -105,6 +116,14 @@ defmodule GoMovieWeb.MResourceSerieController do
         "season_id" => season_id,
         "chapter_id" => chapter_id
       }) do
+    # Get all image files
+    images = Map.take(chapter, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # delete image files so that they are not saved in mongodb
+    chapter = Map.drop(chapter, ["thumb_file", "poster_file", "landscape_poster_file"])
+    # Save image files in aws and get s3_url of each image
+    images_s3_urls = handle_images_on_create(images)
+
+    chapter = Map.merge(chapter, images_s3_urls)
 
     chapter = Map.delete(chapter, "_id")
 
@@ -151,7 +170,9 @@ defmodule GoMovieWeb.MResourceSerieController do
     # Get all image files
     images = Map.take(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
     # delete image files so that they are not saved in mongodb
-    resource_params = Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+    resource_params =
+      Map.drop(resource_params, ["thumb_file", "poster_file", "landscape_poster_file"])
+
     # Save image files in aws and get s3_url of each image
     images_s3_urls = handle_images_on_create(images)
 
@@ -159,7 +180,8 @@ defmodule GoMovieWeb.MResourceSerieController do
 
     # Since the data is received as formData, we need to parse array values such as artists and genders.
     # because they come as a string.
-    resource_params = MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders", "seasons"])
+    resource_params =
+      MongoUtils.decode_formdata_fields(resource_params, ["artists", "genders", "seasons"])
 
     resource_params = Map.delete(resource_params, "_id")
 
@@ -178,8 +200,8 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   def handle_season_param_on_update(conn) do
     conn
-      |> put_status(400)
-      |> json(%{msg: "Is not allowed to update series seasons."})
+    |> put_status(400)
+    |> json(%{msg: "Is not allowed to update series seasons."})
   end
 
   def handle_genders_params_on_update(conn, id, resource_params) do

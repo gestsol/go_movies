@@ -392,8 +392,14 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def handle_serie_insertion(serie) do
-    seasons = append_id_to_seasons_and_chapters(serie)
-    Map.put(serie, "seasons", seasons)
+    serie = Map.delete(serie, "_id")
+
+    if Map.has_key?(serie, "seasons") do
+      seasons = append_id_to_seasons_and_chapters(serie)
+      Map.put(serie, "seasons", seasons)
+    else
+      Map.put(serie, "seasons", [])
+    end
   end
 
   def parse_seasons_and_chapters_ids(serie) do
