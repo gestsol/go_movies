@@ -37,17 +37,21 @@ defmodule GoMovie.MongoModel.Movie do
   def append_movie_to_playback(playback, movies) when is_list(movies) do
     movie = Enum.find(movies, &(&1["_id"] == playback.movie_id))
 
-    Map.merge(
-      %{
-        "id" => playback.id,
-        "seekable" => playback.seekable,
-        "movie_duration" => playback.duration,
-        "movie_id" => playback.movie_id,
-        "user_id" => playback.user_id,
-        "progress" => Playback.calc_progress(playback)
-      },
-      movie
-    )
+    unless is_nil(movie) do
+      Map.merge(
+        %{
+          "id" => playback.id,
+          "seekable" => playback.seekable,
+          "movie_duration" => playback.duration,
+          "movie_id" => playback.movie_id,
+          "user_id" => playback.user_id,
+          "progress" => Playback.calc_progress(playback)
+        },
+        movie
+      )
+    else
+      nil
+    end
   end
 
   def map_playbacks_with_movies(playbacks, movies_fields) do
@@ -61,6 +65,7 @@ defmodule GoMovie.MongoModel.Movie do
         |> get_movies_by_ids(movies_fields)
 
       Enum.map(playbacks, &append_movie_to_playback(&1, movies))
+      |> Enum.reject(&is_nil/1)
     else
       []
     end
