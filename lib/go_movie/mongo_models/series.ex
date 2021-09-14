@@ -154,7 +154,7 @@ defmodule GoMovie.MongoModel.Serie do
     end)
 
     if length(images_to_delete) > 0 do
-      delete_chapter_images(chapter_id)
+      delete_chapter_images(chapter_id, images_to_delete)
     end
   end
 
@@ -182,11 +182,11 @@ defmodule GoMovie.MongoModel.Serie do
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
-        delete_chapter_images(chapter)
+        delete_chapter_images(chapter, @chapter_images)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
-        delete_chapter_images(chapter)
+        delete_chapter_images(chapter, @chapter_images)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -211,13 +211,17 @@ defmodule GoMovie.MongoModel.Serie do
       }
     }
 
+    {:ok, season} = find_season(season_id)
+
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
+        delete_season_images(season)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
+        delete_season_images(season)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -497,17 +501,19 @@ defmodule GoMovie.MongoModel.Serie do
   def delete_season_images(season) do
     chapters = Map.get(season, "chapters")
     if chapters do
-      Enum.each(chapters, &delete_chapter_images/1)
+      Enum.each(chapters, &delete_chapter_images(&1, @chapter_images))
     end
   end
 
-  def delete_chapter_images(chapter) when is_map(chapter) do
-    AWSUtils.delete_multiple_images_from_S3(chapter, "covers",  ["poster_url", "thumb", "landscape_poster_url"])
+  def delete_chapter_images(chapter, images_to_delete) when is_map(chapter) do
+    unless Enum.empty?(images_to_delete) do
+      AWSUtils.delete_multiple_images_from_S3(chapter, "covers",  images_to_delete)
+    end
   end
 
-  def delete_chapter_images(id) when is_binary(id) do
+  def delete_chapter_images(id, images_to_delete) when is_binary(id) do
     with {:ok, chapter} <- find_chapter(id)  do
-      delete_chapter_images(chapter)
+      delete_chapter_images(chapter, images_to_delete)
     end
   end
 end
