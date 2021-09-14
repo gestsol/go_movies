@@ -102,6 +102,7 @@ defmodule GoMovieWeb.MResourceMovieController do
 
   def delete(conn, %{"id" => id}) do
     with {:ok, _} <- Movie.delete_movie(id) do
+      Content.delete_movie_playback(id)
       send_resp(conn, :no_content, "")
     end
   end

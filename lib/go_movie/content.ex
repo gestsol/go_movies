@@ -630,6 +630,11 @@ defmodule GoMovie.Content do
     |> Repo.one()
   end
 
+  def delete_movie_playback(movie_id) do
+    from(mp in UserMoviePlayback, where: mp.movie_id == ^movie_id)
+    |> Repo.delete_all()
+  end
+
   @doc """
   Creates a user_movie_playback.
 
