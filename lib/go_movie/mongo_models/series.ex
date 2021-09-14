@@ -177,15 +177,16 @@ defmodule GoMovie.MongoModel.Serie do
       }
     }
 
+    {:ok, chapter} = find_chapter(chapter_id)
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
-        delete_chapter_images(chapter_id)
+        delete_chapter_images(chapter)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
-        delete_chapter_images(chapter_id)
+        delete_chapter_images(chapter)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -336,7 +337,7 @@ defmodule GoMovie.MongoModel.Serie do
         Map.get(result, "seasons")
         |> List.first()
         |> Map.get("chapters")
-        |> Enum.find(fn c -> c["_id"] == chapter_id end)
+        |> Enum.find(fn c -> c["_id"] == bson_chapter_id end)
         |> Util.parse_document_objectId()
 
       {:ok, chapter}
