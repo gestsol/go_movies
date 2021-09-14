@@ -36,7 +36,7 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def delete_images_on_serie_update(params, serie_id) do
-    images_to_delete = Enum.reduce(@serie_images, [], fn acc, img ->
+    images_to_delete = Enum.reduce(@serie_images, [], fn img, acc ->
       if Map.has_key?(params, img) do
         [img | acc]
       else
@@ -145,7 +145,7 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def delete_images_on_chapter_update(params, chapter_id) do
-    images_to_delete = Enum.reduce(@chapter_images, [], fn acc, img ->
+    images_to_delete = Enum.reduce(@chapter_images, [], fn img, acc ->
       if Map.has_key?(params, img) do
         [img | acc]
       else
