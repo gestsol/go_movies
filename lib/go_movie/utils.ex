@@ -128,5 +128,4 @@ defmodule GoMovie.MongoUtils do
     |> String.replace(~r/o/i, "[o,ó,ö,ò]")
     |> String.replace(~r/u/i, "[u,ü,ú,ù]")
   end
-
 end

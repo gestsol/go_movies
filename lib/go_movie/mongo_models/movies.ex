@@ -1,8 +1,10 @@
 defmodule GoMovie.MongoModel.Movie do
   alias GoMovie.MongoUtils, as: Util
+  alias GoMovie.AWSUtils
   alias GoMovie.Content.UserMoviePlayback, as: Playback
 
   @collection_name "resources_movies"
+  @movie_images ["poster_url", "thumb", "landscape_poster_url"]
 
   def get_movies_by_ids(movies_ids, fields \\ []) when is_list(movies_ids) do
     or_values = movies_ids |> Enum.map(&Util.build_query_by_id/1)
@@ -69,5 +71,32 @@ defmodule GoMovie.MongoModel.Movie do
     else
       []
     end
+  end
+
+  def delete_movie_images(id, images) do
+    movie = Util.get_by_id(id, @collection_name)
+    AWSUtils.delete_multiple_images_from_S3(movie, "covers", images)
+  end
+
+  def delete_movie(id) do
+    delete_movie_images(id, @movie_images)
+    Util.delete(id, @collection_name)
+  end
+
+  def update_movie(params, id) do
+
+    images_to_delete = Enum.reduce(@movie_images, [], fn acc, img ->
+      if Map.has_key?(params, img) do
+        [img | acc]
+      else
+        acc
+      end
+    end)
+
+    if length(images_to_delete) > 0 do
+      delete_movie_images(id, images_to_delete)
+    end
+
+    Util.update(params, @collection_name, id)
   end
 end

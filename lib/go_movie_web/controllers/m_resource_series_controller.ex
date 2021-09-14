@@ -193,7 +193,7 @@ defmodule GoMovieWeb.MResourceSerieController do
   end
 
   def delete(conn, %{"id" => id}) do
-    with {:ok, _} <- MongoUtils.delete(id, @collection_name) do
+    with {:ok, _} <- Serie.delete_serie(id) do
       send_resp(conn, :no_content, "")
     end
   end
@@ -218,7 +218,7 @@ defmodule GoMovieWeb.MResourceSerieController do
           resource_serie =
             resource_params
             |> Map.put("genders", db_genders)
-            |> MongoUtils.update(@collection_name, id)
+            |> Serie.update_serie(id)
             |> Serie.parse_seasons_and_chapters_ids()
 
           json(conn, resource_serie)

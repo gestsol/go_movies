@@ -1,7 +1,10 @@
 defmodule GoMovie.MongoModel.Serie do
   alias GoMovie.MongoUtils, as: Util
+  alias GoMovie.AWSUtils
 
   @collection_name "resources_series"
+  @chapter_images ["poster_url", "thumb", "landscape_poster_url"]
+  @serie_images ["poster_url", "thumb", "landscape_poster_url"]
 
   def get_series(search \\ "", fields \\ []) when is_list(fields) do
     search = if is_nil(search), do: "", else: search
@@ -25,6 +28,25 @@ defmodule GoMovie.MongoModel.Serie do
       serie = Util.parse_document_objectId(serie)
       if serie["seasons"], do: parse_seasons_and_chapters_ids(serie), else: serie
     end)
+  end
+
+  def update_serie(params, id) do
+    delete_images_on_serie_update(params, id)
+    Util.update(params, @collection_name, id)
+  end
+
+  def delete_images_on_serie_update(params, serie_id) do
+    images_to_delete = Enum.reduce(@serie_images, [], fn acc, img ->
+      if Map.has_key?(params, img) do
+        [img | acc]
+      else
+        acc
+      end
+    end)
+
+    if length(images_to_delete) > 0 do
+      delete_serie_images(serie_id, false)
+    end
   end
 
   def handle_season_update(params, serie_id, season_id) do
@@ -110,13 +132,29 @@ defmodule GoMovie.MongoModel.Serie do
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
+        delete_images_on_chapter_update(params, chapter_id)
         find_chapter(chapter_id)
 
       result.matched_count == 1 && result.modified_count == 0 ->
+        delete_images_on_chapter_update(params, chapter_id)
         find_chapter(chapter_id)
 
       result.matched_count == 0 && result.modified_count == 0 ->
         {:error, "Invalid serie_id or season_id or chapter_id"}
+    end
+  end
+
+  def delete_images_on_chapter_update(params, chapter_id) do
+    images_to_delete = Enum.reduce(@chapter_images, [], fn acc, img ->
+      if Map.has_key?(params, img) do
+        [img | acc]
+      else
+        acc
+      end
+    end)
+
+    if length(images_to_delete) > 0 do
+      delete_chapter_images(chapter_id)
     end
   end
 
@@ -143,9 +181,11 @@ defmodule GoMovie.MongoModel.Serie do
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
+        delete_chapter_images(chapter_id)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
+        delete_chapter_images(chapter_id)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -201,13 +241,17 @@ defmodule GoMovie.MongoModel.Serie do
       }
     }
 
+    {:ok, season} = find_season(season_id)
+
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
+        delete_season_images(season)
         {:ok, "Season successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
+        delete_season_images(season)
         {:ok, "Season successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -424,5 +468,45 @@ defmodule GoMovie.MongoModel.Serie do
       |> Enum.map(&Util.parse_document_objectId/1)
 
     Map.put(season, "chapters", chapters)
+  end
+
+  def delete_serie(id) do
+    delete_serie_images(id, true)
+    Util.delete(id, @collection_name)
+  end
+
+  def delete_serie_images(id, delete_chapter_images) when is_boolean(delete_chapter_images) do
+    serie = Util.get_by_id(id, @collection_name)
+
+    AWSUtils.delete_multiple_images_from_S3(serie, "covers",  ["poster_url", "thumb", "landscape_poster_url"])
+
+    if delete_chapter_images == true do
+      delete_chapter_images_from_serie(serie)
+    end
+  end
+
+  def delete_chapter_images_from_serie(serie) do
+    seasons = Map.get(serie, "seasons")
+
+    if seasons do
+      Enum.each(seasons, &delete_season_images/1)
+    end
+  end
+
+  def delete_season_images(season) do
+    chapters = Map.get(season, "chapters")
+    if chapters do
+      Enum.each(chapters, &delete_chapter_images/1)
+    end
+  end
+
+  def delete_chapter_images(chapter) when is_map(chapter) do
+    AWSUtils.delete_multiple_images_from_S3(chapter, "covers",  ["poster_url", "thumb", "landscape_poster_url"])
+  end
+
+  def delete_chapter_images(id) when is_binary(id) do
+    with {:ok, chapter} <- find_chapter(id)  do
+      delete_chapter_images(chapter)
+    end
   end
 end

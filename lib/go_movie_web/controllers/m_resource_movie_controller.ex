@@ -95,13 +95,13 @@ defmodule GoMovieWeb.MResourceMovieController do
         {:ok, _} -> handle_movie_update(conn, resource_params, id)
       end
     else
-      resource_movie = resource_params |> MongoUtils.update(@collection_name, id)
+      resource_movie = Movie.update_movie(resource_params, id)
       json(conn, resource_movie)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    with {:ok, _} <- MongoUtils.delete(id, @collection_name) do
+    with {:ok, _} <- Movie.delete_movie(id) do
       send_resp(conn, :no_content, "")
     end
   end
