@@ -863,6 +863,30 @@ defmodule GoMovie.Content do
     end
   end
 
+  def delete_serie_playbacks(serie_id) do
+    from(
+      s in SeriePlayback,
+      where: s.serie_id == ^serie_id
+    )
+    |> Repo.delete_all()
+  end
+
+  def delete_season_playbacks(serie_id, season_id) do
+    from(
+      s in SeriePlayback,
+      where: s.serie_id == ^serie_id and s.season_id == ^season_id
+    )
+    |> Repo.delete_all()
+  end
+
+  def delete_chapter_playbacks(serie_id, season_id, chapter_id) do
+    from(
+      s in SeriePlayback,
+      where: s.serie_id == ^serie_id and s.season_id == ^season_id and s.chapter_id == ^chapter_id
+    )
+    |> Repo.delete_all()
+  end
+
   @doc """
   Creates a serie_playback.
 

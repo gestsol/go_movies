@@ -318,10 +318,10 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def find_chapter(chapter_id) do
-    chapter_id = BSON.ObjectId.decode!(chapter_id)
+    bson_chapter_id = BSON.ObjectId.decode!(chapter_id)
 
     filter = %{
-      "seasons.chapters._id": chapter_id
+      "seasons.chapters._id": bson_chapter_id
     }
 
     projection = %{

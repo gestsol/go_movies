@@ -3,6 +3,7 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   alias GoMovie.MongoUtils
   alias GoMovie.MongoModel.Serie
+  alias GoMovie.Content
 
   import GoMovieWeb.MResourceMovieController, only: [handle_images_on_create: 1]
 
@@ -145,6 +146,7 @@ defmodule GoMovieWeb.MResourceSerieController do
       }) do
     case Serie.delete_chapter(serie_id, season_id, chapter_id) do
       {:ok, _msg} ->
+        Content.delete_chapter_playbacks(serie_id, season_id, chapter_id)
         send_resp(conn, 204, "")
 
       {:error, msg} ->
@@ -157,6 +159,7 @@ defmodule GoMovieWeb.MResourceSerieController do
   def delete_season(conn, %{"serie_id" => serie_id, "season_id" => season_id}) do
     case Serie.delete_season(serie_id, season_id) do
       {:ok, _msg} ->
+        Content.delete_season_playbacks(serie_id, season_id)
         send_resp(conn, 204, "")
 
       {:error, msg} ->
@@ -194,6 +197,7 @@ defmodule GoMovieWeb.MResourceSerieController do
 
   def delete(conn, %{"id" => id}) do
     with {:ok, _} <- Serie.delete_serie(id) do
+      Content.delete_serie_playbacks(id)
       send_resp(conn, :no_content, "")
     end
   end
