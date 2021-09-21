@@ -128,15 +128,15 @@ defmodule GoMovie.MongoModel.Serie do
       ]
     ]
 
+    delete_images_on_chapter_update(params, chapter_id)
+
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, set, opts)
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
-        delete_images_on_chapter_update(params, chapter_id)
         find_chapter(chapter_id)
 
       result.matched_count == 1 && result.modified_count == 0 ->
-        delete_images_on_chapter_update(params, chapter_id)
         find_chapter(chapter_id)
 
       result.matched_count == 0 && result.modified_count == 0 ->
