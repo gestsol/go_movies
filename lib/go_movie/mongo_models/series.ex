@@ -205,17 +205,13 @@ defmodule GoMovie.MongoModel.Serie do
       }
     }
 
-    {:ok, season} = find_season(season_id)
-
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, update)
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
-        delete_season_images(season)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
-        delete_season_images(season)
         {:ok, "Chapter successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
