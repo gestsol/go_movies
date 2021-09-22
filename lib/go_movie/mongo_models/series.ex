@@ -31,7 +31,6 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def update_serie(params, id) do
-    delete_images_on_serie_update(params, id)
     Util.update(params, @collection_name, id)
   end
 
@@ -127,8 +126,6 @@ defmodule GoMovie.MongoModel.Serie do
         %{"chapter._id": bson_chapter_id}
       ]
     ]
-
-    delete_images_on_chapter_update(params, chapter_id)
 
     {:ok, result} = Mongo.update_one(:mongo, @collection_name, selector, set, opts)
 
@@ -252,11 +249,9 @@ defmodule GoMovie.MongoModel.Serie do
 
     cond do
       result.matched_count == 1 && result.modified_count == 1 ->
-        delete_season_images(season)
         {:ok, "Season successfully deleted."}
 
       result.matched_count == 1 && result.modified_count == 0 ->
-        delete_season_images(season)
         {:ok, "Season successfully deleted."}
 
       result.matched_count == 0 && result.modified_count == 0 ->
@@ -476,7 +471,6 @@ defmodule GoMovie.MongoModel.Serie do
   end
 
   def delete_serie(id) do
-    delete_serie_images(id, true)
     Util.delete(id, @collection_name)
   end
 
