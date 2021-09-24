@@ -18,6 +18,11 @@ defmodule GoMovieWeb.Router do
     post "/users/sign_in_facebook", UserController, :sign_in_facebook
   end
 
+  scope "/api/admin", GoMovieWeb do
+    pipe_through :api
+    post "/users/sign_in", UserController, :sign_in_backoffice
+  end
+
   scope "/api", GoMovieWeb do
     #pipe_through :api
     pipe_through [:api, :api_auth]
