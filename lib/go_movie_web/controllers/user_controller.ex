@@ -3,9 +3,13 @@ defmodule GoMovieWeb.UserController do
   use Filterable.Phoenix.Controller
 
   import Ecto.Query
+  import GoMovie.Auth, only: [restrict_to_admin: 2]
 
+  alias GoMovie.Auth
   alias GoMovie.Account
   alias GoMovie.Account.User
+
+  plug :restrict_to_admin when action in [:index, :show, :update, :delete]
 
   action_fallback GoMovieWeb.FallbackController
 
@@ -19,11 +23,13 @@ defmodule GoMovieWeb.UserController do
 
   def index(conn, _params) do
     with {:ok, query, _filter_values} <- apply_filters(User, conn),
-    users <- Account.list_users(query),
-    do: render(conn, "index.json", users: users)
+         users <- Account.list_users(query),
+         do: render(conn, "index.json", users: users)
   end
 
   def create(conn, %{"user" => user_params}) do
+    user_role = Account.get_user_role!()
+    user_params = Map.put(user_params, "role_id", user_role.role_id)
     with {:ok, %User{} = user} <- Account.create_user(user_params) do
       conn
       |> put_status(:created)
@@ -53,28 +59,29 @@ defmodule GoMovieWeb.UserController do
     end
   end
 
-  def sign_in(conn, %{"email" => email, "password" => password}) do
-    case Account.authenticate_user(email, password) do
-      {:ok, user} ->
-        {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
-        user = Map.put(user, :token, token)
-        conn
-        |> put_status(:ok)
-        |> render("show_with_token.json", user: user)
-
-      {:error, message} ->
-        conn
-        |> put_status(:ok)
-        |> put_view(GoMovieWeb.ErrorView)
-        |> render("401.json", message: message)
+  def sign_in_backoffice(conn, params) do
+    with {:ok, user} <- Auth.sign_in(params),
+         {:ok, user} <- Auth.restrict_to_role(user, "admin")
+    do
+      conn
+      |> put_status(:ok)
+      |> render("show_with_token.json", user: user)
     end
   end
 
+  def sign_in(conn, params) do
+    with {:ok, user} <- Auth.sign_in(params) do
+      conn
+      |> put_status(:ok)
+      |> render("show_with_token.json", user: user)
+    end
+  end
 
   def sign_in_google(conn, %{"google_auth_id" => google_auth_id}) do
     case Account.authenticate_user(google_auth_id) do
       {:ok, user} ->
         {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+
         conn
         |> put_status(:ok)
         |> json(%{token: token})
@@ -91,6 +98,7 @@ defmodule GoMovieWeb.UserController do
     case Account.authenticate_user_facebook(facebok_auth_id) do
       {:ok, user} ->
         {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+
         conn
         |> put_status(:ok)
         |> json(%{token: token})
@@ -102,6 +110,4 @@ defmodule GoMovieWeb.UserController do
         |> render("401.json", message: message)
     end
   end
-
-
 end
