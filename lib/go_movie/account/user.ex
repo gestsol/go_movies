@@ -36,11 +36,11 @@ defmodule GoMovie.Account.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id, :google_auth_id, :facebook_auth_id, :birthdate])
+    |> cast(attrs, [:name, :lastname, :email, :password, :image_url, :status, :phone_number, :profile_description, :country, :city, :address, :postal_code, :sesion_counter, :user_id, :google_auth_id, :facebook_auth_id, :birthdate, :role_id])
     |> unique_constraint([:email, :google_auth_id, :facebook_auth_id])
     |> put_password_hash()
     |> foreign_key_constraint(:role_id)
-    |> validate_required([:name, :email])
+    |> validate_required([:name, :email, :role_id])
   end
 
   def changesetPasswordUpdate(user, attrs) do
@@ -61,7 +61,7 @@ defmodule GoMovie.Account.User do
   end
 
   def authenticate(email, plain_pass) do
-      case Repo.one(get_by_email(email)) do
+      case Repo.one(get_by_email(email)) |> Repo.preload(:role) do
         nil ->
           Argon2.no_user_verify()
           {:error, :invalid_credentials}
