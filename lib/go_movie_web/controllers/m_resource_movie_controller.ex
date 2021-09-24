@@ -1,9 +1,13 @@
 defmodule GoMovieWeb.MResourceMovieController do
   use GoMovieWeb, :controller
 
+  import GoMovie.Auth, only: [restrict_to_admin: 2]
+
   alias GoMovie.MongoModel.Movie
   alias GoMovie.MongoUtils
   alias GoMovie.Content
+
+  plug :restrict_to_admin when action in [:create, :update, :delete]
 
   action_fallback GoMovieWeb.FallbackController
 
