@@ -116,7 +116,6 @@ defmodule GoMovie.Account do
     User.authenticate_facebook(facebook_auth_id)
   end
 
-
   @doc """
   Returns the list of users.
 
@@ -147,7 +146,10 @@ defmodule GoMovie.Account do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    Repo.get!(User, id)
+    |> Repo.preload(:role)
+  end
 
   @doc """
   Creates a user.
