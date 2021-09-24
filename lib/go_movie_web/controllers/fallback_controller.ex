@@ -21,4 +21,16 @@ defmodule GoMovieWeb.FallbackController do
     |> put_view(GoMovieWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, :invalid_credentials}) do
+    conn
+    |> put_status(:unauthorized)
+    |> json(%{error: :invalid_credentials})
+  end
+
+  def call(conn, {:error, :unauthorized}) do
+    conn
+    |> put_status(:unauthorized)
+    |> json(%{error: "You are not allowed to access this route."})
+  end
 end
