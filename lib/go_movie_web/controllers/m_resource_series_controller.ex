@@ -1,11 +1,19 @@
 defmodule GoMovieWeb.MResourceSerieController do
   use GoMovieWeb, :controller
 
+  import GoMovie.Auth, only: [restrict_to_admin: 2]
+
   alias GoMovie.MongoUtils
   alias GoMovie.MongoModel.Serie
   alias GoMovie.Content
 
   import GoMovieWeb.MResourceMovieController, only: [handle_images_on_create: 1]
+
+  plug :restrict_to_admin when action in [
+    :create, :update, :delete,
+    :add_season, :update_season, :delete_season,
+    :add_chapter, :update_chapter, :delete_chapter
+  ]
 
   action_fallback GoMovieWeb.FallbackController
 

@@ -1,8 +1,12 @@
 defmodule GoMovieWeb.MainSliderController do
   use GoMovieWeb, :controller
 
+  import GoMovie.Auth, only: [restrict_to_admin: 2]
+
   alias GoMovie.Content
   alias GoMovie.Content.MainSlider
+
+  plug :restrict_to_admin when action in [:index, :show, :create, :update, :delete]
 
   action_fallback GoMovieWeb.FallbackController
 
