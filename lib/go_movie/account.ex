@@ -37,6 +37,11 @@ defmodule GoMovie.Account do
   """
   def get_role!(id), do: Repo.get!(Role, id)
 
+  def get_user_role!() do
+    from(r in Role, where: r.name == "user")
+    |> Repo.one!()
+  end
+
   @doc """
   Creates a role.
 
