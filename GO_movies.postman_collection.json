@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"role\":{\n        \"name\":\"role_name\",\n        \"description\":\"role_description\",\n        \"status\": 1\n    }\n}",
+							"raw": "{\n    \"role\":{\n        \"name\":\"user\",\n        \"description\":\"usuario\",\n        \"status\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -131,7 +131,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"jwt\", pm.response.json().token);"
+									"pm.collectionVariables.set(\"jwt\", pm.response.json().user.token);"
 								],
 								"type": "text/javascript"
 							}
@@ -145,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"email\": \"operario@mail.com\",\n    \"password\": \"12345678\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,7 +350,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "13"
+									"value": "180"
 								}
 							]
 						}
@@ -363,7 +363,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/users?email=aromero.cangri14@gmail.com",
+							"raw": "{{base_url}}/api/users",
 							"host": [
 								"{{base_url}}"
 							],
@@ -374,7 +374,8 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "aromero.cangri14@gmail.com"
+									"value": "aromero.cangri14@gmail.com",
+									"disabled": true
 								}
 							]
 						}
@@ -399,7 +400,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "180"
 								}
 							]
 						}
@@ -1816,7 +1817,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_movies?search=mark&fields=name,year,artists",
+							"raw": "{{base_url}}/api/m_resources_movies?fields=name,poster_url,thumb,landscape_poster_url",
 							"host": [
 								"{{base_url}}"
 							],
@@ -1827,11 +1828,12 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "mark"
+									"value": "mark",
+									"disabled": true
 								},
 								{
 									"key": "fields",
-									"value": "name,year,artists"
+									"value": "name,poster_url,thumb,landscape_poster_url"
 								}
 							]
 						}
@@ -1856,7 +1858,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6116c1eab45f4981e9093aba"
+									"value": "613f6dfb99d74ef19d511ae4"
 								}
 							]
 						}
@@ -1881,7 +1883,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "611ff3199fed5b543e369916"
+									"value": "6140a17599d74e94f1a07bd2"
 								}
 							]
 						}
@@ -1951,7 +1953,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/m_resources_series?search=freddie&fields=name,year,artists",
+							"raw": "{{base_url}}/api/m_resources_series?fields=name,year",
 							"host": [
 								"{{base_url}}"
 							],
@@ -1962,11 +1964,12 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "freddie"
+									"value": "freddie",
+									"disabled": true
 								},
 								{
 									"key": "fields",
-									"value": "name,year,artists"
+									"value": "name,year"
 								}
 							]
 						}
@@ -1991,7 +1994,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6124fede9fed5b1b96ea2159"
+									"value": "6140b92a99d74ec8587fca03"
 								}
 							]
 						}
@@ -2016,7 +2019,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "61200176b45f497db877f3d3"
+									"value": "6140b92a99d74ec8587fca03"
 								}
 							]
 						}
@@ -2167,15 +2170,15 @@
 							"variable": [
 								{
 									"key": "serie_id",
-									"value": "6125113a9fed5b2db997855c"
+									"value": "6140b92a99d74ec8587fca03"
 								},
 								{
 									"key": "season_id",
-									"value": "612511639fed5b2db9cff2ec"
+									"value": "6140b94099d74ec8581535da"
 								},
 								{
 									"key": "chapter_id",
-									"value": "612515d89fed5b3265bca9cd"
+									"value": "6140b96299d74ec85857fc58"
 								}
 							]
 						}
@@ -2242,11 +2245,11 @@
 							"variable": [
 								{
 									"key": "serie_id",
-									"value": "6127c54a9fed5b30f5bba09a"
+									"value": "6140b92a99d74ec8587fca03"
 								},
 								{
 									"key": "season_id",
-									"value": "6127c54a9fed5b30f5bba093"
+									"value": "6140b94099d74ec8581535da"
 								}
 							]
 						}
@@ -2481,7 +2484,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/user_movies_playbacks?user_id=4",
+							"raw": "{{base_url}}/api/user_movies_playbacks?user_id=4&movies_fields=name,poster_url",
 							"host": [
 								"{{base_url}}"
 							],
@@ -2503,6 +2506,10 @@
 									"key": "movie_id",
 									"value": "6122acfa99d74ef09147a6b3",
 									"disabled": true
+								},
+								{
+									"key": "movies_fields",
+									"value": "name,poster_url"
 								}
 							]
 						}
@@ -2516,7 +2523,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_movie_playback\": {\n        \"user_id\": 181,\n        \"movie_id\": \"612404b299d74efce31dcdf8\",\n        \"seekable\": 1200,\n        \"duration\": 7200\n    }\n}",
+							"raw": "{\n    \"user_movie_playback\": {\n        \"user_id\": 181,\n        \"movie_id\": \"6140a17599d74e94f1a07bd2\",\n        \"seekable\": 1200,\n        \"duration\": 7200\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2852,7 +2859,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serie_playback\": {\n        \"user_id\": 72,\n        \"serie_id\": \"6127f2909fed5b4930e5069a\",\n        \"season_id\": \"6127f2909fed5b4930e50693\",\n        \"chapter_id\": \"6127f2909fed5b4930e50696\",\n        \"seekable\": 203.123456\n    }\n}",
+							"raw": "{\n    \"serie_playback\": {\n        \"user_id\": 72,\n        \"serie_id\": \"6140a88b99d74ec8584c32ba\",\n        \"season_id\": \"6140adbc99d74ec8586b7d19\",\n        \"chapter_id\": \"6140adf199d74ec858c4e3d2\",\n        \"seekable\": 203.123456\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3192,12 +3199,7 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"formdata": []
 						},
 						"url": "{{base_url}}/api/main_sliders"
 					},
@@ -3288,12 +3290,159 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "backoffice_endpoints",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "sign_in",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"leorrc96@gmail.com\",\n    \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/admin/users/sign_in"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "benefit_requests",
+			"item": [
+				{
+					"name": "create one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"benefit_request\": {\n        \"first_name\": \"First name\",\n        \"last_name\": \"last name\",\n        \"email\": \"test@gmail.com\",\n        \"rut\": \"123456789\",\n        \"phone_number\": \"12345678912\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/benefit_requests"
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/benefit_requests"
+					},
+					"response": []
+				},
+				{
+					"name": "get one by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/benefit_requests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"benefit_requests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update one by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"benefit_request\": {\n        \"first_name\": \"cambio\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/benefit_requests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"benefit_requests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/benefit_requests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"benefit_requests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnb19tb3ZpZSIsImV4cCI6MTYzMzM4MDU1NiwiaWF0IjoxNjMwOTYxMzU2LCJpc3MiOiJnb19tb3ZpZSIsImp0aSI6ImM1ZGVkNWFhLTQ5ODEtNDlhMi1iOTY1LWQyY2JlZWM4ZmRjMCIsIm5iZiI6MTYzMDk2MTM1NSwic3ViIjoiNzIiLCJ0eXAiOiJhY2Nlc3MifQ.q3WINyRMjTj57nr38MFaT18ktLQcjRYkbXuqh7NAxANZcwntvIGR9kVspxnByTZRXsklixD9oMehqSZ4Qxjzzw"
+			"token": "{{jwt}}"
 		}
 	},
 	"event": [
@@ -3319,15 +3468,12 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": " http://localhost:4000"
+			"value": " http://localhost:4000",
+			"disabled": true
 		},
 		{
 			"key": "base_url",
 			"value": "https://nuevo-gomovie-backend-dev.gestsol.io"
-		},
-		{
-			"key": "base_url",
-			"value": "http://nuevo-gomovie-backend-dev.gestsol.io"
 		},
 		{
 			"key": "jwt",
