@@ -148,4 +148,71 @@ defmodule GoMovie.AccountTest do
       assert %Ecto.Changeset{} = Account.change_user(user)
     end
   end
+
+  describe "benefit_requests" do
+    alias GoMovie.Account.BenefitRequest
+
+    @valid_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name", phone_number: "some phone_number", rut: "some rut"}
+    @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", phone_number: "some updated phone_number", rut: "some updated rut"}
+    @invalid_attrs %{email: nil, first_name: nil, last_name: nil, phone_number: nil, rut: nil}
+
+    def benefit_request_fixture(attrs \\ %{}) do
+      {:ok, benefit_request} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Account.create_benefit_request()
+
+      benefit_request
+    end
+
+    test "list_benefit_requests/0 returns all benefit_requests" do
+      benefit_request = benefit_request_fixture()
+      assert Account.list_benefit_requests() == [benefit_request]
+    end
+
+    test "get_benefit_request!/1 returns the benefit_request with given id" do
+      benefit_request = benefit_request_fixture()
+      assert Account.get_benefit_request!(benefit_request.id) == benefit_request
+    end
+
+    test "create_benefit_request/1 with valid data creates a benefit_request" do
+      assert {:ok, %BenefitRequest{} = benefit_request} = Account.create_benefit_request(@valid_attrs)
+      assert benefit_request.email == "some email"
+      assert benefit_request.first_name == "some first_name"
+      assert benefit_request.last_name == "some last_name"
+      assert benefit_request.phone_number == "some phone_number"
+      assert benefit_request.rut == "some rut"
+    end
+
+    test "create_benefit_request/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Account.create_benefit_request(@invalid_attrs)
+    end
+
+    test "update_benefit_request/2 with valid data updates the benefit_request" do
+      benefit_request = benefit_request_fixture()
+      assert {:ok, %BenefitRequest{} = benefit_request} = Account.update_benefit_request(benefit_request, @update_attrs)
+      assert benefit_request.email == "some updated email"
+      assert benefit_request.first_name == "some updated first_name"
+      assert benefit_request.last_name == "some updated last_name"
+      assert benefit_request.phone_number == "some updated phone_number"
+      assert benefit_request.rut == "some updated rut"
+    end
+
+    test "update_benefit_request/2 with invalid data returns error changeset" do
+      benefit_request = benefit_request_fixture()
+      assert {:error, %Ecto.Changeset{}} = Account.update_benefit_request(benefit_request, @invalid_attrs)
+      assert benefit_request == Account.get_benefit_request!(benefit_request.id)
+    end
+
+    test "delete_benefit_request/1 deletes the benefit_request" do
+      benefit_request = benefit_request_fixture()
+      assert {:ok, %BenefitRequest{}} = Account.delete_benefit_request(benefit_request)
+      assert_raise Ecto.NoResultsError, fn -> Account.get_benefit_request!(benefit_request.id) end
+    end
+
+    test "change_benefit_request/1 returns a benefit_request changeset" do
+      benefit_request = benefit_request_fixture()
+      assert %Ecto.Changeset{} = Account.change_benefit_request(benefit_request)
+    end
+  end
 end

@@ -220,4 +220,100 @@ defmodule GoMovie.Account do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  alias GoMovie.Account.BenefitRequest
+
+  @doc """
+  Returns the list of benefit_requests.
+
+  ## Examples
+
+      iex> list_benefit_requests()
+      [%BenefitRequest{}, ...]
+
+  """
+  def list_benefit_requests do
+    Repo.all(BenefitRequest)
+  end
+
+  @doc """
+  Gets a single benefit_request.
+
+  Raises `Ecto.NoResultsError` if the Benefit request does not exist.
+
+  ## Examples
+
+      iex> get_benefit_request!(123)
+      %BenefitRequest{}
+
+      iex> get_benefit_request!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_benefit_request!(id), do: Repo.get!(BenefitRequest, id)
+
+  @doc """
+  Creates a benefit_request.
+
+  ## Examples
+
+      iex> create_benefit_request(%{field: value})
+      {:ok, %BenefitRequest{}}
+
+      iex> create_benefit_request(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_benefit_request(attrs \\ %{}) do
+    %BenefitRequest{}
+    |> BenefitRequest.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a benefit_request.
+
+  ## Examples
+
+      iex> update_benefit_request(benefit_request, %{field: new_value})
+      {:ok, %BenefitRequest{}}
+
+      iex> update_benefit_request(benefit_request, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_benefit_request(%BenefitRequest{} = benefit_request, attrs) do
+    benefit_request
+    |> BenefitRequest.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a benefit_request.
+
+  ## Examples
+
+      iex> delete_benefit_request(benefit_request)
+      {:ok, %BenefitRequest{}}
+
+      iex> delete_benefit_request(benefit_request)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_benefit_request(%BenefitRequest{} = benefit_request) do
+    Repo.delete(benefit_request)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking benefit_request changes.
+
+  ## Examples
+
+      iex> change_benefit_request(benefit_request)
+      %Ecto.Changeset{data: %BenefitRequest{}}
+
+  """
+  def change_benefit_request(%BenefitRequest{} = benefit_request, attrs \\ %{}) do
+    BenefitRequest.changeset(benefit_request, attrs)
+  end
 end

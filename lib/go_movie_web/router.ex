@@ -81,6 +81,9 @@ defmodule GoMovieWeb.Router do
     get "/news", NewsController, :index
 
     resources "/main_sliders", MainSliderController, except: [:new, :edit]
+
+    resources "/benefit_requests", BenefitRequestController, except: [:new, :edit]
+
   end
 
   # Enables LiveDashboard only for development
