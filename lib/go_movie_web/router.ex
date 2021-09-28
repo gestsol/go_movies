@@ -32,8 +32,8 @@ defmodule GoMovieWeb.Router do
     #pipe_through :api
     pipe_through [:api, :api_auth]
     resources "/roles", RoleController, except: [:new, :edit]
-    resources "/users", UserController, except: [:new, :edit, :create, :index, :show]
-    resources "/plans", PlanController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
+    resources "/plans", PlanController, except: [:new, :edit, :create, :index, :show]
     resources "/codes", CodeController, except: [:new, :edit]
     resources "/user_plans", UserPlanController, only: [:index, :create]
     get "/user_plans/:user_id/:plan_id", UserPlanController, :show
