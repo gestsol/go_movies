@@ -1,8 +1,12 @@
 defmodule GoMovieWeb.PlanController do
   use GoMovieWeb, :controller
 
+  import GoMovie.Auth, only: [restrict_to_admin: 2]
+
   alias GoMovie.Business
   alias GoMovie.Business.Plan
+
+  plug :restrict_to_admin when action in [:create, :update, :delete]
 
   action_fallback GoMovieWeb.FallbackController
 

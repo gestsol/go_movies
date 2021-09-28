@@ -18,6 +18,9 @@ defmodule GoMovieWeb.Router do
     post "/users/sign_in_facebook", UserController, :sign_in_facebook
 
     resources "/benefit_requests", BenefitRequestController, except: [:new, :edit]
+
+    get "/plans", PlanController, :index
+    get "/plans/:id", PlanController, :show
   end
 
   scope "/api/admin", GoMovieWeb do
@@ -29,7 +32,7 @@ defmodule GoMovieWeb.Router do
     #pipe_through :api
     pipe_through [:api, :api_auth]
     resources "/roles", RoleController, except: [:new, :edit]
-    resources "/users", UserController, except: [:new, :edit, :create]
+    resources "/users", UserController, except: [:new, :edit, :create, :index, :show]
     resources "/plans", PlanController, except: [:new, :edit]
     resources "/codes", CodeController, except: [:new, :edit]
     resources "/user_plans", UserPlanController, only: [:index, :create]
