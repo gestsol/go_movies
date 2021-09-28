@@ -16,6 +16,8 @@ defmodule GoMovieWeb.Router do
     post "/users/sign_up", UserController, :create
     post "/users/sign_in_google", UserController, :sign_in_google
     post "/users/sign_in_facebook", UserController, :sign_in_facebook
+
+    resources "/benefit_requests", BenefitRequestController, except: [:new, :edit]
   end
 
   scope "/api/admin", GoMovieWeb do
@@ -81,9 +83,6 @@ defmodule GoMovieWeb.Router do
     get "/news", NewsController, :index
 
     resources "/main_sliders", MainSliderController, except: [:new, :edit]
-
-    resources "/benefit_requests", BenefitRequestController, except: [:new, :edit]
-
   end
 
   # Enables LiveDashboard only for development
