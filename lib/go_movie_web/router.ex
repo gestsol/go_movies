@@ -86,6 +86,9 @@ defmodule GoMovieWeb.Router do
     get "/news", NewsController, :index
 
     resources "/main_sliders", MainSliderController, except: [:new, :edit]
+    resources "/user_sessions", UserSessionController, except: [:new, :edit]
+
+    post "/log_out", UserController, :log_out
   end
 
   # Enables LiveDashboard only for development

@@ -18,7 +18,7 @@ defmodule GoMovie.Account.BenefitRequest do
   def changeset(benefit_request, attrs) do
     benefit_request
     |> cast(attrs, [:first_name, :last_name, :rut, :email, :phone_number, :service_extra_livegps, :plan_id])
-    |> validate_required([:first_name, :last_name, :rut, :email, :phone_number, :plan_id])
+    |> validate_required([:first_name, :last_name, :rut, :email, :phone_number])
     |> unique_constraint([:rut, :email])
   end
 end

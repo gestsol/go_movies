@@ -18,10 +18,7 @@ defmodule GoMovie.Auth do
 
   def sign_in(%{"email" => email, "password" => password}) do
     case Account.authenticate_user(email, password) do
-      {:ok, user} ->
-        {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
-        {:ok, Map.merge(user, %{token: token})}
-
+      {:ok, user} -> log_in_user(user)
       {:error, message} -> {:error, message}
     end
   end
@@ -38,4 +35,21 @@ defmodule GoMovie.Auth do
     Map.fetch!(private, :guardian_default_resource)
   end
 
+  def validate_user_sessions(user) do
+    sessions = Account.get_user_sessions_count(user.user_id)
+    if sessions < 3 do
+      {:ok, user}
+    else
+      {:error, :session_limit}
+    end
+  end
+
+  def log_in_user(user) do
+    case validate_user_sessions(user) do
+      {:ok, user} ->
+        {:ok, token, _claims} = GoMovie.Auth.Guardian.encode_and_sign(user)
+        {:ok, Map.merge(user, %{token: token})}
+      {:error, message} -> {:error, message}
+    end
+  end
 end

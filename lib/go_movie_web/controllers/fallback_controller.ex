@@ -33,4 +33,10 @@ defmodule GoMovieWeb.FallbackController do
     |> put_status(:unauthorized)
     |> json(%{error: "You are not allowed to access this route."})
   end
+
+  def call(conn, {:error, :session_limit}) do
+    conn
+    |> put_status(:unauthorized)
+    |> json(%{error: "You have reached the session limit"})
+  end
 end

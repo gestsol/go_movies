@@ -8,6 +8,7 @@ defmodule GoMovieWeb.UserController do
   alias GoMovie.Auth
   alias GoMovie.Account
   alias GoMovie.Account.User
+  alias GoMovie.Account.UserSession
 
   plug :restrict_to_admin when action in [:index, :show, :update, :delete]
 
@@ -71,6 +72,11 @@ defmodule GoMovieWeb.UserController do
 
   def sign_in(conn, params) do
     with {:ok, user} <- Auth.sign_in(params) do
+
+      session = create_session_obj(user)
+
+      Account.create_user_session(session)
+
       conn
       |> put_status(:ok)
       |> render("show_with_token.json", user: user)
@@ -109,5 +115,22 @@ defmodule GoMovieWeb.UserController do
         |> put_view(GoMovieWeb.ErrorView)
         |> render("401.json", message: message)
     end
+  end
+
+  def log_out(conn, _params) do
+    user = Auth.get_logged_user(conn)
+    token = conn.private.guardian_default_token
+
+    with {:ok, %UserSession{}} <- Account.delete_user_session(user.user_id, token) do
+      send_resp(conn, :no_content, "")
+    end
+
+  end
+
+  defp create_session_obj(user) do
+    %{
+      user_id: user.user_id,
+      token: user.token,
+    }
   end
 end
