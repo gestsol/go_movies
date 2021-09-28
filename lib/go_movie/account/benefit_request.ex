@@ -8,6 +8,7 @@ defmodule GoMovie.Account.BenefitRequest do
     field :last_name, :string
     field :phone_number, :string
     field :rut, :string
+    field :service_extra_livegps, :boolean
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule GoMovie.Account.BenefitRequest do
   @doc false
   def changeset(benefit_request, attrs) do
     benefit_request
-    |> cast(attrs, [:first_name, :last_name, :rut, :email, :phone_number])
+    |> cast(attrs, [:first_name, :last_name, :rut, :email, :phone_number, :service_extra_livegps])
     |> validate_required([:first_name, :last_name, :rut, :email, :phone_number])
     |> unique_constraint([:rut, :email])
   end
