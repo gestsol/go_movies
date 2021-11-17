@@ -60,7 +60,8 @@ defmodule GoMovieWeb.Endpoint do
       "http://localhost:4200",
       "https://localhost:8100",
       "https://localhost:4200",
-      "https://landing-pullman-bus.netlify.app"
+      "https://landing-pullman-bus.netlify.app",
+      "https://newgomovie-prod.netlify.app"
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"]
   )
