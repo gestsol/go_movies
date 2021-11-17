@@ -21,6 +21,8 @@ defmodule GoMovieWeb.Router do
 
     get "/plans", PlanController, :index
     get "/plans/:id", PlanController, :show
+
+    post "/drm/request_license", DRMController, :deliver_license
   end
 
   scope "/api/admin", GoMovieWeb do
