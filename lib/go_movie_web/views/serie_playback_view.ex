@@ -17,7 +17,8 @@ defmodule GoMovieWeb.SeriePlaybackView do
       season_id: serie_playback.season_id,
       chapter_id: serie_playback.chapter_id,
       seekable: serie_playback.seekable,
-      user_id: serie_playback.user_id
+      user_id: serie_playback.user_id,
+      progress: (if Map.has_key?(serie_playback, :progress), do: serie_playback.progress, else: nil)
     }
   end
 end

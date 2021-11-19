@@ -6,6 +6,7 @@ defmodule GoMovieWeb.SeriePlaybackController do
 
   alias GoMovie.Content
   alias GoMovie.Content.SeriePlayback
+  alias GoMovie.Content.UserMoviePlayback
   alias GoMovie.MongoModel.Serie
 
   action_fallback GoMovieWeb.FallbackController
@@ -66,6 +67,7 @@ defmodule GoMovieWeb.SeriePlaybackController do
   def index(conn, _params) do
     with {:ok, query, _} <- apply_filters(SeriePlayback, conn),
          series_playbacks <- Content.list_series_playbacks(query),
+         series_playbacks <- Enum.map(series_playbacks, &UserMoviePlayback.append_progress_to_playback/1),
     do: render(conn, "index.json", series_playbacks: series_playbacks)
   end
 
@@ -75,7 +77,8 @@ defmodule GoMovieWeb.SeriePlaybackController do
       "serie_id" => serie_id,
       "season_id" => season_id,
       "chapter_id" => chapter_id,
-      "seekable" => seekable
+      "seekable" => seekable,
+      "duration" => duration
     } = serie_playback_params
 
     playback = Content.get_serie_playback(user_id, serie_id, season_id, chapter_id)
@@ -89,7 +92,7 @@ defmodule GoMovieWeb.SeriePlaybackController do
       end
     else
       with {:ok, %SeriePlayback{} = serie_playback} <-
-        Content.update_serie_playback(playback, %{"seekable" => seekable}) do
+        Content.update_serie_playback(playback, %{"seekable" => seekable, "duration" => duration}) do
         render(conn, "show.json", serie_playback: serie_playback)
       end
     end
